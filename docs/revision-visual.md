@@ -4,16 +4,17 @@
 
 Las seis capturas enlazadas corresponden al acabado actual, con las capacidades confirmadas por David. Se conservan sin cambios el contenido comercial, metadatos, precios y formulario. Plugin sigue centrado en estudiar sobre el temario existente; Campus, en reunir estudio, clases y gestión; Secure, en revisar accesos y contenidos dentro del mismo Campus.
 
-- Secciones de funciones con título y explicación a la izquierda y detalles agrupados a la derecha en escritorio; en móvil se apilan. Menos tarjetas independientes, bordes y espacios repetidos, sin eliminar funciones.
+- Rediseño en franjas de ancho completo: hero gris, beneficios blancos, demostración lavanda, capítulos blancos/grises, integración o gestión azul noche, capacidades complementarias en turquesa suave y cierre púrpura. Máximo interior de 1200 px. Se combinan columnas abiertas y bloques divididos sin sucesión de tarjetas blancas.
+- H1 de 64 px en escritorio y 40 px en móvil; H2 de 46 px y 34 px. Texto principal de 19/17 px, FAQ de 21/19 px, campos de 17 px, etiquetas de 16 px y notas de 14 px. Espacios de sección de 96/64 px. Decisiones y referencia en [rediseno-visual.md](rediseno-visual.md).
 - Rótulo legible encima de la ilustración: «Representación ilustrativa / No es una captura del producto». Se retira la barra que simulaba una ventana de navegador y se aumenta el tamaño del texto del ejemplo. El marco conserva el radio de 24 px de la marca.
-- Identidad oficial: `DuxBrain-04.png` en cabecera y pie de fondo claro. Se compensan los márgenes transparentes mediante CSS sin deformar el original. Tamaño visible de 176 px en escritorio y 148 px en cabecera móvil; 160 px en el pie. `DuxBrain2.png` sustituye el icono de pestaña mediante metadatos; no queda favicon predeterminado.
-- Primer pantallazo y formulario conservados: CTA visible a 390 × 844, precio y propuesta específica por ruta. Navegación por secciones, FAQ y CTA revisados en ambas resoluciones.
+- Identidad oficial: `DuxBrain-04.png` en cabecera y pie claros. Márgenes transparentes compensados sin deformar el original. Tamaño visible de 176 px en escritorio y 148 px en cabecera móvil; 176 px en el pie. `DuxBrain2.png` como icono de pestaña.
+- CTA móvil adelantado tras la propuesta para permanecer visible a 390 × 844 con el texto ampliado. Formulario visible en escritorio, enlaces de sección con áreas de al menos 46 px y botones de al menos 56 px. Navegación por teclado y contraste de texto revisados; sin desbordamientos a 320, 390, 768 y 1440 px.
 
 **Identidad resuelta; capturas del producto pendientes:** los PNG han sido aportados localmente. El conector EBAU no proporciona una sesión utilizable tras reintentar. Se mantiene la ilustración anterior y se detallan las siete capturas de producto necesarias en [activos-pendientes.md](activos-pendientes.md). Las capturas locales de revisión no se presentan como pantallas reales del producto.
 
-Validación actual: lint, 26 pruebas de servicios simulados y build de producción. Revisión con Chrome a 1440 × 1000 y 390 × 844 en las tres rutas, incluida atribución, CTA, FAQ y error de configuración simulado. También se revisan éxito, error e incertidumbre de envío con respuestas interceptadas. Ninguna prueba llega a Google Sheets ni SMTP; `LEADS_SHEETS_WRITES_ENABLED=false`.
+Validación actual: lint, 26 pruebas de servicios simulados y build de producción. Revisión con Chrome a 1440 × 1000 y 390 × 844 en las tres rutas, incluida atribución, CTA, FAQ y error de configuración simulado. CSS generado con HTTP 200 y `text/css`, sin errores en consola durante la carga. También se revisan éxito, error e incertidumbre de envío con respuestas interceptadas. Ninguna prueba llega a Google Sheets ni SMTP; `LEADS_SHEETS_WRITES_ENABLED=false`.
 
-Repetir con `node scripts/review-landings.mjs http://localhost:3100` y `node scripts/check-lead-form.mjs`, con el servidor local de producción iniciado en el puerto 3100. Resultados en [capturas/revision.json](capturas/revision.json). La matriz de afirmaciones está en [revision-contenido.md](revision-contenido.md).
+Capturas finales tomadas en `http://localhost:3000` después de reiniciar el proceso antiguo de este mismo proyecto. Repetir con `node scripts/review-landings.mjs http://localhost:3000`. La comprobación adicional `node scripts/check-lead-form.mjs` usa un servidor local en el puerto 3100. Resultados en [capturas/revision.json](capturas/revision.json). La matriz de afirmaciones está en [revision-contenido.md](revision-contenido.md).
 
 ## Contexto histórico de la revisión inicial
 

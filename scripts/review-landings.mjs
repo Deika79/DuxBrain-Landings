@@ -16,7 +16,13 @@ try {
       // Revisión visual segura incluso con credenciales locales: no llegar a la API real.
       await page.route('**/api/leads', r => { payload = r.request().postDataJSON(); return r.fulfill({ status: 503, contentType: 'application/json', body: JSON.stringify({ ok: false, code: 'NOT_CONFIGURED', message: 'Prueba simulada: falta completar la configuración.' }) }); });
       const errors = [];
+      const cssResponses = [];
+      const consoleErrors = [];
       page.on('pageerror', e => errors.push(e.message));
+      page.on('console', message => { if (message.type() === 'error') consoleErrors.push(message.text()); });
+      page.on('response', response => {
+        if (response.request().resourceType() === 'stylesheet') cssResponses.push({ url: new URL(response.url()).pathname, status: response.status(), type: response.headers()['content-type'] });
+      });
       const response = await page.goto(`${baseUrl}/${route}?utm_source=ig&utm_medium=paid_social&ad_id=123`, { waitUntil: 'networkidle' });
       await page.evaluate(() => document.fonts.ready);
       // Load below-the-fold images too before the full-page capture (footer logo).
@@ -36,10 +42,18 @@ try {
         title: document.title,
         description: document.querySelector('meta[name="description"]').content,
         sections: [...document.querySelectorAll('.feature-section')].map(section => section.id),
+        typography: Object.fromEntries(['h1', '.hero-description', '.benefit-card p', '.feature-item p', 'summary', 'label', 'input'].map(selector => [selector, parseFloat(getComputedStyle(document.querySelector(selector)).fontSize)])),
+        bands: [...document.querySelectorAll('.feature-section')].map(section => ({ id: section.id, width: section.getBoundingClientRect().width, background: getComputedStyle(section).backgroundColor })),
       }));
       assert.equal(metrics.scrollWidth, width, 'Horizontal overflow');
+      assert.ok(cssResponses.length > 0, 'Expected generated CSS to be requested');
+      assert.ok(cssResponses.every(response => response.status === 200 && response.type.includes('text/css')), 'CSS must load without HTTP errors');
+      assert.equal(metrics.typography.h1, width === 1440 ? 64 : 40);
+      for (const selector of ['.hero-description', '.benefit-card p', '.feature-item p']) assert.ok(metrics.typography[selector] >= 17, `${selector} should be readable without zoom`);
+      assert.ok(metrics.bands.every(band => band.width === width), 'Chapter backgrounds should span the viewport');
       assert.ok(metrics.price.includes(route === 'plugin' ? '0,99 €' : '3,99 €'));
       if (width === 390) assert.ok(metrics.heroCta.bottom <= 844, 'Primary CTA should fit in the first mobile viewport');
+      assert.deepEqual(consoleErrors, [], 'No console errors expected before form simulation');
       const filename = `${route}-${width === 1440 ? 'escritorio' : 'movil'}.png`;
       await page.screenshot({ path: `docs/capturas/${filename}`, fullPage: true, animations: 'disabled' });
       for (const link of await page.locator('.section-nav a').all()) {
@@ -77,7 +91,8 @@ try {
       assert.deepEqual(payload.attribution, { utm_source: 'ig', utm_medium: 'paid_social', ad_id: '123' });
       assert.equal(await page.locator('button[type="submit"]').isEnabled(), true);
       assert.deepEqual(errors, []);
-      results.push({ route, ...metrics, screenshot: filename, faq: 'ok', formWithoutSubmission: 'ok', pageErrors: errors });
+      assert.ok(consoleErrors.every(error => /Failed to load resource.*503/.test(error)), 'Only the deliberately mocked form error is expected');
+      results.push({ route, ...metrics, screenshot: filename, faq: 'ok', formWithoutSubmission: 'ok', css: cssResponses, pageErrors: errors, console: 'Only the intercepted 503 form response; no errors on initial load.' });
       await page.close();
     }
     await context.close();
