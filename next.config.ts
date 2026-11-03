@@ -2,8 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  // La API de leads declara runtime Node.js explícito; sin Cache Components.
   reactCompiler: true,
   turbopack: {
     rules: {

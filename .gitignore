@@ -23,6 +23,13 @@
 # misc
 .DS_Store
 *.pem
+*.key
+*.p12
+*.pfx
+*.tmp
+*.log
+/tmp/
+/temp/
 
 # debug
 npm-debug.log*
@@ -32,6 +39,21 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+# Credenciales de cuentas de servicio: nunca versionar el JSON descargado.
+/credentials/
+*service-account*.json
+*credentials*.json
+*google-key*.json
+*-key-*.json
+# Los nombres de las claves de Google pueden ser arbitrarios: JSON excluido por defecto.
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!docs/capturas/revision.json
+/test-results/
+/playwright-report/
 
 # vercel
 .vercel

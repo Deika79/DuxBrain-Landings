@@ -2,13 +2,25 @@
 
 import { useRef, useState, type FormEvent } from "react";
 import type { LandingId } from "@/content/landings";
-import { privacyUrl, readAttribution, submitLead, type LeadPayload } from "@/lib/leads";
+import { privacyUrl, readAttribution, submitLead, SubmissionError, type LeadPayload } from "@/lib/leads";
 
 export function LeadForm({ landing }: { landing: LandingId }) {
   const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
+  const [finished, setFinished] = useState(false);
+  const [uncertain, setUncertain] = useState(false);
+  const [reference, setReference] = useState("");
+  const busyRef = useRef(false);
+  const requestRef = useRef<string | null>(null);
   const statusRef = useRef<HTMLParagraphElement>(null);
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (busyRef.current || finished || uncertain) return;
+    busyRef.current = true;
+    setSending(true);
+    setMessage("");
+    requestRef.current ??= crypto.randomUUID();
+    setReference(requestRef.current);
     const data = new FormData(event.currentTarget);
     const payload: LeadPayload = {
       name: String(data.get("name")).trim(), academy: String(data.get("academy")).trim(),
@@ -16,10 +28,19 @@ export function LeadForm({ landing }: { landing: LandingId }) {
       students: String(data.get("students")), landing,
       attribution: readAttribution(window.location.search), pathname: window.location.pathname,
       privacyNoticeVersion: "landing-v1",
+      requestId: requestRef.current, website: String(data.get("website") ?? ""),
     };
-    try { await submitLead(payload); }
+    try {
+      const receipt = await submitLead(payload);
+      setFinished(true);
+      setMessage(`${receipt.message} Referencia: ${receipt.leadId}`);
+    }
     catch (error) {
+      setUncertain(error instanceof SubmissionError && error.uncertain);
       setMessage(error instanceof Error ? error.message : "No se ha podido enviar la solicitud.");
+    } finally {
+      busyRef.current = false;
+      setSending(false);
       requestAnimationFrame(() => statusRef.current?.focus());
     }
   }
@@ -27,7 +48,9 @@ export function LeadForm({ landing }: { landing: LandingId }) {
     <span className="eyebrow">HABLEMOS DE TU ACADEMIA</span>
     <h2>Descubre cómo encaja contigo.</h2>
     <p className="form-intro">Cuéntanos tu punto de partida y prepara tu demo de DuxBrain.</p>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} aria-busy={sending}>
+      <fieldset disabled={sending || finished || uncertain}>
+      <div className="honeypot" aria-hidden="true"><label>Deja este campo vacío<input name="website" autoComplete="off" tabIndex={-1} maxLength={200} /></label></div>
       <div className="form-grid">
         <label>Tu nombre<input name="name" autoComplete="given-name" placeholder="Nombre" maxLength={100} required /></label>
         <label>Academia<input name="academy" autoComplete="organization" placeholder="Nombre de tu academia" maxLength={150} required /></label>
@@ -37,9 +60,11 @@ export function LeadForm({ landing }: { landing: LandingId }) {
       </div>
       <input type="hidden" name="landing" value={landing} />
       <p className="privacy">SINDEVZ TECH, S.L. tratará tus datos para atender tu solicitud de información o demo. Consulta cómo ejercer tus derechos en la <a href={privacyUrl} target="_blank" rel="noreferrer">política de privacidad de DuxBrain</a>.</p>
-      <button className="button button-primary form-button" type="submit">Solicitar mi demo <span aria-hidden="true">↗</span></button>
-      <p className="form-notice">Vista previa: formulario pendiente de conexión. No se enviarán datos.</p>
+      <button className="button button-primary form-button" type="submit">{sending ? "Enviando solicitud…" : finished ? "Solicitud recibida" : uncertain ? "Pendiente de comprobación" : "Solicitar mi demo"} <span aria-hidden="true">↗</span></button>
+      </fieldset>
+      <p className="form-notice">Usaremos tus datos para atender tu solicitud de demo.</p>
       <p className="form-status" role="status" tabIndex={-1} ref={statusRef}>{message}</p>
+      {!finished && message && reference && <p className="form-notice">Referencia: {reference}</p>}
     </form>
   </div>;
 }

@@ -1,0 +1,110 @@
+[
+  {
+    "route": "plugin",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "heading": "Tu plataforma de siempre.Ahora, con IA sobre tu temario.",
+    "headingBottom": 470.34375,
+    "formTop": 180.109375,
+    "heroCta": {
+      "display": "none",
+      "top": 0,
+      "bottom": 0
+    },
+    "price": "0,99 €por alumno activo / mesPrecio de referencia · Condiciones en la propuesta",
+    "screenshot": "plugin-escritorio.png",
+    "faq": "ok",
+    "formWithoutSubmission": "ok",
+    "pageErrors": []
+  },
+  {
+    "route": "campus",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "heading": "Toda tu academia.Un campus con IA integrada.",
+    "headingBottom": 416.640625,
+    "formTop": 160,
+    "heroCta": {
+      "display": "none",
+      "top": 0,
+      "bottom": 0
+    },
+    "price": "3,99 €por alumno activo / mesPrecio de referencia · Condiciones en la propuesta",
+    "screenshot": "campus-escritorio.png",
+    "faq": "ok",
+    "formWithoutSubmission": "ok",
+    "pageErrors": []
+  },
+  {
+    "route": "campus-secure",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "heading": "Tu contenido tiene valor.Ten más control sobre su acceso.",
+    "headingBottom": 470.34375,
+    "formTop": 208.90625,
+    "heroCta": {
+      "display": "none",
+      "top": 0,
+      "bottom": 0
+    },
+    "price": "3,99 €por alumno activo / mesPrecio de referencia · Condiciones en la propuesta",
+    "screenshot": "campus-secure-escritorio.png",
+    "faq": "ok",
+    "formWithoutSubmission": "ok",
+    "pageErrors": []
+  },
+  {
+    "route": "plugin",
+    "width": 390,
+    "scrollWidth": 390,
+    "heading": "Tu plataforma de siempre.Ahora, con IA sobre tu temario.",
+    "headingBottom": 324,
+    "formTop": 784.734375,
+    "heroCta": {
+      "display": "flex",
+      "top": 656.140625,
+      "bottom": 707.140625
+    },
+    "price": "0,99 €por alumno activo / mesPrecio de referencia · Condiciones en la propuesta",
+    "screenshot": "plugin-movil.png",
+    "faq": "ok",
+    "formWithoutSubmission": "ok",
+    "pageErrors": []
+  },
+  {
+    "route": "campus",
+    "width": 390,
+    "scrollWidth": 390,
+    "heading": "Toda tu academia.Un campus con IA integrada.",
+    "headingBottom": 281,
+    "formTop": 768.125,
+    "heroCta": {
+      "display": "flex",
+      "top": 639.53125,
+      "bottom": 690.53125
+    },
+    "price": "3,99 €por alumno activo / mesPrecio de referencia · Condiciones en la propuesta",
+    "screenshot": "campus-movil.png",
+    "faq": "ok",
+    "formWithoutSubmission": "ok",
+    "pageErrors": []
+  },
+  {
+    "route": "campus-secure",
+    "width": 390,
+    "scrollWidth": 390,
+    "heading": "Tu contenido tiene valor.Ten más control sobre su acceso.",
+    "headingBottom": 324,
+    "formTop": 868.71875,
+    "heroCta": {
+      "display": "flex",
+      "top": 740.125,
+      "bottom": 791.125
+    },
+    "price": "3,99 €por alumno activo / mesPrecio de referencia · Condiciones en la propuesta",
+    "screenshot": "campus-secure-movil.png",
+    "faq": "ok",
+    "formWithoutSubmission": "ok",
+    "pageErrors": []
+  }
+]
