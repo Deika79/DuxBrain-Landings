@@ -46,8 +46,8 @@ export function LeadForm({ landing }: { landing: LandingId }) {
   }
   return <div className="lead-card" id="demo">
     <span className="eyebrow">HABLEMOS DE TU ACADEMIA</span>
-    <h2>Descubre cómo encaja contigo.</h2>
-    <p className="form-intro">Cuéntanos tu punto de partida y prepara tu demo de DuxBrain.</p>
+    <h2>Solicita una demo para tu academia.</h2>
+    <p className="form-intro">Cuéntanos qué necesitas. En la demo revisaremos tu plataforma, tus contenidos y tu forma de enseñar.</p>
     <form onSubmit={handleSubmit} aria-busy={sending}>
       <fieldset disabled={sending || finished || uncertain}>
       <div className="honeypot" aria-hidden="true"><label>Deja este campo vacío<input name="website" autoComplete="off" tabIndex={-1} maxLength={200} /></label></div>

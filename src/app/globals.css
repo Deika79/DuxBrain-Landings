@@ -180,6 +180,7 @@ details p { font-size: 14px; line-height: 1.75; padding-top: 16px; padding-right
   .lead-card { padding: 32px 32px 22px; }
   .mobile-hero-cta { display: none; }
   .section { padding-block: 75px; }
+  .steps-four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .benefit-card { padding: 32px; }
   .benefit-card h3 { font-size: 24px; }
   .demo-section { padding-block: 80px; }
