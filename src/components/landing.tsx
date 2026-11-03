@@ -41,13 +41,13 @@ export function SectionNavigation({ content: c }: { content: LandingContent }) {
 export function FeatureSections({ content: c }: { content: LandingContent }) {
   return c.sections.map(section => <section className="section container feature-section" id={section.id} key={section.id} aria-labelledby={`${section.id}-title`}>
     <div className="section-heading"><span className="eyebrow">{section.eyebrow}</span><h2 id={`${section.id}-title`}>{section.title}</h2><p className="feature-description">{section.description}</p></div>
-    <div className="feature-grid">{section.items.map(item => <article className="benefit-card feature-card" key={item.title}><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+    <div className="feature-grid">{section.items.map(item => <article className="feature-item" key={item.title}><h3><span aria-hidden="true">↗</span>{item.title}</h3><p>{item.text}</p></article>)}</div>
   </section>);
 }
 
 export function VisualDemo({ content: c }: { content: LandingContent }) {
   return <section className="demo-section" id="en-accion"><div className="container demo-layout"><div className="demo-copy"><span className="eyebrow">{c.demo.panelLabel}</span><h2>{c.demoTitle}</h2><p>{c.demoText}</p><a className="text-link" href="#demo">Solicitar una demo <span aria-hidden="true">↗</span></a></div>
-    <figure className="demo-figure"><div className="product-window"><div className="window-top"><span className="window-dots" aria-hidden="true">● ● ●</span><span>Ejemplo ilustrativo · No es el producto</span><span aria-hidden="true">▦</span></div>
+    <figure className="demo-figure"><div className="illustration-label">Representación ilustrativa<span>No es una captura del producto</span></div><div className="product-window">
       <div className="product-body"><aside className="mock-sidebar" aria-hidden="true"><span className="mock-square">A</span><span className="mock-nav active">▦</span><span className="mock-nav">▤</span><span className="mock-nav">◷</span></aside>
       <div className="mock-main"><div className="mock-kicker">CAMPUS · EJEMPLO ILUSTRATIVO</div><h3>{c.demo.courseTitle}</h3><p className="mock-subtitle">{c.demo.subtitle}</p>
       <div className="course-preview"><div className="course-art" aria-hidden="true"><span>01</span><div className="orbit" /><span className="art-caption">MATERIAL<br />DE ESTUDIO</span></div><div className="course-bottom"><span>Contenido de ejemplo</span><strong>{c.demo.material}</strong><span className="course-line" /></div></div>

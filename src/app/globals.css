@@ -81,11 +81,16 @@ fieldset:disabled .button { opacity: .7; cursor: default; transform: none; }
 .section-nav { display: flex; flex-wrap: wrap; gap: 10px; padding-block: 0 20px; }
 .section-nav a { min-height: 44px; display: inline-flex; align-items: center; padding: 8px 16px; border: 1px solid #08152824; border-radius: 100px; font-size: 13px; font-weight: 500; background: var(--surface); }
 .section-nav a:hover { color: var(--purple); border-color: var(--purple); }
-.feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; }
+.feature-grid { display: grid; gap: 0; background: var(--surface); border-radius: var(--radius); padding: 4px 24px; box-shadow: var(--shadow); }
 .feature-description { margin-top: 18px; font-size: 16px; line-height: 1.7; }
-.feature-section { scroll-margin-top: 24px; }
-.feature-card { border-top: 3px solid var(--purple); }
-.feature-card p { max-width: 70ch; }
+.feature-section { scroll-margin-top: 24px; border-bottom: 1px solid #08152816; padding-block: 48px; }
+.feature-section .section-heading { margin-bottom: 24px; }
+.feature-section .eyebrow { color: var(--purple); }
+.feature-item { padding-block: 24px; }
+.feature-item + .feature-item { border-top: 1px solid var(--line); }
+.feature-item h3 { display: flex; gap: 12px; font-size: 19px; line-height: 1.25; }
+.feature-item h3 span { color: var(--purple); flex-shrink: 0; }
+.feature-item p { max-width: 65ch; font-size: 14px; margin-top: 12px; line-height: 1.7; }
 .section-heading { max-width: 620px; margin-bottom: 32px; }
 .section-heading .eyebrow, .demo-copy .eyebrow, .faq-section .eyebrow { margin-bottom: 18px; }
 .benefit-grid { display: grid; gap: 16px; }
@@ -93,38 +98,38 @@ fieldset:disabled .button { opacity: .7; cursor: default; transform: none; }
 .feature-number { display: flex; justify-content: space-between; font-size: 12px; color: var(--purple); margin-bottom: 36px; }
 .feature-number > span { font-size: 25px; line-height: 1; }
 .benefit-card p { font-size: 14px; margin-top: 14px; }
-.demo-section { background: #e0dced; margin-block: 50px; padding-block: 64px; overflow: hidden; }
+.demo-section { background: #e0dced; margin-block: 40px; padding-block: 64px; overflow: hidden; }
 .demo-layout { display: grid; gap: 36px; align-items: center; }
 .demo-copy p { margin: 22px 0 26px; font-size: 15px; }
 .demo-figure { margin: 0; min-width: 0; }
-.product-window { border-radius: 15px; background: white; overflow: hidden; box-shadow: 0 22px 60px #422a7819; border: 1px solid #ffffff80; }
-.window-top { height: 38px; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; background: #f9f9fb; border-bottom: 1px solid #eee; font-size: 8px; color: var(--muted); }
-.window-dots { letter-spacing: 2px; font-size: 7px; color: #c8c4d3; }
+.illustration-label { display: flex; flex-direction: column; gap: 2px; margin-bottom: 14px; font-size: 13px; font-weight: 600; color: var(--ink); }
+.illustration-label span { font-size: 12px; font-weight: 400; color: #514466; }
+.product-window { border-radius: var(--radius); background: white; overflow: hidden; box-shadow: 0 22px 60px #422a7819; border: 1px solid #ffffff80; }
 .product-body { display: grid; grid-template-columns: 36px minmax(0, 1fr); min-height: 295px; }
 .mock-sidebar { display: flex; flex-direction: column; align-items: center; padding: 14px 0; gap: 12px; border-right: 1px solid #efedf3; }
 .mock-square { width: 22px; height: 22px; background: var(--ink); color: white; border-radius: 7px; text-align: center; font-size: 12px; }
 .mock-nav { font-size: 15px; color: #9b93af; }
 .mock-nav.active { color: var(--purple); }
 .mock-main { padding: 22px 16px; }
-.mock-kicker { font-size: 7px; letter-spacing: .06em; color: var(--muted); margin-bottom: 12px; }
+.mock-kicker { font-size: 9px; letter-spacing: .06em; color: var(--muted); margin-bottom: 12px; }
 .mock-main h3 { font-size: 18px; }
-.mock-subtitle { font-size: 9px; margin-top: 6px; }
+.mock-subtitle { font-size: 11px; margin-top: 6px; }
 .course-preview { margin-top: 20px; border: 1px solid #e7e4ed; border-radius: 10px; overflow: hidden; }
 .course-art { background: #d8d0f0; height: 112px; position: relative; overflow: hidden; padding: 14px; color: #493480; }
 .course-art > span:first-child { font-size: 9px; }
 .art-caption { position: absolute; left: 14px; bottom: 14px; font-size: 11px; font-weight: 600; line-height: 1.2; }
 .orbit { position: absolute; border: 1px solid #6a42e175; border-radius: 50%; width: 135px; height: 135px; right: -20px; top: 15px; box-shadow: 0 0 0 15px #6a42e11a, 0 0 0 30px #6a42e115; }
-.course-bottom { padding: 12px; display: grid; gap: 4px; font-size: 8px; }
-.course-bottom strong { font-size: 10px; font-weight: 500; }
+.course-bottom { padding: 12px; display: grid; gap: 4px; font-size: 10px; }
+.course-bottom strong { font-size: 12px; font-weight: 500; }
 .course-line { width: 100%; height: 3px; background: #ebe6f7; margin-top: 5px; border-radius: 10px; }
 .mock-panel { grid-column: 2; border-top: 1px solid #efedf3; padding: 20px 16px; background: #fcfbff; }
-.panel-tag { font-size: 7px; color: var(--purple); letter-spacing: .08em; }
+.panel-tag { font-size: 9px; color: var(--purple); letter-spacing: .08em; }
 .mock-panel h4 { font-size: 17px; margin-top: 12px; }
-.chat-question { margin: 20px 0 12px 10px; background: var(--purple); color: white; border-radius: 10px 10px 0 10px; padding: 10px; font-size: 9px; }
-.chat-answer { display: flex; gap: 8px; font-size: 9px; background: #f0edf7; padding: 12px 8px; border-radius: 10px; }
+.chat-question { margin: 20px 0 12px 10px; background: var(--purple); color: white; border-radius: 10px 10px 0 10px; padding: 10px; font-size: 12px; }
+.chat-answer { display: flex; gap: 8px; font-size: 12px; background: #f0edf7; padding: 12px 8px; border-radius: 10px; }
 .ai-mark { color: var(--purple); }
-.mock-input { margin-top: 28px; padding: 8px; border: 1px solid #ded8eb; border-radius: 8px; font-size: 8px; color: var(--muted); display: flex; justify-content: space-between; }
-.control-list { margin-top: 24px; font-size: 10px; }
+.mock-input { margin-top: 28px; padding: 8px; border: 1px solid #ded8eb; border-radius: 8px; font-size: 11px; color: var(--muted); display: flex; justify-content: space-between; }
+.control-list { margin-top: 24px; font-size: 12px; }
 .control-list > div { display: flex; justify-content: space-between; gap: 16px; padding: 15px 0; border-bottom: 1px solid #e4deef; }
 .control-list > div > span:last-child { color: var(--purple); }
 figcaption { font-size: 12px; color: #5d566c; margin-top: 14px; }
@@ -143,10 +148,11 @@ details p { font-size: 14px; line-height: 1.75; padding-top: 16px; padding-right
 .final-cta .eyebrow { color: #ddd3ff; margin-bottom: 18px; }
 .final-cta p { color: #e7deff; font-size: 14px; margin-top: 20px; max-width: 400px; }
 .final-cta .button { flex-shrink: 0; }
-.footer { border-top: 1px solid #08152824; padding-block: 28px; display: flex; flex-wrap: wrap; gap: 18px 24px; align-items: center; font-size: 11px; }
+.footer { padding: 28px; margin-bottom: 24px; border-radius: var(--radius); background: var(--ink); color: white; display: flex; flex-wrap: wrap; gap: 18px 24px; align-items: center; font-size: 12px; }
 .footer .brand-text { font-size: 21px; }
-.footer p { flex-basis: 100%; }
-.footer > span:last-child { color: var(--muted); }
+.footer p { flex-basis: 100%; color: #bfc8d7; }
+.footer > span:last-child { color: #bfc8d7; }
+.footer a { text-decoration: underline; text-underline-offset: 4px; }
 .skip-link { position: absolute; left: 20px; top: -100px; background: white; padding: 14px; z-index: 10; }
 .skip-link:focus { top: 12px; }
 .review-page { padding-block: 48px; }
@@ -185,6 +191,13 @@ details p { font-size: 14px; line-height: 1.75; padding-top: 16px; padding-right
   .benefit-card h3 { font-size: 24px; }
   .demo-section { padding-block: 80px; }
   .demo-layout { grid-template-columns: .85fr 1.5fr; gap: 70px; }
+  .illustration-label { flex-direction: row; justify-content: space-between; gap: 12px; }
+  .feature-section { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 70px; align-items: start; padding-block: 56px; }
+  .feature-section .section-heading { margin-bottom: 0; }
+  .feature-section h2 { font-size: 36px; }
+  .feature-grid { padding: 8px 32px; }
+  .feature-item { padding-block: 28px; }
+  .feature-item h3 { font-size: 21px; }
   .mock-main { padding: 24px 18px; }
   .mock-main h3 { font-size: 21px; }
   .course-art { height: 140px; }

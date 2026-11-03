@@ -1,6 +1,23 @@
 # Revisión visual · 3 de noviembre de 2026
 
-Las seis capturas enlazadas se actualizan en feature/landing-copy con las capacidades confirmadas por David: herramientas de estudio, Campus completo, seguridad y MCP incluidos. La matriz, la evidencia y las comprobaciones actuales están en [revision-contenido.md](revision-contenido.md). El resto de este informe conserva el contexto de la revisión visual inicial; el ejemplo de chat y el esquema de señales de Secure son ilustrativos. Las pruebas de formulario interceptan /api/leads, sin llegar al servidor real.
+## Acabado visual actual en feature/landing-copy
+
+Las seis capturas enlazadas corresponden al acabado actual, con las capacidades confirmadas por David. Se conservan sin cambios el contenido comercial, metadatos, precios y formulario. Plugin sigue centrado en estudiar sobre el temario existente; Campus, en reunir estudio, clases y gestión; Secure, en revisar accesos y contenidos dentro del mismo Campus.
+
+- Secciones de funciones con título y explicación a la izquierda y detalles agrupados a la derecha en escritorio; en móvil se apilan. Menos tarjetas independientes, bordes y espacios repetidos, sin eliminar funciones.
+- Rótulo legible encima de la ilustración: «Representación ilustrativa / No es una captura del producto». Se retira la barra que simulaba una ventana de navegador y se aumenta el tamaño del texto del ejemplo. El marco conserva el radio de 24 px de la marca.
+- Pie oscuro con texto blanco, enlaces identificables y texto secundario de mayor contraste. El nombre sigue siendo texto provisional; no se ha creado un logo.
+- Primer pantallazo y formulario conservados: CTA visible a 390 × 844, precio y propuesta específica por ruta. Navegación por secciones, FAQ y CTA revisados en ambas resoluciones.
+
+**Activos bloqueados por acceso:** no hay PNG en `public/brand/`, Drive redirige a iniciar sesión y el conector EBAU no proporciona una sesión utilizable tras reintentar. Se mantiene la ilustración anterior y se detallan los dos logos y siete capturas de producto necesarios en [activos-pendientes.md](activos-pendientes.md). Las capturas locales de revisión no se presentan como pantallas reales del producto.
+
+Validación actual: lint, 26 pruebas de servicios simulados y build de producción. Revisión con Chrome a 1440 × 1000 y 390 × 844 en las tres rutas, incluida atribución, CTA, FAQ y error de configuración simulado. También se revisan éxito, error e incertidumbre de envío con respuestas interceptadas. Ninguna prueba llega a Google Sheets ni SMTP; `LEADS_SHEETS_WRITES_ENABLED=false`.
+
+Repetir con `node scripts/review-landings.mjs http://localhost:3100` y `node scripts/check-lead-form.mjs`, con el servidor local de producción iniciado en el puerto 3100. Resultados en [capturas/revision.json](capturas/revision.json). La matriz de afirmaciones está en [revision-contenido.md](revision-contenido.md).
+
+## Contexto histórico de la revisión inicial
+
+Las notas siguientes describen la primera revisión; los resultados actuales son los del apartado anterior. El formulario ha evolucionado desde aquella revisión y ya dispone de API, bloqueada hasta completar su configuración.
 
 Proyecto existente duxbrain-landings. Sin despliegue. Servidor local de producción en http://localhost:3000.
 
