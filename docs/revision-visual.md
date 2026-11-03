@@ -1,6 +1,6 @@
 # Revisión visual · 3 de noviembre de 2026
 
-Las seis capturas enlazadas se han actualizado en feature/landing-copy con la revisión editorial posterior a ad03d33. La matriz, la evidencia y las comprobaciones actuales están en [revision-contenido.md](revision-contenido.md). El resto de este informe conserva el contexto de la revisión visual inicial; los ejemplos de IA y el guion de Secure son ahora específicos y están identificados como ilustrativos. Las pruebas de formulario actuales interceptan /api/leads, sin llegar al servidor real.
+Las seis capturas enlazadas se actualizan en feature/landing-copy con las capacidades confirmadas por David: herramientas de estudio, Campus completo, seguridad y MCP incluidos. La matriz, la evidencia y las comprobaciones actuales están en [revision-contenido.md](revision-contenido.md). El resto de este informe conserva el contexto de la revisión visual inicial; el ejemplo de chat y el esquema de señales de Secure son ilustrativos. Las pruebas de formulario interceptan /api/leads, sin llegar al servidor real.
 
 Proyecto existente duxbrain-landings. Sin despliegue. Servidor local de producción en http://localhost:3000.
 

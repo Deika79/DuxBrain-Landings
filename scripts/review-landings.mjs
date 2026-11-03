@@ -29,12 +29,20 @@ try {
         price: document.querySelector('.price').textContent,
         title: document.title,
         description: document.querySelector('meta[name="description"]').content,
+        sections: [...document.querySelectorAll('.feature-section')].map(section => section.id),
       }));
       assert.equal(metrics.scrollWidth, width, 'Horizontal overflow');
       assert.ok(metrics.price.includes(route === 'plugin' ? '0,99 €' : '3,99 €'));
       if (width === 390) assert.ok(metrics.heroCta.bottom <= 844, 'Primary CTA should fit in the first mobile viewport');
       const filename = `${route}-${width === 1440 ? 'escritorio' : 'movil'}.png`;
       await page.screenshot({ path: `docs/capturas/${filename}`, fullPage: true, animations: 'disabled' });
+      for (const link of await page.locator('.section-nav a').all()) {
+        const href = await link.getAttribute('href');
+        await link.click();
+        await page.waitForURL(url => url.hash === href);
+        const top = await page.locator(href).evaluate(el => el.getBoundingClientRect().top);
+        assert.ok(top >= 0 && top < 100, 'Section navigation should reach its heading');
+      }
       if (width === 390) {
         await page.locator('.mobile-hero-cta').click();
         await page.waitForURL(url => url.hash === '#demo');

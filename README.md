@@ -8,7 +8,7 @@ Creado con create-next-app@latest, npm, TypeScript, App Router, ESLint, Tailwind
 - Integración preparada para la pestaña existente CP David Parte 2, sheetId 897385192, con esquema A:T confirmado.
 - Entrega real pendiente de configurar y verificar: fila de cabeceras, estado comercial permitido, credenciales/permisos Google, SMTP y Redis.
 - LEADS_SHEETS_WRITES_ENABLED=false. El commit y push guardan el código; no activan envíos reales ni autorizan despliegues.
-- Logos oficiales todavía ausentes. Revisión comercial pendiente: condiciones de precios, alumno activo, impuestos y alcance de integración y controles de seguridad.
+- Logos oficiales todavía ausentes. David confirma seguridad y MCP incluidos en Campus. Quedan la configuración de los controles, la integración del LMS y las condiciones de precios, alumno activo e impuestos.
 
 ## Uso
 
@@ -22,7 +22,7 @@ Rutas: / (revisión), /plugin, /campus y /campus-secure. Campus Secure es el mis
 - src/app/globals.css: tokens de marca y diseño mobile first.
 - src/app/page.tsx: índice de revisión.
 - src/app/{plugin,campus,campus-secure}/page.tsx: páginas y metadatos propios.
-- src/components/landing.tsx: Header, Hero, Benefits, VisualDemo, Steps, FAQ, FinalCTA y Footer.
+- src/components/landing.tsx: Header, Hero, navegación de secciones, Benefits, VisualDemo, FeatureSections, FAQ, FinalCTA y Footer.
 - src/components/lead-form.tsx: formulario conectado al endpoint, bloqueo de doble envío y estados de recepción.
 - src/content/landings.ts: contenido separado por landing.
 - src/lib/leads.ts: payload, UTM y cliente de POST /api/leads.
@@ -50,7 +50,7 @@ Instrucciones completas y limitaciones: [docs/configuracion-leads.md](docs/confi
 
 ## Antes de publicar
 
-Confirmar condiciones de precio, alumno activo y alcance técnico de integración/controles. Añadir logos y capturas reales: el mockup se identifica como ilustrativo. Configurar canonical/OG cuando exista dominio definitivo.
+Confirmar condiciones de precio, alumno activo y alcance técnico de integración del LMS. Seguridad y MCP están incluidos en Campus según la actualización de David; quedan los ajustes concretos de periodos/umbrales, descargas y conexión con IA compatible. Añadir logos y capturas reales: el mockup se identifica como ilustrativo. Configurar canonical/OG cuando exista dominio definitivo.
 
 npm audit detectó 16 avisos moderados en dependencias de desarrollo ESLint/minimatch. npm audit --omit=dev devuelve 0 vulnerabilidades. No se aplicó audit fix --force.
 

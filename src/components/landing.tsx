@@ -31,19 +31,29 @@ export function Benefits({ content: c }: { content: LandingContent }) {
   </section>;
 }
 
+export function SectionNavigation({ content: c }: { content: LandingContent }) {
+  return <nav className="container section-nav" aria-label={`Secciones de ${c.name}`}>
+    <a href="#beneficios">{c.id === "campus-secure" ? "Avisos" : "Estudiar con IA"}</a>
+    {c.sections.map(section => <a key={section.id} href={`#${section.id}`}>{section.navLabel}</a>)}
+  </nav>;
+}
+
+export function FeatureSections({ content: c }: { content: LandingContent }) {
+  return c.sections.map(section => <section className="section container feature-section" id={section.id} key={section.id} aria-labelledby={`${section.id}-title`}>
+    <div className="section-heading"><span className="eyebrow">{section.eyebrow}</span><h2 id={`${section.id}-title`}>{section.title}</h2><p className="feature-description">{section.description}</p></div>
+    <div className="feature-grid">{section.items.map(item => <article className="benefit-card feature-card" key={item.title}><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+  </section>);
+}
+
 export function VisualDemo({ content: c }: { content: LandingContent }) {
   return <section className="demo-section" id="en-accion"><div className="container demo-layout"><div className="demo-copy"><span className="eyebrow">{c.demo.panelLabel}</span><h2>{c.demoTitle}</h2><p>{c.demoText}</p><a className="text-link" href="#demo">Solicitar una demo <span aria-hidden="true">↗</span></a></div>
     <figure className="demo-figure"><div className="product-window"><div className="window-top"><span className="window-dots" aria-hidden="true">● ● ●</span><span>Ejemplo ilustrativo · No es el producto</span><span aria-hidden="true">▦</span></div>
       <div className="product-body"><aside className="mock-sidebar" aria-hidden="true"><span className="mock-square">A</span><span className="mock-nav active">▦</span><span className="mock-nav">▤</span><span className="mock-nav">◷</span></aside>
-      <div className="mock-main"><div className="mock-kicker">MATERIAL DE ACADEMIA · EJEMPLO</div><h3>{c.demo.courseTitle}</h3><p className="mock-subtitle">{c.demo.reviewTopics ? "Punto de partida para la demo." : "Contenido ficticio para explicar el uso."}</p>
+      <div className="mock-main"><div className="mock-kicker">CAMPUS · EJEMPLO ILUSTRATIVO</div><h3>{c.demo.courseTitle}</h3><p className="mock-subtitle">{c.demo.subtitle}</p>
       <div className="course-preview"><div className="course-art" aria-hidden="true"><span>01</span><div className="orbit" /><span className="art-caption">MATERIAL<br />DE ESTUDIO</span></div><div className="course-bottom"><span>Contenido de ejemplo</span><strong>{c.demo.material}</strong><span className="course-line" /></div></div>
       </div><div className="mock-panel"><span className="panel-tag">{c.demo.panelLabel}</span><h4>{c.demo.panelTitle}</h4>{c.demo.reviewTopics ? <div className="control-list">{c.demo.reviewTopics.map(x => <div key={x}>{x}</div>)}</div> : <><div className="chat-question">{c.demo.question}</div><div className="chat-answer"><span className="ai-mark" aria-hidden="true">✳</span><p>{c.demo.answer}</p></div><div className="mock-input">Conversación de ejemplo</div></>}
       </div></div></div><figcaption>{c.demo.caption}</figcaption></figure>
   </div></section>;
-}
-
-export function Steps({ content: c }: { content: LandingContent }) {
-  return <section className="section container steps-section"><div className="section-heading"><span className="eyebrow">{c.stepsEyebrow}</span><h2>{c.stepsTitle}</h2></div><ol className={`steps ${c.steps.length === 4 ? "steps-four" : ""}`}>{c.steps.map((s, i) => <li key={s}><span>0{i + 1}</span><p>{s}</p></li>)}</ol></section>;
 }
 
 export function FAQ({ content: c }: { content: LandingContent }) {
@@ -59,5 +69,5 @@ export function Footer() {
 }
 
 export function Landing({ content }: { content: LandingContent }) {
-  return <><a className="skip-link" href="#contenido">Saltar al contenido</a><Header name={content.name} /><main id="contenido"><Hero content={content} /><Benefits content={content} /><VisualDemo content={content} /><Steps content={content} /><FAQ content={content} /><FinalCTA content={content} /></main><Footer /></>;
+  return <><a className="skip-link" href="#contenido">Saltar al contenido</a><Header name={content.name} /><main id="contenido"><Hero content={content} /><SectionNavigation content={content} /><Benefits content={content} /><VisualDemo content={content} /><FeatureSections content={content} /><FAQ content={content} /><FinalCTA content={content} /></main><Footer /></>;
 }

@@ -1,103 +1,150 @@
 export type LandingId = "plugin" | "campus" | "campus-secure";
+export type LandingSection = {
+  id: string; navLabel: string; eyebrow: string; title: string; description: string;
+  items: { title: string; text: string }[];
+};
 export type LandingContent = {
   id: LandingId; name: string; eyebrow: string; title: string; accent: string;
   description: string; price: string; points: string[];
   benefitsTitle: string; benefits: { title: string; text: string }[];
   demoTitle: string; demoText: string;
-  demo: { courseTitle: string; material: string; panelLabel: string; panelTitle: string; question?: string; answer?: string; reviewTopics?: string[]; caption: string };
-  stepsEyebrow: string; stepsTitle: string; steps: string[];
+  demo: { courseTitle: string; subtitle: string; material: string; panelLabel: string; panelTitle: string; question?: string; answer?: string; reviewTopics?: string[]; caption: string };
+  sections: LandingSection[];
   finalTitle: string; finalText: string;
   faqs: { question: string; answer: string }[];
   meta: { title: string; description: string };
 };
-
-const priceFaq = (price: string) => ({ question: "¿Cuánto cuesta y qué es un alumno activo?", answer: `El precio de referencia es ${price} por alumno activo al mes. Antes de contratar, confirmaremos contigo cómo se cuenta un alumno activo, los impuestos y las condiciones de la propuesta. La demo sirve para revisar el alcance que necesita tu academia.` });
-const aiFaq = { question: "¿La IA sustituye al profesor?", answer: "La IA es una ayuda de estudio basada en los contenidos de tu academia: puede ofrecer otra explicación o ayudar a preparar un repaso. Puede equivocarse, por lo que el material del curso y el criterio del docente siguen siendo la referencia." };
+const priceFaq = (price: string) => ({ question: "¿Cuánto cuesta y qué es un alumno activo?", answer: `El precio de referencia es ${price} por alumno activo al mes. Antes de contratar, confirmaremos cómo se cuenta un alumno activo, los impuestos y las condiciones de la propuesta.` });
+const aiFaq = { question: "¿La IA sustituye al profesor o garantiza una nota?", answer: "No. La IA ayuda a estudiar sobre el temario de la academia, pero puede equivocarse. La nota estimada es una orientación para el estudio, no una garantía de resultado en un examen. El contenido del curso y el criterio del docente siguen siendo la referencia." };
 const studyDemo = {
-  courseTitle: "Estadística · Tema 1", material: "Variables y ejemplos",
-  panelLabel: "EJEMPLO DE AYUDA CON IA", panelTitle: "Una duda sobre el tema.",
+  courseTitle: "Estadística · Tema 1", subtitle: "Contenido ficticio para explicar el uso.", material: "Variables y ejemplos",
+  panelLabel: "EJEMPLO DE CHAT SOBRE EL TEMARIO", panelTitle: "Una duda sobre el tema.",
   question: "¿Qué es una variable? Ponme un ejemplo.",
   answer: "En el Tema 1 de este ejemplo, una variable es un dato que puede cambiar. Las horas de estudio son una variable: cada alumno puede dedicar un tiempo distinto.",
   caption: "Ejemplo editorial ilustrativo, no una captura ni una respuesta real del producto. El material y la conversación son ficticios.",
 };
-
+const downloads = { title: "Descarga identificada por alumno", text: "La academia puede habilitar descargas del material con marca de agua y DNI o correo del alumno. Así, una copia descargada queda identificada; no se garantiza que sea imposible compartirla." };
+const videoProtection = { title: "Medidas contra la captura de pantalla", text: "El vídeo dispone de medidas contra la captura de pantalla. Ayudan a proteger el contenido, pero no garantizan que sea imposible grabarlo o copiarlo por cualquier medio." };
+const mcp = { title: "Opera el campus desde una IA compatible", text: "Campus incluye MCP para operar funciones del campus desde una IA compatible. En la demo puedes ver la conexión y las funciones disponibles para tu forma de gestionar la academia." };
 export const landings: Record<LandingId, LandingContent> = {
   plugin: {
     id: "plugin", name: "Plugin", eyebrow: "PARA ACADEMIAS QUE YA TIENEN PLATAFORMA",
     title: "IA sobre tu temario.", accent: "En tu campus actual.",
-    description: "Añade ayuda de estudio basada en tus contenidos al campus que ya usas. Tus alumnos pueden preguntar y pedir otra explicación del tema. Revisamos antes la integración.",
-    price: "0,99 €", points: ["Dudas sobre tus materiales", "Explicaciones y ayuda para repasar", "Sin cambiar de campus"],
-    benefitsTitle: "Ayuda cuando un alumno se atasca.",
+    description: "Pregunta, repasa y practica con el contenido de tu academia, en la plataforma que ya usas. Integramos la IA con tu temario y revisamos la conexión con tu LMS.",
+    price: "0,99 €", points: ["Ayuda de estudio sobre tus contenidos", "Práctica y progreso del alumno", "Sin cambiar de campus"],
+    benefitsTitle: "Del tema que cuesta al repaso que ayuda.",
     benefits: [
-      { title: "Resolver una duda", text: "Mientras estudia un tema, el alumno puede preguntar por un concepto y recibir una explicación basada en el contenido de la academia." },
-      { title: "Entenderlo de otra forma", text: "Si una explicación no le resulta clara, puede pedir una alternativa o un ejemplo para trabajar la misma idea." },
-      { title: "Preparar el repaso", text: "La IA puede ayudar a preparar materiales de estudio a partir del temario. El alumno mantiene el contenido del curso como referencia." },
+      { title: "Pregunta cuando te atasques", text: "Un alumno no entiende una definición del tema: abre el chat y pide una explicación alternativa con un ejemplo basado en el material de su academia." },
+      { title: "Vuelve al tema cada día", text: "La pregunta del día ofrece una ocasión para practicar. El alumno puede contrastar lo que recuerda y volver al contenido que necesita repasar." },
+      { title: "Practica lo que has estudiado", text: "Después de leer, el alumno puede generar un test al momento o repasar con flashcards. El estudio continúa sobre el mismo temario." },
     ],
-    demoTitle: "Del material de tu academia a una explicación concreta.",
-    demoText: "Imagina a un alumno leyendo el tema de variables. Pregunta por el concepto y recibe una explicación que parte de ese material, dentro de su entorno de estudio.",
-    demo: studyDemo,
-    stepsEyebrow: "ANTES DE INTEGRAR TU PLATAFORMA", stepsTitle: "Comprobamos cómo encaja en tu campus.",
-    steps: ["Revisamos tu plataforma, su versión, cómo acceden los alumnos y qué opciones de integración ofrece.", "Comprobamos el formato de tus materiales y qué contenido quieres utilizar con la IA.", "Acordamos el alcance técnico y la puesta en marcha antes de contratar."],
-    finalTitle: "Veamos la IA en tu campus.", finalText: "Cuéntanos qué plataforma utilizas y qué temario quieres incorporar. Revisaremos tu caso en la demo.",
+    demoTitle: "Una duda concreta sobre el material de tu academia.",
+    demoText: "El chat conecta el estudio con el temario: el alumno pregunta por una idea y puede pedir otra forma de entenderla. Este ejemplo editorial muestra ese recorrido.", demo: studyDemo,
+    sections: [
+      { id: "herramientas", navLabel: "Herramientas", eyebrow: "PARA ENTENDER Y PRACTICAR", title: "Elige cómo trabajar cada tema.", description: "Plugin incluye chat y pregunta del día, junto con herramientas para preparar el repaso y poner a prueba lo aprendido.", items: [
+        { title: "Resúmenes y mapas conceptuales", text: "Repasa las ideas principales con un resumen y sus relaciones con un mapa conceptual. Por ejemplo, vuelve a la estructura de un tema antes de practicarlo." },
+        { title: "Flashcards y podcasts", text: "Alterna tarjetas de pregunta y respuesta con un repaso en audio. Puedes cambiar la forma de estudiar sin cambiar el contenido de referencia." },
+        { title: "Tests generados al momento", text: "Prepara una práctica sobre lo que acabas de estudiar. Si una pregunta te cuesta, vuelve al material y utiliza el chat para trabajar la duda." },
+      ] },
+      { id: "progreso", navLabel: "Progreso", eyebrow: "PARA ORIENTAR EL ESTUDIO", title: "Mira tu progreso y decide qué repasar.", description: "Las estadísticas de estudio y la nota estimada forman parte de Plugin. Aportan referencias para el repaso, sin prometer un resultado académico.", items: [
+        { title: "Estadísticas de estudio", text: "El alumno puede consultar su actividad de estudio. Por ejemplo, revisar cómo está utilizando las herramientas antes de organizar su siguiente sesión." },
+        { title: "Nota estimada", text: "Ofrece una orientación para valorar el estudio y preparar el repaso. Es una estimación, no la nota oficial ni una garantía de aprobar." },
+      ] },
+      { id: "integracion", navLabel: "Integración", eyebrow: "TU ACADEMIA CONSERVA SU PLATAFORMA", title: "Integramos la ayuda con tu entorno.", description: "Plugin añade la IA basada en tus contenidos a una plataforma existente. Moodle es una referencia conocida; la viabilidad se revisa para cada entorno.", items: [
+        { title: "Tu plataforma y tus accesos", text: "Comprobamos la plataforma, su versión y configuración, cómo acceden los alumnos y los permisos técnicos necesarios para la integración." },
+        { title: "Tu temario como punto de partida", text: "Revisamos formatos y organización de los materiales, y acordamos qué contenido se incorpora y cómo se pone en marcha." },
+      ] },
+      { id: "descargas", navLabel: "Descargas", eyebrow: "CUANDO EL MATERIAL SALE DEL CAMPUS", title: "La academia decide si habilita descargas.", description: "Si permites estudiar con material descargado, puedes hacerlo con identificación del alumno en la copia.", items: [downloads] },
+    ],
+    finalTitle: "Veamos Plugin con tu temario.", finalText: "Revisa las herramientas de estudio, el progreso y la integración con la plataforma que ya utiliza tu academia.",
     faqs: [
-      { question: "¿Tengo que trasladar mis cursos a otro campus?", answer: "Plugin está pensado para añadir IA a tu plataforma actual, conservando tu campus y tu temario. Primero hay que confirmar que la integración es viable en tu entorno; no prometemos compatibilidad con cualquier plataforma." },
-      { question: "¿Qué hay que comprobar si uso Moodle u otro LMS?", answer: "Moodle es una referencia conocida, pero el nombre de la plataforma no basta para confirmar compatibilidad. Revisaremos versión, configuración, forma de acceso de los alumnos, permisos técnicos y disponibilidad de los contenidos. La propuesta concretará qué se integra y cómo." },
-      { question: "¿La ayuda se basa en mi temario o en contenido genérico?", answer: "El punto de partida son los materiales de tu academia que se incorporen a DuxBrain. Antes de integrar, revisaremos sus formatos y organización. En la demo puedes plantear una duda de un tema para ver el tipo de ayuda de estudio." },
+      { question: "¿Qué puede hacer un alumno sobre un tema?", answer: "Puede preguntar en el chat, responder a la pregunta del día, usar resúmenes, mapas conceptuales, flashcards y podcasts, y generar tests al momento. Por ejemplo, leer un resumen, practicar y pedir otra explicación de la idea que le cuesta." },
+      { question: "¿Puede consultar cómo va estudiando?", answer: "Sí. Plugin incluye estadísticas de estudio y nota estimada. Sirven como orientación para organizar el repaso; la nota estimada no equivale a una calificación oficial ni garantiza aprobar." },
+      { question: "¿Tengo que cambiar de campus si uso Moodle u otro LMS?", answer: "Plugin está pensado para integrar la IA con el temario en tu plataforma actual. Antes de ponerlo en marcha revisamos versión, configuración, acceso del alumnado, permisos y materiales. No prometemos compatibilidad con cualquier LMS." },
+      { question: "¿Puedo permitir que mis alumnos descarguen material?", answer: "Sí. La academia puede habilitar descargas del material identificadas con marca de agua y el DNI o correo del alumno. La identificación no supone que sea imposible volver a compartir una copia." },
       aiFaq, priceFaq("0,99 €"),
     ],
-    meta: { title: "IA sobre tu temario en tu campus | DuxBrain Plugin", description: "Ayuda a tus alumnos a resolver dudas con IA basada en tus contenidos, sin cambiar de campus. Plugin: 0,99 € por alumno activo al mes. Solicita una demo." },
+    meta: { title: "IA y herramientas de estudio en tu campus | DuxBrain Plugin", description: "Chat, resúmenes, mapas, flashcards, podcasts y tests sobre tu temario. Progreso y descargas identificadas. Plugin: 0,99 € por alumno activo al mes." },
   },
   campus: {
     id: "campus", name: "Campus", eyebrow: "PARA ACADEMIAS QUE NECESITAN UN CAMPUS",
     title: "Cursos y alumnado.", accent: "Con IA para estudiar.",
-    description: "Organiza tus cursos, publica materiales y ofrece ayuda de estudio con IA basada en ellos. Reúne la enseñanza y el seguimiento del alumnado en DuxBrain Campus.",
-    price: "3,99 €", points: ["Cursos y temario organizados", "Ayuda con IA sobre tus contenidos", "Seguimiento de la actividad"],
-    benefitsTitle: "Del curso preparado al alumno que estudia.",
+    description: "Reúne el estudio con IA, las clases y la gestión de tu academia. Del primer tema a los cobros y la comunicación, en un mismo Campus.",
+    price: "3,99 €", points: ["Estudio con IA sobre tu temario", "Clases, vídeo y matrículas", "Seguridad y MCP incluidos"],
+    benefitsTitle: "Un recorrido completo para el alumno.",
     benefits: [
-      { title: "Un curso con estructura", text: "Organiza el temario y publica el material de cada tema para que el alumno encuentre qué debe estudiar en un mismo lugar." },
-      { title: "Ayuda durante el estudio", text: "El alumno puede preguntar por el contenido, pedir otra explicación y preparar materiales para repasar con ayuda de la IA." },
-      { title: "Actividad para orientar el apoyo", text: "Las herramientas de seguimiento del campus te ayudan a revisar la actividad del alumnado y preparar el acompañamiento docente." },
+      { title: "Encuentra el tema y pregunta", text: "El alumno accede al material del curso y utiliza el chat para resolver dudas o pedir una explicación alternativa basada en ese contenido." },
+      { title: "Repasa y practica a su ritmo", text: "Campus incluye las herramientas de Plugin: pregunta del día, resúmenes, mapas conceptuales, flashcards, podcasts y tests generados al momento." },
+      { title: "Consulta cómo va estudiando", text: "Las estadísticas de estudio y la nota estimada ayudan a orientar el repaso. El equipo de la academia cuenta también con seguimiento del alumnado." },
     ],
-    demoTitle: "El alumno encuentra el tema y pregunta sin salir del campus.",
-    demoText: "En este ejemplo, el curso reúne el material y la ayuda de estudio. La academia organiza la formación y el alumno trabaja sobre esos contenidos.",
-    demo: studyDemo,
-    stepsEyebrow: "UN RECORRIDO DE PRINCIPIO A FIN", stepsTitle: "Así se trabaja en Campus.",
-    steps: ["Organiza el curso y distribuye el temario por temas.", "Publica los materiales que utilizarán tus alumnos.", "El alumno estudia y utiliza la IA para resolver dudas sobre tus contenidos.", "Revisa la actividad para orientar el apoyo docente."],
-    finalTitle: "Recorre un curso en la demo.", finalText: "Veremos cómo organizar el material, estudiar con IA y seguir la actividad desde el mismo campus.",
+    demoTitle: "El contenido y la ayuda de estudio, en el mismo lugar.",
+    demoText: "El alumno encuentra el tema, pregunta y continúa su estudio. Campus incluye la experiencia de Plugin y añade el entorno para enseñar y gestionar la academia.", demo: studyDemo,
+    sections: [
+      { id: "clases-video", navLabel: "Clases y vídeo", eyebrow: "DEL MATERIAL A LA CLASE", title: "Da clase y conserva la grabación.", description: "Campus incluye alojamiento de vídeo y aula virtual con grabaciones para reunir las clases y los materiales del curso.", items: [
+        { title: "Vídeo alojado en Campus", text: "Incorpora el vídeo a tu formación. El alumno puede volver a una explicación grabada junto al material que está estudiando." },
+        { title: "Aula virtual y grabaciones", text: "Imparte la clase en el aula virtual y ofrece la grabación para el repaso. Por ejemplo, volver al desarrollo de un ejercicio después de la sesión." },
+      ] },
+      { id: "matriculas-cobros", navLabel: "Matrículas y cobros", eyebrow: "GESTIÓN DE LA ACADEMIA", title: "Del alta del alumno al cobro del curso.", description: "Gestiona accesos, matrículas y altas y bajas, junto con facturación y pasarela de pago. Sin separar el cobro de la formación que ofreces.", items: [
+        { title: "Accesos y matrículas", text: "Gestiona quién está matriculado y sus accesos a la formación. Incluye las altas y bajas de alumnos en el campus." },
+        { title: "Facturas y cobros automáticos", text: "Campus incluye facturación con pasarela de pago, facturas y cobros automáticos. Por ejemplo, gestionar el cobro y su factura en la operativa del curso." },
+        { title: "Cupones y ofertas", text: "Prepara una oferta o un cupón para tu formación. Puedes organizar una promoción junto a la gestión de matrículas y cobros." },
+      ] },
+      { id: "comunicacion", navLabel: "Comunicación", eyebrow: "ACOMPAÑAMIENTO DURANTE EL CURSO", title: "Organiza las fechas y mantén la conversación.", description: "Calendario, foro, mensajes y correos forman parte de Campus. El equipo puede coordinar la enseñanza y comunicarse con el alumnado.", items: [
+        { title: "Calendario del curso", text: "Organiza las fechas de la formación. Por ejemplo, sitúa las sesiones y los momentos de repaso dentro del recorrido del curso." },
+        { title: "Foro, mensajes y correos", text: "Mantén las dudas y la comunicación con los alumnos. Utiliza el foro para conversar sobre el curso y los mensajes o correos para el contacto." },
+      ] },
+      { id: "seguridad-mcp", navLabel: "Seguridad y MCP", eyebrow: "TAMBIÉN INCLUIDOS EN CAMPUS", title: "Revisa el uso y gestiona desde una IA compatible.", description: "El módulo de seguridad y MCP están incluidos en la misma oferta de Campus a 3,99 € por alumno activo al mes; no son tarifas adicionales.", items: [
+        { title: "Avisos de seguridad configurables", text: "Configura periodos y umbrales para revisar combinaciones de navegador y sistema, peticiones de apertura de vídeos y conexiones de internet simultáneas distintas. Un aviso requiere revisión; no prueba fraude." },
+        { title: "Vídeo y descargas identificadas", text: "El vídeo incluye medidas contra la captura de pantalla. Si habilitas descargas del material, pueden llevar marca de agua y DNI o correo del alumno. No hay una garantía absoluta contra copias o grabaciones." },
+        mcp,
+      ] },
+    ],
+    finalTitle: "Recorre tu academia en la demo.", finalText: "Veremos estudio, clases, matrículas, cobros y comunicación, junto con la seguridad y MCP incluidos en Campus.",
     faqs: [
-      { question: "¿Necesito una plataforma de formación aparte?", answer: "Campus reúne cursos, contenidos, alumnado, herramientas de seguimiento y ayuda con IA. Si ya tienes una plataforma que quieres conservar y solo buscas añadir IA, revisa la opción Plugin." },
-      { question: "¿Cómo sería el día a día de un curso?", answer: "La academia organiza el curso y publica el material. El alumno accede al tema y puede apoyarse en la IA al estudiar. Después, el equipo docente revisa la actividad mediante las herramientas de seguimiento del campus." },
-      { question: "¿Puedo aprovechar materiales que ya tengo?", answer: "Revisaremos los formatos, la organización y el volumen del contenido para definir su incorporación. No damos por incluida una migración automática ni un plazo de puesta en marcha sin estudiar tu caso." },
-      { question: "¿Qué información de seguimiento voy a ver?", answer: "El campus dispone de herramientas de seguimiento de actividad. En la demo revisaremos las vistas disponibles y qué información aporta cada una para tu forma de enseñar; no prometemos métricas o informes concretos sin confirmarlos." },
+      { question: "¿Campus incluye todas las herramientas de Plugin?", answer: "Sí. Incluye pregunta del día, resúmenes, mapas conceptuales, flashcards, podcasts, tests generados al momento, estadísticas de estudio, nota estimada y chat sobre los contenidos de tu academia." },
+      { question: "¿Puedo dar clases y ofrecer las grabaciones?", answer: "Sí. Campus incluye alojamiento de vídeo y aula virtual con grabaciones. El alumno puede volver a una explicación para repasar el tema o un ejercicio trabajado en clase." },
+      { question: "¿Cómo gestiono alumnos y cobros?", answer: "Campus reúne accesos, matrículas y altas y bajas de alumnos. Incluye facturación con pasarela de pago, facturas, cobros automáticos, cupones y ofertas. En la demo puedes recorrer un caso de matriculación y cobro." },
+      { question: "¿Qué herramientas de comunicación incluye?", answer: "Calendario, foro, mensajes y correos. Por ejemplo, organizar las fechas de clase y mantener una conversación sobre las dudas del curso." },
+      { question: "¿Seguridad y MCP se pagan aparte?", answer: "No. El módulo de seguridad y MCP están incluidos en Campus de 3,99 € por alumno activo al mes. MCP permite operar funciones del campus desde una IA compatible. Campus Secure presenta esta misma oferta con el foco en accesos y contenidos." },
       aiFaq, priceFaq("3,99 €"),
     ],
-    meta: { title: "Cursos, alumnos e IA en un campus | DuxBrain Campus", description: "Organiza cursos, publica materiales, ofrece ayuda con IA y sigue la actividad del alumnado. Campus: 3,99 € por alumno activo al mes. Solicita una demo." },
+    meta: { title: "IA, clases y gestión de tu academia | DuxBrain Campus", description: "Estudio con IA, vídeo, aula virtual, matrículas, cobros y comunicación. Seguridad y MCP incluidos en Campus: 3,99 € por alumno activo al mes." },
   },
   "campus-secure": {
     id: "campus-secure", name: "Campus · Seguridad", eyebrow: "DUXBRAIN CAMPUS · ACCESOS Y CONTENIDOS",
-    title: "¿Se comparten accesos a tu curso?", accent: "Revisa qué puedes controlar.",
-    description: "Si tu formación de pago circula fuera de la academia, empieza por revisar los accesos y el uso del contenido. En la demo de Campus concretamos las opciones y sus límites.",
-    price: "3,99 €", points: ["Revisión de tu caso de acceso", "Alcance técnico antes de contratar", "El mismo Campus con IA"],
-    benefitsTitle: "Parte del problema que vive tu academia.",
+    title: "¿Se comparten accesos a tu curso?", accent: "Revisa avisos y señales.",
+    description: "Si tu formación de pago circula fuera de la academia, revisa los accesos y el uso del contenido con el módulo de seguridad incluido en Campus.",
+    price: "3,99 €", points: ["Avisos configurables", "Vídeo con medidas de protección", "Campus completo, mismo precio"],
+    benefitsTitle: "Señales concretas para revisar el uso.",
     benefits: [
-      { title: "Accesos compartidos", text: "Cuéntanos quién debería acceder a cada curso y cómo se comparte hoy el acceso. Es el punto de partida para revisar qué opciones encajan en tu caso." },
-      { title: "Material fuera de la academia", text: "Identifica qué contenido de pago te preocupa y cómo se distribuye. En la demo distinguiremos lo que se puede controlar de lo que requiere otras medidas." },
-      { title: "La enseñanza sigue en Campus", text: "Esta página presenta el mismo campus de cursos, contenidos, alumnado, seguimiento e IA. El enfoque de seguridad no añade otra tarifa." },
+      { title: "Navegador y sistema", text: "Configura avisos por combinaciones distintas de navegador y sistema. Un cambio puede requerir revisión, pero no demuestra por sí mismo que una cuenta se esté compartiendo." },
+      { title: "Peticiones de apertura de vídeos", text: "Revisa las peticiones de apertura de vídeos mediante avisos configurables. El aviso aporta una señal para examinar el uso del contenido, no una conclusión de fraude." },
+      { title: "Conexiones simultáneas distintas", text: "El módulo contempla avisos por conexiones de internet simultáneas distintas. Permite revisar esa situación sin tratar cualquier cambio de conexión como prueba concluyente." },
     ],
-    demoTitle: "Tres preguntas para revisar tu caso.",
-    demoText: "La demo debe servir para contrastar tus necesidades con las opciones reales del campus, antes de decidir. Este esquema es un guion de conversación, no un panel de controles incluidos.",
-    demo: { courseTitle: "Tu formación de pago", material: "Contenido que quieres revisar", panelLabel: "GUION DE LA DEMO", panelTitle: "Necesidades por revisar", reviewTopics: ["¿Quién debe acceder?", "¿Qué material te preocupa?", "¿Qué necesitas limitar?"], caption: "Esquema ilustrativo de la revisión, no una captura del producto. No representa controles incluidos ni garantías de protección." },
-    stepsEyebrow: "ANTES DE DECIDIR", stepsTitle: "Concreta el alcance antes de contratar.",
-    steps: ["Describe cómo se comparten los accesos o se distribuye tu contenido hoy.", "Contrastamos tus necesidades con las opciones disponibles y sus límites técnicos.", "La propuesta deja por escrito qué alcance se confirma para tu Campus."],
-    finalTitle: "Trae tu caso de acceso a la demo.", finalText: "Revisa qué puede aportar Campus a tu academia y qué necesidades requieren una confirmación técnica.",
+    demoTitle: "Un aviso abre una revisión, no dicta una conclusión.",
+    demoText: "El módulo reúne señales de uso para revisarlas con contexto. Los periodos y umbrales se configuran según la operativa de tu academia.",
+    demo: { courseTitle: "Accesos y contenido", subtitle: "Señales sujetas a configuración.", material: "Vídeo y material del curso", panelLabel: "SEGURIDAD INCLUIDA EN CAMPUS", panelTitle: "Señales para revisar", reviewTopics: ["Navegador y sistema", "Aperturas de vídeo", "Conexiones simultáneas"], caption: "Esquema ilustrativo de las señales confirmadas, no una captura ni un caso real. Un aviso no es una prueba concluyente de fraude." },
+    sections: [
+      { id: "configuracion-avisos", navLabel: "Configuración", eyebrow: "PERIODOS, UMBRALES Y CONTEXTO", title: "Ajusta los avisos y revisa cada caso.", description: "El módulo de seguridad está incluido en Campus. Puedes configurar periodos y umbrales para los avisos, sin convertir una señal aislada en una acusación.", items: [
+        { title: "Periodos y umbrales configurables", text: "Ajusta el periodo y el umbral de los avisos a la operativa de la academia. Por ejemplo, revisa el contexto de una sesión antes de interpretar un aviso por navegador o sistema." },
+        { title: "La distancia aporta contexto", text: "La distancia geográfica estimada refuerza la evaluación de conexiones simultáneas. Por sí sola no crea ni oculta casos: se considera junto con la simultaneidad de conexiones." },
+      ] },
+      { id: "video-descargas", navLabel: "Vídeo y descargas", eyebrow: "CONTENIDO DE PAGO", title: "Medidas para el vídeo y copias identificadas.", description: "El vídeo y el material descargable tienen medidas distintas. Las descargas se habilitan por la academia; la identificación corresponde a la copia del material.", items: [videoProtection, downloads] },
+      { id: "campus-completo", navLabel: "Campus completo", eyebrow: "LA MISMA OFERTA DE CAMPUS", title: "Seguridad dentro de la academia completa.", description: "Campus Secure presenta el mismo Campus desde los accesos y contenidos. La oferta sigue siendo Campus a 3,99 € por alumno activo al mes, con todas sus funciones.", items: [
+        { title: "Estudio y clases", text: "Incluye las funciones de Plugin: chat, pregunta del día, resúmenes, mapas, flashcards, podcasts, tests al momento, estadísticas y nota estimada. Añade alojamiento de vídeo y aula virtual con grabaciones." },
+        { title: "Gestión y comunicación", text: "Incluye accesos, matrículas, altas y bajas, facturación y pasarela de pago, facturas, cobros automáticos, cupones y ofertas. Calendario, foro, mensajes y correos completan el curso." },
+      ] },
+      { id: "mcp", navLabel: "Gestión con MCP", eyebrow: "GESTIÓN DESDE UNA IA COMPATIBLE", title: "MCP también está incluido.", description: "Además de la IA de estudio del alumno, Campus incluye MCP como capacidad de gestión. Forma parte de la misma oferta, sin una tarifa adicional.", items: [mcp] },
+    ],
+    finalTitle: "Revisa un caso de uso en la demo.", finalText: "Veremos los avisos configurables, las medidas de vídeo y las descargas identificadas dentro del mismo Campus, con MCP incluido.",
     faqs: [
-      { question: "¿Campus Secure es otro producto o una tarifa adicional?", answer: "No. Es el mismo DuxBrain Campus presentado desde el problema de los accesos compartidos y la distribución de contenidos. El precio de referencia sigue siendo 3,99 € por alumno activo al mes." },
-      { question: "¿Qué controles están incluidos por 3,99 €?", answer: "El precio corresponde a Campus. El alcance concreto de las restricciones de acceso o uso debe verificarse en la demo y quedar reflejado en la propuesta. Esta página no da por incluidos controles de sesiones o reproducción que no se hayan confirmado para esa oferta." },
-      { question: "¿Evita que un alumno comparta su cuenta?", answer: "No prometemos impedir todos los usos compartidos. Revisaremos cómo acceden tus alumnos y qué opciones reales pueden atender tu caso, con sus límites y requisitos, antes de contratar." },
-      { question: "¿Se puede impedir cualquier grabación o copia?", answer: "No. No se garantiza que sea imposible grabar o copiar un contenido. La demo debe ayudarte a entender el alcance real de las opciones disponibles, sin confundir control de acceso con protección absoluta." },
-      { question: "¿Sigo teniendo cursos e IA educativa?", answer: "Sí. Sigue siendo Campus: cursos, contenidos, alumnado, herramientas de seguimiento y ayuda de estudio con IA basada en los materiales de la academia." },
+      { question: "¿Qué avisos incluye el módulo de seguridad?", answer: "Avisos configurables por combinaciones distintas de navegador y sistema, peticiones de apertura de vídeos y conexiones de internet simultáneas distintas. Puedes configurar periodos y umbrales. Son señales que requieren revisión, no pruebas concluyentes de fraude." },
+      { question: "¿La distancia geográfica genera un caso por sí sola?", answer: "No. La distancia geográfica estimada refuerza la evaluación de conexiones simultáneas, pero por sí sola no crea ni oculta casos. No debe interpretarse como una prueba independiente de uso indebido." },
+      { question: "¿El vídeo impide cualquier grabación o copia?", answer: "El vídeo dispone de medidas contra la captura de pantalla. Eso no garantiza que sea imposible grabar o copiar el contenido por cualquier medio; conviene conocer su alcance y revisar el contexto de uso." },
+      { question: "¿Puedo identificar el material descargado?", answer: "Sí. La academia puede habilitar descargas del material con marca de agua y DNI o correo del alumno. Esto identifica la copia descargada, sin garantizar que no pueda volver a compartirse." },
+      { question: "¿Campus Secure, seguridad o MCP tienen otra tarifa?", answer: "No. Campus Secure es el mismo Campus de 3,99 € por alumno activo al mes. Incluye las herramientas de estudio de Plugin, vídeo, aula virtual, gestión, comunicación, módulo de seguridad y MCP para operar funciones del campus desde una IA compatible." },
       priceFaq("3,99 €"),
     ],
-    meta: { title: "Accesos compartidos y contenido de pago | DuxBrain Campus", description: "¿Se comparten accesos o materiales de tu academia? Revisa las opciones y límites de Campus en una demo. Mismo Campus: 3,99 € por alumno activo al mes." },
+    meta: { title: "Avisos de seguridad, vídeo y descargas | DuxBrain Campus", description: "Avisos configurables, medidas para vídeo y descargas identificadas. Seguridad y MCP incluidos en el mismo Campus: 3,99 € por alumno activo al mes." },
   },
 };

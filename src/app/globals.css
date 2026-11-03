@@ -78,6 +78,14 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 fieldset:disabled .button { opacity: .7; cursor: default; transform: none; }
 .section { padding-block: 64px; }
+.section-nav { display: flex; flex-wrap: wrap; gap: 10px; padding-block: 0 20px; }
+.section-nav a { min-height: 44px; display: inline-flex; align-items: center; padding: 8px 16px; border: 1px solid #08152824; border-radius: 100px; font-size: 13px; font-weight: 500; background: var(--surface); }
+.section-nav a:hover { color: var(--purple); border-color: var(--purple); }
+.feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; }
+.feature-description { margin-top: 18px; font-size: 16px; line-height: 1.7; }
+.feature-section { scroll-margin-top: 24px; }
+.feature-card { border-top: 3px solid var(--purple); }
+.feature-card p { max-width: 70ch; }
 .section-heading { max-width: 620px; margin-bottom: 32px; }
 .section-heading .eyebrow, .demo-copy .eyebrow, .faq-section .eyebrow { margin-bottom: 18px; }
 .benefit-grid { display: grid; gap: 16px; }
@@ -121,10 +129,6 @@ fieldset:disabled .button { opacity: .7; cursor: default; transform: none; }
 .control-list > div > span:last-child { color: var(--purple); }
 figcaption { font-size: 12px; color: #5d566c; margin-top: 14px; }
 .product-clarification { font-size: 13px; margin: -4px 0 20px; max-width: 400px; }
-.steps { list-style: none; padding: 0; display: grid; gap: 24px; }
-.steps li { border-top: 1px solid #08152824; padding-top: 20px; display: flex; gap: 22px; }
-.steps li > span { color: var(--purple); font-size: 13px; }
-.steps p { color: var(--ink); font-weight: 500; max-width: 270px; }
 .faq-section { display: grid; gap: 30px; }
 .faq-section > div > p { font-size: 14px; margin-top: 20px; }
 .faq-list { border-top: 1px solid #08152824; }
@@ -168,9 +172,6 @@ details p { font-size: 14px; line-height: 1.75; padding-top: 16px; padding-right
   .benefit-grid, .review-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .benefit-card { padding: 26px; }
   .benefit-card h3 { font-size: 20px; }
-  .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; }
-  .steps li { display: block; }
-  .steps li p { margin-top: 18px; }
   .footer p { flex: 1; }
 }
 @media (min-width: 960px) {
@@ -180,7 +181,6 @@ details p { font-size: 14px; line-height: 1.75; padding-top: 16px; padding-right
   .lead-card { padding: 32px 32px 22px; }
   .mobile-hero-cta { display: none; }
   .section { padding-block: 75px; }
-  .steps-four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .benefit-card { padding: 32px; }
   .benefit-card h3 { font-size: 24px; }
   .demo-section { padding-block: 80px; }

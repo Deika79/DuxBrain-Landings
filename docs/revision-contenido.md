@@ -1,52 +1,71 @@
 # Revisión de contenido para campañas Meta
 
-Base: master en `ad03d33`. Rama: feature/landing-copy. Se leyeron los textos, metadatos de las tres rutas y las seis capturas de docs/capturas/ antes de editar. Las capturas iniciales mostraban propuestas genéricas, un mismo ejemplo poco concreto en Plugin/Campus y un panel de Secure que podía interpretarse como controles disponibles.
+Rama feature/landing-copy. Base del proyecto ad03d33; revisión anterior ce87322. **Esta actualización sustituye las restricciones editoriales anteriores sobre seguridad y MCP**, a partir de la confirmación de producto de David aportada por el propietario en esta conversación. Seguridad y MCP están incluidos en Campus; ya no se tratan como extras o prestaciones pendientes de inclusión.
 
-## Evidencia y límites
+## Oferta vigente y evidencia
 
-- **Confirmado para esta redacción por el propietario:** IA educativa basada en contenidos de la academia; ayuda con dudas, explicaciones alternativas y materiales de estudio. Campus reúne cursos, contenidos, alumnado y seguimiento. Plugin añade IA a la plataforma existente, sujeto a comprobar integración. Moodle es una referencia, no garantía universal de compatibilidad.
-- **Precios autorizados:** Plugin 0,99 € y Campus 3,99 € por alumno activo al mes. Secure presenta el mismo Campus y precio. No se utilizó una propuesta antigua de cuatro planes ni otros precios.
-- **Sin evidencia técnica adicional:** el repositorio contiene las landings y la captura de leads, no el código del Campus. La consulta de solo lectura al conector DuxBrain EBAU Demo no obtuvo datos tras dos respuestas de autenticación; no se consultaron alumnos ni se modificó la academia. Las descripciones de herramientas no demuestran que un control esté incluido en el Campus de 3,99 €.
-- Los mockups son ilustraciones editoriales, nunca capturas ni conversaciones reales del producto. No se añaden clientes, testimonios, métricas o resultados inventados.
+La confirmación de David es la fuente de la oferta descrita a continuación. No se ha convertido un aviso de seguridad en una prueba de fraude ni se han inferido controles adicionales. La consulta del producto conectado que falló en la revisión anterior no limita ni invalida esta nueva confirmación explícita.
 
-## Matriz de decisiones
+- Plugin: 0,99 € por alumno activo al mes. IA integrada con el temario; pregunta del día, resúmenes, mapas conceptuales, flashcards, podcasts, tests generados al momento, estadísticas de estudio, nota estimada y chat. La academia puede habilitar descargas del material con marca de agua y DNI o correo del alumno.
+- Campus: 3,99 € por alumno activo al mes. Incluye Plugin; añade alojamiento de vídeo, aula virtual con grabaciones, facturación y pasarela de pago, facturas y cobros automáticos, cupones, ofertas, accesos y matrículas, calendario, foro, mensajes, correos y altas/bajas de alumnos. Módulo de seguridad y MCP incluidos para operar funciones del campus desde una IA compatible.
+- Campus Secure: misma oferta y precio de Campus, presentada desde accesos y distribución de contenido de pago. No es un plan ni una tarifa adicional.
 
-| Afirmación actual | Evidencia disponible | Decisión | Texto nuevo / tratamiento |
+No se utilizan los cuatro planes o precios antiguos. No se inventan testimonios, clientes, datos de uso ni conversaciones reales. El ejemplo de chat y el esquema de avisos son ilustraciones editoriales claramente identificadas.
+
+## Matriz de revisión actualizada
+
+| Contenido anterior | Evidencia disponible | Decisión vigente | Texto o ejemplo nuevo |
 | --- | --- | --- | --- |
-| Plugin: «Tu plataforma de siempre. Ahora, con IA sobre tu temario.» | Plataforma existente + IA basada en sus contenidos, según propietario. | Hacer explícito el uso y el público. | «IA sobre tu temario. En tu campus actual.»; dudas, otra explicación y repaso. |
-| Plugin: «Dale el siguiente impulso.» / «Dentro de su LMS» / «Sin empezar de cero» | Mensajes sin ejemplo; dos beneficios repetían conservar el entorno. | Reemplazar por tres usos distintos. | Resolver una duda, entenderla de otra forma y preparar el repaso. |
-| Ejemplo: «¿Me ayudas a entender este tema?» con respuesta genérica | Capacidad de explicar basada en material confirmada; no hay conversación real disponible. | Mostrar un caso editorial concreto y etiquetado. | Alumno pregunta qué es una variable; respuesta toma el Tema 1 ficticio y usa horas de estudio como ejemplo. Sin simular citas o trazabilidad técnica no confirmadas. |
-| FAQ Plugin: «¿Es compatible con mi LMS?» sin comprobaciones concretas | Moodle es referencia; no se confirma compatibilidad con cualquier LMS. | **REQUIERE CONFIRMACIÓN por integración.** Añadir comprobaciones, no una promesa. | Versión/configuración, acceso de alumnos, permisos y disponibilidad/formato de materiales antes de contratar. |
-| Campus: «Toda tu academia» / «hacer crecer tu academia» | Cursos, contenidos, alumnado y seguimiento confirmados; no hay evidencia de crecimiento comercial. | Quitar amplitud y resultados difíciles de demostrar. | «Cursos y alumnado. Con IA para estudiar.»; el subtítulo reúne enseñanza y seguimiento en Campus. |
-| Campus: «Alumnos, clases y gestión» como lista de funciones | El contexto actual confirma enseñanza y seguimiento; no concreta todo el catálogo administrativo. | Priorizar el recorrido comprensible para dirección. | Organizar curso → publicar material → estudiar con IA → seguir actividad. |
-| FAQ Campus: «¿Qué información de seguimiento voy a ver?» ausente | Herramientas de actividad confirmadas; no informes/indicadores específicos. | **REQUIERE CONFIRMACIÓN de vistas y datos.** | Explicar el uso docente y revisar las vistas reales en demo; no prometer métricas concretas. |
-| Secure: «Control de accesos», «Gestión de sesiones», «Control de reproducción» y símbolos de control activo | No hay confirmación técnica de esos mecanismos dentro de Campus de 3,99 €. | **REQUIERE CONFIRMACIÓN.** Retirar la presentación como prestaciones incluidas y el panel que lo sugería. | «¿Se comparten accesos a tu curso? Revisa qué puedes controlar.»; ilustración como guion de preguntas, sin interruptores ni estados activos. |
-| Secure: «Tu contenido tiene valor» | No explica el problema desde el anuncio. | Abrir con acceso compartido y formación de pago que circula fuera. | Revisar quién debe acceder, qué material preocupa y qué necesita limitar la academia. Son necesidades, no funcionalidades garantizadas. |
-| Secure como posible plan separado | El propietario confirma mismo producto y precio. | Mantener explícito en hero, beneficios y FAQ. | «El mismo DuxBrain Campus. Mismo precio, con el foco en seguridad.» |
-| Restricciones de dispositivos, IP, geografía, DRM, marcas de agua o antifraude | No confirmadas para esta oferta. | **REQUIERE CONFIRMACIÓN de disponibilidad y precio.** No añadirlas a las landings. | Sin promesa de controles específicos ni imposibilidad de copiar/grabar. La propuesta debe fijar el alcance. |
-| IA presentada sin límites en las FAQ | El propietario confirma ayuda de estudio, no infalibilidad ni sustitución docente. | Añadir objeción sobre papel del profesor. | Ayuda basada en contenido que puede equivocarse; material y criterio docente como referencia. |
-| «0,99 €» / «3,99 €» | Precios vigentes autorizados por el propietario. | Conservar precios de referencia y unidad. | **REQUIERE CONFIRMACIÓN:** alumno activo, impuestos y condiciones finales. No añadir mínimos ni planes antiguos. |
-| Cierres y CTA genéricos («Hablemos…», «Quiero ver…») | El objetivo de conversión es solicitar demo. | Coherencia del CTA y cierre propio de cada público. | Solicitar una demo; revisar plataforma (Plugin), recorrer un curso (Campus), traer un caso de acceso (Secure). |
-| Metadatos generales, con promesas amplias de campus completo/control | Mismo contexto confirmado; los metadatos también son contenido comercial. | Títulos y descripciones específicos por ruta. | Temario/campus actual; cursos/alumnos/IA; accesos compartidos/contenido de pago y revisión de límites. |
+| Plugin: ayuda genérica para dudas y repaso | David confirma chat, pregunta del día y práctica sobre el temario | Mantener experiencia primero y explicar usos | Alumno pregunta por una definición, vuelve con la pregunta del día y practica lo estudiado |
+| Materiales de estudio sin nombrar herramientas | Resúmenes, mapas, flashcards, podcasts y tests al momento confirmados | Incluir en sección Herramientas, sin lista exhaustiva en hero | Resumen para ideas principales, mapa para relaciones, tarjetas/audio y test del tema |
+| Estadísticas y nota estimada sin concreción | Ambas confirmadas | Incluir sección Progreso | Revisar actividad y orientar el siguiente repaso; estimación no equivale a nota oficial ni garantiza aprobar |
+| Plugin solo en un LMS indeterminado | Integración con temario confirmada; no compatibilidad universal | Mantener revisión técnica de cada entorno | Versión, configuración, accesos, permisos y materiales antes de integrar |
+| Descargas identificadas pendientes de confirmar | David confirma activación por academia, marca de agua y DNI o correo | Incluir después de Integración; también en Campus/Secure | La academia decide si permite la descarga; la copia queda identificada. No se promete impedir que se comparta |
+| Campus reducido a cursos, contenido e IA | David confirma las funciones de Plugin y el entorno completo | Mostrar experiencia completa del alumno primero | Tema → chat → resumen/práctica → estadísticas/nota estimada |
+| Vídeo y clases sin confirmar el alcance | Alojamiento de vídeo y aula virtual con grabaciones confirmados | Incluir sección Clases y vídeo | Volver al desarrollo grabado de un ejercicio tras una clase |
+| Gestión administrativa relegada por falta de evidencia | Matrículas, accesos, altas/bajas, facturación/pasarela, facturas/cobros automáticos, cupones/ofertas confirmados | Incluir grupo Matrículas y cobros | Del alta al cobro del curso y su factura; promoción con cupón/oferta |
+| Comunicación genérica | Calendario, foro, mensajes y correos confirmados | Agrupar en sección Comunicación | Fechas de clase y dudas compartidas en el foro o contacto por mensajes/correos |
+| Seguridad como conjunto pendiente de inclusión en 3,99 € | David confirma módulo incluido en Campus | **Restricción anterior sin efecto** | Módulo incluido y avisos configurables; no tarifa adicional |
+| Guion de preguntas en Secure sin describir señales | Confirmadas combinaciones distintas de navegador/sistema, peticiones de apertura de vídeo y conexiones simultáneas distintas | Describir esas tres señales exactamente | Beneficios por señal y esquema ilustrativo de revisión, sin casos reales o umbrales inventados |
+| Configuración de seguridad no descrita | Periodos y umbrales configurables confirmados | Sección propia de configuración | Ajustar avisos a la operativa y revisar el contexto; un aviso no prueba fraude |
+| Geografía tratada como capacidad no confirmada | Distancia estimada refuerza evaluación de conexiones simultáneas; sola no crea ni oculta casos | Explicitar la regla en sección y FAQ | Contexto adicional de simultaneidad, nunca prueba geográfica independiente |
+| Protección del vídeo pendiente de confirmar | Medidas contra captura de pantalla confirmadas | Incluir sin garantía absoluta | Medidas contra captura de pantalla, sin prometer imposibilidad de grabar o copiar por cualquier medio |
+| MCP como extra pendiente | Incluido para operar funciones desde una IA compatible | **Restricción anterior sin efecto** | Sección Seguridad y MCP en Campus; sección final de capacidad de gestión en Secure |
+| Precios y definición de alumno activo | Precios confirmados; definición contractual/impuestos no detallados | Conservar precios y unidad; no inventar condiciones | FAQ conserva revisión de alumno activo, impuestos y condiciones finales |
 
-## Decisiones de implementación
+## Orden de lectura implementado
 
-El contenido específico, incluidos ejemplos editoriales, recorrido y cierre, vive en src/content/landings.ts. Los metadatos de cada page.tsx ya consumían ese contenido y reciben los títulos/descripciones nuevos sin duplicarlos.
+El hero conserva un titular, un subtítulo y tres ideas breves. Bajo el hero hay navegación por secciones con anclas. El detalle se reparte en tarjetas breves y FAQ, no en un inventario único.
 
-Se adapta el componente compartido únicamente para mostrar el ejemplo y las preguntas correctos, los cuatro pasos de Campus y los cierres específicos. El formulario solo cambia título y entradilla: no se modifican campos, validación, captura de UTM, identificador, endpoint, estados ni protección contra duplicados. No hay cambios en src/server/, .env.example o el interruptor de escrituras.
+1. **Plugin:** experiencia de estudio y chat ilustrativo → Herramientas → Progreso → Integración → Descargas identificadas → FAQ y solicitud de demo.
+2. **Campus:** experiencia completa del alumno y chat ilustrativo → Clases y vídeo → Matrículas y cobros → Comunicación → Seguridad y MCP → FAQ y solicitud de demo.
+3. **Campus Secure:** problema de accesos y contenidos → señales/avisos y esquema ilustrativo → periodos, umbrales y geografía → Vídeo y descargas → Campus completo → Gestión con MCP → FAQ y solicitud de demo.
 
-## Comprobaciones de esta rama
+El contenido y sus metadatos viven en src/content/landings.ts. Los componentes compartidos muestran las secciones y las anclas. Las rutas mantienen sus metadatos propios mediante el contenido de cada página. No se añaden nuevas librerías ni imágenes que pretendan ser capturas reales del producto.
 
-Lint, las 26 pruebas existentes y build correctos. Se revisan las tres rutas a 1440 × 1000 y 390 × 844 con Chrome de Windows/Playwright tras fallar el navegador integrado por sandboxPolicy. Las seis capturas se regeneran desde el build local, no desde una maqueta. Solicitudes del formulario interceptadas con respuestas simuladas: no se escribe en Sheets ni se envían correos reales.
+## Límites que siguen vigentes
 
-En la primera revisión se detectó «IA.» aislado al final del titular móvil de Campus y «tema.» aislado en el título de beneficios de Plugin en escritorio. Se acortan ambos titulares para mejorar la lectura. No hay cambios de identidad ni nueva librería.
+- Avisos configurables no equivalen a prueba concluyente de fraude. No se afirman bloqueos automáticos, expulsión, imposibilidad de compartir cuenta ni límites numéricos por defecto.
+- La distancia geográfica estimada refuerza conexiones simultáneas; por sí sola no crea ni oculta casos. No se describe geobloqueo ni una regla independiente basada en país/IP.
+- Vídeo: medidas contra captura de pantalla, sin garantía absoluta contra grabaciones/copias. No se etiqueta como DRM, ni se inventa su mecanismo técnico.
+- Marca de agua y DNI/correo se aplican a las descargas del material habilitadas por la academia; no se atribuye esa marca al vídeo por inferencia.
+- MCP: funciones del campus desde una IA compatible; no cualquier IA, ni una relación exhaustiva de acciones o permisos no confirmados.
+- Nota estimada orientativa; no calificación oficial ni resultado garantizado. La IA puede equivocarse.
 
-El script de revisión comprueba HTTP 200, metadatos propios, ausencia de errores JavaScript/desbordamiento horizontal, CTA móvil dentro del primer pantallazo, FAQ y recepción de landing/UTM/anuncio en la solicitud interceptada. El script adicional check-lead-form comprueba éxito simulado, configuración ausente y recepción incierta: bloqueo y datos conservados. Capturas en [docs/capturas](capturas/) y datos en [revision.json](capturas/revision.json). El backend y LEADS_SHEETS_WRITES_ENABLED=false permanecen sin cambios.
+## Verificación
 
-## Antes de publicar
+Se mantienen precios, campos, atribución y lógica del formulario. No se modifica src/server/, src/lib/leads.ts, src/components/lead-form.tsx, tests/leads.spec.ts o .env.example. LEADS_SHEETS_WRITES_ENABLED sigue en false. Las pruebas de interfaz interceptan /api/leads: ninguna escritura en la hoja ni correo real.
 
-- Confirmar compatibilidad y requisitos del LMS concreto, formatos/materiales admitidos y alcance de puesta en marcha.
-- Confirmar vistas/datos de seguimiento y materiales de estudio disponibles en la oferta comercial.
-- Confirmar qué controles reales de acceso/uso se incluyen en Campus de 3,99 € y sus límites; dispositivos, IP, geografía, DRM, marcas de agua y antifraude siguen sin afirmarse.
-- Confirmar definición de alumno activo, impuestos y condiciones de precio. Secure conserva el mismo producto/precio.
-- Sustituir ilustraciones por material real solo si se dispone de él, con autorización; los logos oficiales siguen pendientes.
+Resultado: lint correcto, 26 pruebas existentes correctas y build de producción correcto. Revisadas visualmente las seis vistas a 1440 × 1000 y 390 × 844 con Chrome/Playwright. Sin desbordamiento horizontal ni errores JavaScript. CTA móvil dentro del primer pantallazo en las tres páginas; navegación por secciones, enlaces a demo y FAQ comprobados. Atribución de landing/UTM/anuncio conservada en los POST interceptados. El script adicional comprueba éxito simulado, configuración pendiente y respuesta incierta, con bloqueo y datos conservados.
+
+| Landing | Escritorio | Móvil |
+| --- | --- | --- |
+| Plugin | [Captura completa](capturas/plugin-escritorio.png) | [Captura completa](capturas/plugin-movil.png) |
+| Campus | [Captura completa](capturas/campus-escritorio.png) | [Captura completa](capturas/campus-movil.png) |
+| Campus Secure | [Captura completa](capturas/campus-secure-escritorio.png) | [Captura completa](capturas/campus-secure-movil.png) |
+
+Las capturas son del build de las landings; las representaciones del producto dentro de ellas siguen etiquetadas como ilustraciones. Los resultados de las seis vistas se guardan en docs/capturas/revision.json. No se ha desplegado ni activado entrega real de leads.
+
+## Pendientes antes de publicar
+
+No quedan pendientes de inclusión comercial seguridad ni MCP. Sí quedan la configuración de la academia (periodos/umbrales, habilitación de descargas, conexión con IA compatible), la viabilidad técnica del LMS concreto y las condiciones contractuales (alumno activo, impuestos, condiciones finales). La primera entrega real de leads sigue pendiente de configuración/autorización. Logos oficiales todavía ausentes. Las ilustraciones pueden sustituirse por capturas reales solo cuando se disponga de material autorizado.

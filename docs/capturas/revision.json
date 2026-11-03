@@ -12,8 +12,14 @@
       "bottom": 0
     },
     "price": "0,99 €por alumno activo / mesPrecio de referencia · Condiciones en la propuesta",
-    "title": "IA sobre tu temario en tu campus | DuxBrain Plugin",
-    "description": "Ayuda a tus alumnos a resolver dudas con IA basada en tus contenidos, sin cambiar de campus. Plugin: 0,99 € por alumno activo al mes. Solicita una demo.",
+    "title": "IA y herramientas de estudio en tu campus | DuxBrain Plugin",
+    "description": "Chat, resúmenes, mapas, flashcards, podcasts y tests sobre tu temario. Progreso y descargas identificadas. Plugin: 0,99 € por alumno activo al mes.",
+    "sections": [
+      "herramientas",
+      "progreso",
+      "integracion",
+      "descargas"
+    ],
     "screenshot": "plugin-escritorio.png",
     "faq": "ok",
     "formWithoutSubmission": "ok",
@@ -32,8 +38,14 @@
       "bottom": 0
     },
     "price": "3,99 €por alumno activo / mesPrecio de referencia · Condiciones en la propuesta",
-    "title": "Cursos, alumnos e IA en un campus | DuxBrain Campus",
-    "description": "Organiza cursos, publica materiales, ofrece ayuda con IA y sigue la actividad del alumnado. Campus: 3,99 € por alumno activo al mes. Solicita una demo.",
+    "title": "IA, clases y gestión de tu academia | DuxBrain Campus",
+    "description": "Estudio con IA, vídeo, aula virtual, matrículas, cobros y comunicación. Seguridad y MCP incluidos en Campus: 3,99 € por alumno activo al mes.",
+    "sections": [
+      "clases-video",
+      "matriculas-cobros",
+      "comunicacion",
+      "seguridad-mcp"
+    ],
     "screenshot": "campus-escritorio.png",
     "faq": "ok",
     "formWithoutSubmission": "ok",
@@ -43,7 +55,7 @@
     "route": "campus-secure",
     "width": 1440,
     "scrollWidth": 1440,
-    "heading": "¿Se comparten accesos a tu curso?Revisa qué puedes controlar.",
+    "heading": "¿Se comparten accesos a tu curso?Revisa avisos y señales.",
     "headingBottom": 470.34375,
     "formTop": 208.90625,
     "heroCta": {
@@ -52,8 +64,14 @@
       "bottom": 0
     },
     "price": "3,99 €por alumno activo / mesPrecio de referencia · Condiciones en la propuesta",
-    "title": "Accesos compartidos y contenido de pago | DuxBrain Campus",
-    "description": "¿Se comparten accesos o materiales de tu academia? Revisa las opciones y límites de Campus en una demo. Mismo Campus: 3,99 € por alumno activo al mes.",
+    "title": "Avisos de seguridad, vídeo y descargas | DuxBrain Campus",
+    "description": "Avisos configurables, medidas para vídeo y descargas identificadas. Seguridad y MCP incluidos en el mismo Campus: 3,99 € por alumno activo al mes.",
+    "sections": [
+      "configuracion-avisos",
+      "video-descargas",
+      "campus-completo",
+      "mcp"
+    ],
     "screenshot": "campus-secure-escritorio.png",
     "faq": "ok",
     "formWithoutSubmission": "ok",
@@ -65,15 +83,21 @@
     "scrollWidth": 390,
     "heading": "IA sobre tu temario.En tu campus actual.",
     "headingBottom": 281,
-    "formTop": 794.515625,
+    "formTop": 768.125,
     "heroCta": {
       "display": "flex",
-      "top": 665.921875,
-      "bottom": 716.921875
+      "top": 639.53125,
+      "bottom": 690.53125
     },
     "price": "0,99 €por alumno activo / mesPrecio de referencia · Condiciones en la propuesta",
-    "title": "IA sobre tu temario en tu campus | DuxBrain Plugin",
-    "description": "Ayuda a tus alumnos a resolver dudas con IA basada en tus contenidos, sin cambiar de campus. Plugin: 0,99 € por alumno activo al mes. Solicita una demo.",
+    "title": "IA y herramientas de estudio en tu campus | DuxBrain Plugin",
+    "description": "Chat, resúmenes, mapas, flashcards, podcasts y tests sobre tu temario. Progreso y descargas identificadas. Plugin: 0,99 € por alumno activo al mes.",
+    "sections": [
+      "herramientas",
+      "progreso",
+      "integracion",
+      "descargas"
+    ],
     "screenshot": "plugin-movil.png",
     "faq": "ok",
     "formWithoutSubmission": "ok",
@@ -85,15 +109,21 @@
     "scrollWidth": 390,
     "heading": "Cursos y alumnado.Con IA para estudiar.",
     "headingBottom": 238,
-    "formTop": 725.125,
+    "formTop": 698.734375,
     "heroCta": {
       "display": "flex",
-      "top": 596.53125,
-      "bottom": 647.53125
+      "top": 570.140625,
+      "bottom": 621.140625
     },
     "price": "3,99 €por alumno activo / mesPrecio de referencia · Condiciones en la propuesta",
-    "title": "Cursos, alumnos e IA en un campus | DuxBrain Campus",
-    "description": "Organiza cursos, publica materiales, ofrece ayuda con IA y sigue la actividad del alumnado. Campus: 3,99 € por alumno activo al mes. Solicita una demo.",
+    "title": "IA, clases y gestión de tu academia | DuxBrain Campus",
+    "description": "Estudio con IA, vídeo, aula virtual, matrículas, cobros y comunicación. Seguridad y MCP incluidos en Campus: 3,99 € por alumno activo al mes.",
+    "sections": [
+      "clases-video",
+      "matriculas-cobros",
+      "comunicacion",
+      "seguridad-mcp"
+    ],
     "screenshot": "campus-movil.png",
     "faq": "ok",
     "formWithoutSubmission": "ok",
@@ -103,7 +133,7 @@
     "route": "campus-secure",
     "width": 390,
     "scrollWidth": 390,
-    "heading": "¿Se comparten accesos a tu curso?Revisa qué puedes controlar.",
+    "heading": "¿Se comparten accesos a tu curso?Revisa avisos y señales.",
     "headingBottom": 324,
     "formTop": 868.71875,
     "heroCta": {
@@ -112,8 +142,14 @@
       "bottom": 791.125
     },
     "price": "3,99 €por alumno activo / mesPrecio de referencia · Condiciones en la propuesta",
-    "title": "Accesos compartidos y contenido de pago | DuxBrain Campus",
-    "description": "¿Se comparten accesos o materiales de tu academia? Revisa las opciones y límites de Campus en una demo. Mismo Campus: 3,99 € por alumno activo al mes.",
+    "title": "Avisos de seguridad, vídeo y descargas | DuxBrain Campus",
+    "description": "Avisos configurables, medidas para vídeo y descargas identificadas. Seguridad y MCP incluidos en el mismo Campus: 3,99 € por alumno activo al mes.",
+    "sections": [
+      "configuracion-avisos",
+      "video-descargas",
+      "campus-completo",
+      "mcp"
+    ],
     "screenshot": "campus-secure-movil.png",
     "faq": "ok",
     "formWithoutSubmission": "ok",
