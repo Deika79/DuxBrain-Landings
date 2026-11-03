@@ -1,12 +1,12 @@
 # Logos oficiales
 
-No hay PNG oficiales en esta carpeta en la revisión del 3 de noviembre de 2026. Faltan estas dos variantes oficiales (conservar extensión PNG):
+Identidad oficial facilitada por el propietario e integrada el 3 de noviembre de 2026. Se conservan nombres y archivos originales:
 
-- Logo horizontal oficial, texto oscuro sobre transparente, para la cabecera clara.
-- Logo horizontal oficial, blanco sobre transparente, para el pie oscuro.
+- `DuxBrain-04.png`: cabecera y pie claros de las tres landings. PNG de 968 × 299; contenido visible de 739 × 140 en (114, 80). El componente compartido `BrandLogo` compensa únicamente los márgenes transparentes mediante CSS, sin deformar ni editar el original.
+- `DuxBrain2.png`: icono de pestaña y Apple touch icon configurados en los metadatos raíz. PNG cuadrado de 350 × 350.
 
-Conservar los nombres originales y la extensión real de los PNG al copiarlos aquí. Los nombres originales no se han podido consultar: la carpeta de Drive solicita iniciar sesión. No convertir ni renombrar un PNG a SVG. No se ha inventado ni dibujado un logo: la interfaz utiliza de momento el nombre en texto, oscuro en cabecera y blanco en el pie.
+No se usa una variante sobre fondo oscuro. El archivo opcional mencionado como `DuxBrain_sinfondo_celeste(1).png` no existe con ese nombre exacto en esta carpeta; hay un `DuxBrain_sinfondo_celeste.png`, sin uso. No se asume que sea el mismo archivo ni se renombra. No es un bloqueo para las superficies claras actuales.
 
-Al recibirlos, sustituir el texto de marca en Header y Footer (`src/components/landing.tsx`) por el recurso oficial, conservando su proporción y texto alternativo. No se cargan rutas de imagen inexistentes.
+`Duxbrain_celeste_largo.png` y `DuxBrain_celeste.png` incorporan fondo y no se utilizan en la cabecera. Las demás variantes aportadas se conservan localmente sin cambios; el commit de integración incluye solo los dos PNG utilizados. No hay logos dibujados ni sustitutos.
 
-Detalles y lista de capturas reales pendientes: [activos-pendientes.md](../../docs/activos-pendientes.md).
+Lista de capturas reales todavía pendientes: [activos-pendientes.md](../../docs/activos-pendientes.md).

@@ -19,6 +19,12 @@ try {
       page.on('pageerror', e => errors.push(e.message));
       const response = await page.goto(`${baseUrl}/${route}?utm_source=ig&utm_medium=paid_social&ad_id=123`, { waitUntil: 'networkidle' });
       await page.evaluate(() => document.fonts.ready);
+      // Load below-the-fold images too before the full-page capture (footer logo).
+      for (const image of await page.locator('img').all()) {
+        await image.scrollIntoViewIfNeeded();
+        await image.evaluate(element => element.decode());
+      }
+      await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
       assert.equal(response.status(), 200);
       const metrics = await page.evaluate(() => ({
         width: innerWidth, scrollWidth: document.documentElement.scrollWidth,

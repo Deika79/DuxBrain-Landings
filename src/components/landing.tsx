@@ -1,11 +1,16 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { LandingContent } from "@/content/landings";
 import { privacyUrl } from "@/lib/leads";
 import { LeadForm } from "./lead-form";
 
+function BrandLogo() {
+  return <span className="brand-logo"><Image src="/brand/DuxBrain-04.png" alt="DuxBrain" width={968} height={299} unoptimized /></span>;
+}
+
 export function Header({ name }: { name: string }) {
   return <header className="site-header container">
-    <Link href="/" className="brand-text" aria-label="DuxBrain, inicio">DuxBrain<span className="brand-divider" /> <span className="product-name">{name}</span></Link>
+    <Link href="/" className="brand-text" aria-label="DuxBrain, inicio"><BrandLogo /><span className="brand-divider" /> <span className="product-name">{name}</span></Link>
     <a className="header-link" href="#demo" aria-label="Solicitar una demo"><span className="header-label-desktop">Solicitar una demo</span><span className="header-label-mobile">Demo</span><span className="header-arrow" aria-hidden="true">↗</span></a>
   </header>;
 }
@@ -65,7 +70,7 @@ export function FinalCTA({ content: c }: { content: LandingContent }) {
 }
 
 export function Footer() {
-  return <footer className="container footer"><span className="brand-text">DuxBrain</span><p>Tecnología para quienes enseñan.</p><a href={privacyUrl} target="_blank" rel="noreferrer">Privacidad</a><span>© DuxBrain</span></footer>;
+  return <footer className="container footer"><Link href="/" className="brand-text" aria-label="DuxBrain, inicio"><BrandLogo /></Link><p>Tecnología para quienes enseñan.</p><a href={privacyUrl} target="_blank" rel="noreferrer">Privacidad</a><span>© DuxBrain</span></footer>;
 }
 
 export function Landing({ content }: { content: LandingContent }) {

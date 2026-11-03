@@ -31,6 +31,10 @@ p { color: var(--muted); }
 .container { width: min(var(--max-width), calc(100% - 40px)); margin-inline: auto; }
 .site-header { min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid #08152816; }
 .brand-text { display: inline-flex; align-items: center; gap: 14px; font-size: 24px; font-weight: 700; letter-spacing: -.05em; }
+/* Original 968 × 299 PNG: visible artwork at (114, 80), sized 739 × 140.
+   Crop only transparent margins in CSS; keep the official file and proportions. */
+.brand-logo { position: relative; display: block; width: 176px; aspect-ratio: 739 / 140; overflow: hidden; flex-shrink: 0; }
+.brand-logo img { position: absolute; width: 130.987821%; max-width: none; height: auto; left: -15.426252%; top: -57.142857%; }
 .brand-divider { width: 1px; height: 22px; background: #08152830; }
 .product-name { font-size: 13px; font-weight: 500; letter-spacing: 0; }
 .header-link { font-size: 13px; font-weight: 600; display: inline-flex; min-height: 44px; align-items: center; gap: 10px; flex-shrink: 0; }
@@ -148,11 +152,12 @@ details p { font-size: 14px; line-height: 1.75; padding-top: 16px; padding-right
 .final-cta .eyebrow { color: #ddd3ff; margin-bottom: 18px; }
 .final-cta p { color: #e7deff; font-size: 14px; margin-top: 20px; max-width: 400px; }
 .final-cta .button { flex-shrink: 0; }
-.footer { padding: 28px; margin-bottom: 24px; border-radius: var(--radius); background: var(--ink); color: white; display: flex; flex-wrap: wrap; gap: 18px 24px; align-items: center; font-size: 12px; }
+.footer { padding: 28px; margin-bottom: 24px; border-radius: var(--radius); background: var(--surface); color: var(--ink); display: flex; flex-wrap: wrap; gap: 18px 24px; align-items: center; font-size: 12px; }
 .footer .brand-text { font-size: 21px; }
-.footer p { flex-basis: 100%; color: #bfc8d7; }
-.footer > span:last-child { color: #bfc8d7; }
-.footer a { text-decoration: underline; text-underline-offset: 4px; }
+.footer .brand-logo { width: 160px; }
+.footer p { flex-basis: 100%; }
+.footer > span:last-child { color: var(--muted); }
+.footer > a:not(.brand-text) { text-decoration: underline; text-underline-offset: 4px; }
 .skip-link { position: absolute; left: 20px; top: -100px; background: white; padding: 14px; z-index: 10; }
 .skip-link:focus { top: 12px; }
 .review-page { padding-block: 48px; }
@@ -208,6 +213,7 @@ details p { font-size: 14px; line-height: 1.75; padding-top: 16px; padding-right
 }
 @media (max-width: 599px) {
   .site-header .brand-text { font-size: 22px; gap: 8px; }
+  .site-header .brand-logo { width: 148px; }
   .product-name { font-size: 11px; }
   .header-arrow { display: none; }
   .hero-copy > .eyebrow { letter-spacing: .09em; }

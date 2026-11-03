@@ -6,10 +6,10 @@ Las seis capturas enlazadas corresponden al acabado actual, con las capacidades 
 
 - Secciones de funciones con título y explicación a la izquierda y detalles agrupados a la derecha en escritorio; en móvil se apilan. Menos tarjetas independientes, bordes y espacios repetidos, sin eliminar funciones.
 - Rótulo legible encima de la ilustración: «Representación ilustrativa / No es una captura del producto». Se retira la barra que simulaba una ventana de navegador y se aumenta el tamaño del texto del ejemplo. El marco conserva el radio de 24 px de la marca.
-- Pie oscuro con texto blanco, enlaces identificables y texto secundario de mayor contraste. El nombre sigue siendo texto provisional; no se ha creado un logo.
+- Identidad oficial: `DuxBrain-04.png` en cabecera y pie de fondo claro. Se compensan los márgenes transparentes mediante CSS sin deformar el original. Tamaño visible de 176 px en escritorio y 148 px en cabecera móvil; 160 px en el pie. `DuxBrain2.png` sustituye el icono de pestaña mediante metadatos; no queda favicon predeterminado.
 - Primer pantallazo y formulario conservados: CTA visible a 390 × 844, precio y propuesta específica por ruta. Navegación por secciones, FAQ y CTA revisados en ambas resoluciones.
 
-**Activos bloqueados por acceso:** no hay PNG en `public/brand/`, Drive redirige a iniciar sesión y el conector EBAU no proporciona una sesión utilizable tras reintentar. Se mantiene la ilustración anterior y se detallan los dos logos y siete capturas de producto necesarios en [activos-pendientes.md](activos-pendientes.md). Las capturas locales de revisión no se presentan como pantallas reales del producto.
+**Identidad resuelta; capturas del producto pendientes:** los PNG han sido aportados localmente. El conector EBAU no proporciona una sesión utilizable tras reintentar. Se mantiene la ilustración anterior y se detallan las siete capturas de producto necesarias en [activos-pendientes.md](activos-pendientes.md). Las capturas locales de revisión no se presentan como pantallas reales del producto.
 
 Validación actual: lint, 26 pruebas de servicios simulados y build de producción. Revisión con Chrome a 1440 × 1000 y 390 × 844 en las tres rutas, incluida atribución, CTA, FAQ y error de configuración simulado. También se revisan éxito, error e incertidumbre de envío con respuestas interceptadas. Ninguna prueba llega a Google Sheets ni SMTP; `LEADS_SHEETS_WRITES_ENABLED=false`.
 
