@@ -1,6 +1,6 @@
 # Revisión visual · 4 de noviembre de 2026
 
-Actualización de producto real: cinco capturas revisadas e integradas, con roles, textos alternativos y enlaces al original. Se retiran las tres representaciones de las demos principales. La imagen de gestión se excluye por las celdas de correo y secure-avisos.png sigue pendiente. Inventario, ubicaciones y sustituciones necesarias en [activos-pendientes.md](activos-pendientes.md). Las seis capturas enlazadas se han renovado con este estado.
+Actualización de producto real: seis capturas revisadas e integradas, con roles, textos alternativos y enlaces a la imagen completa. Gestión utiliza campus-gestion-saneada.png con las dos identidades sustituidas por etiquetas ficticias mediante relleno opaco; el original se conserva fuera del repositorio y su antigua URL devuelve 404. En la franja azul noche se ajustan el contraste del pie, el enlace y el foco de teclado. secure-avisos.png sigue pendiente. Inventario, ubicaciones y sustituciones necesarias en [activos-pendientes.md](activos-pendientes.md). Las seis capturas enlazadas se han renovado con este estado.
 
 Las notas del rediseño siguiente describen el diseño de base; donde mencionan una ilustración, esta ha sido sustituida por las capturas reales indicadas.
 

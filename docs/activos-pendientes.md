@@ -2,7 +2,7 @@
 
 ## Inventario revisado e integración
 
-Se han inspeccionado visualmente los seis PNG originales de public/product/, sin asumir su contenido por el nombre. Los nombres coinciden con los destinos propuestos, pero el contenido limita lo que cada uno demuestra. No se han encontrado metadatos EXIF, XMP, IPTC o comentarios en estos archivos.
+Se han inspeccionado visualmente los seis PNG de origen de public/product/, sin asumir su contenido por el nombre. Los nombres coinciden con los destinos propuestos, pero el contenido limita lo que cada uno demuestra. No se han encontrado metadatos EXIF, XMP, IPTC o comentarios en estos archivos.
 
 | Archivo y dimensiones | Pantalla y rol visibles | Estado y ubicación |
 | --- | --- | --- |
@@ -10,21 +10,27 @@ Se han inspeccionado visualmente los seis PNG originales de public/product/, sin
 | plugin-estudio.png · 931 × 807 | Estudio, vista de alumno: fragmento del mapa conceptual de la Monarquía Hispánica y sus instituciones. | Integrada en Herramientas de /plugin. El original tiene ramas recortadas: el pie la describe como detalle. No demuestra podcasts, resúmenes u otras herramientas solo por tener sus pestañas. |
 | campus-cursos.png · 1178 × 855 | Vista de alumno: Mis cursos de Academia EBAU Demo, con Física II e Historia de España y material gráfico educativo. | Integrada como principal de /campus. Sin datos identificables de alumnos o docentes. |
 | campus-aula-video.png · 1655 × 822 | Vista de alumno: lección de Historia con reproductor e identificación ficticia Alumno Demo. | Integrada en Clases y vídeo de /campus. Muestra una lección con vídeo; no una videollamada, ni acredita por sí sola medidas contra la captura. No se presenta como aula virtual o prueba de seguridad. |
-| campus-gestion.png · 1530 × 772 | Administración: Accesos y matrículas, filtros, cifras y tabla de estudiantes. | EXCLUIDA. La columna ESTUDIANTE contiene dos direcciones de correo con nombres, aunque el dominio es de prueba. No se referencia ni se añade al commit. La sección de gestión queda sin imagen. |
+| campus-gestion-saneada.png · 1530 × 772 | Administración: Accesos y matrículas, filtros y tabla de estudiantes. | Integrada en Matrículas y cobros de /campus. Las dos celdas de correo se sustituyen con relleno opaco por Alumno demo 01 y Alumno demo 02. El original nunca se sube. |
 | secure-umbrales.png · 1240 × 768 | Administración: configuración de umbrales y periodos para navegador/sistema y peticiones de vídeo; solo asoma el siguiente panel de conexiones. | Integrada como principal de /campus-secure. No muestra avisos ni casos, IP, ubicación o identidades. Los valores visibles son los de la demo; no se anuncian como configuración universal o garantía. |
 
-Los cinco archivos integrados no muestran contraseñas, tokens de acceso, DNI, IP, ubicaciones de usuarios, datos financieros ni identidades de terceros en la revisión visual. Las referencias geográficas o personales del contenido de Historia son material educativo. No se ha retocado ninguna imagen ni fabricado una pantalla.
+Los seis archivos integrados no muestran contraseñas, tokens de acceso, DNI, IP, ubicaciones de usuarios, datos financieros ni identidades de terceros en la revisión visual. Las referencias geográficas o personales del contenido de Historia son material educativo. No se ha retocado ninguna imagen ni fabricado una pantalla.
 
-## Sustitución necesaria para gestión
+## Gestión saneada y original privado
 
-En campus-gestion.png, sustituir las dos celdas de la columna ESTUDIANTE situadas bajo su cabecera, en la franja inferior: aproximadamente x=120–490, y=660–772 del original de 1530 × 772. Usar identificadores ficticios sin correo, por ejemplo Alumno Demo 01 y Alumno Demo 02, y comprobar cualquier fila adicional al volver a capturar.
+A petición del propietario se crea campus-gestion-saneada.png a partir del original, sustituyendo íntegramente las dos celdas de correo mediante parches RGB blancos opacos con las etiquetas Alumno demo 01 y Alumno demo 02. No se utiliza desenfoque, pixelado ni reconstrucción generativa.
 
-El archivo original permanece localmente intacto e ignorado expresamente en .gitignore para evitar subirlo por accidente. Al recibir una versión limpia, revisarla visualmente otra vez y retirar la exclusión antes de incorporarla. No publicar este archivo con el estado actual.
+Regiones de sustitución en el original de 1530 × 772: x=112, y=664, ancho=340, alto=51; y x=112, y=727, ancho=340, alto=45. Todo el contenido de estas regiones se reemplaza antes de exportar. Se comprueban los píxeles fuera de las dos regiones: cero diferencias. PNG plano RGB de tres canales, sin alfa, capas, EXIF, XMP, IPTC, comentarios ni miniatura del original. Solo contiene las cabeceras PNG, dimensiones de píxel, datos de imagen e indicador de fin.
+
+Se revisan las dos celdas ampliadas al 300 % y la imagen completa. No se observan otros correos, DNI, IP, ubicaciones de usuarios, tokens, contraseñas o datos financieros. Los identificadores numéricos de filas y las fechas son los visibles en la demo, sin identidades asociadas; las cifras de la interfaz no se usan como resultados comerciales.
+
+El original se conserva intacto en ../activos-privados-duxbrain/campus-gestion-original.png, carpeta hermana situada fuera de duxbrain-landings y fuera de public/. Su SHA-256 se compara antes y después del traslado. No se guarda ninguna copia del original en el repositorio; .gitignore conserva la exclusión de la antigua ruta como prevención, pero la protección efectiva es haber retirado el archivo de public/.
+
+Tras actualizar las referencias remotas con git fetch, se consulta todo el historial disponible por la antigua ruta y por el identificador Git del contenido original: sin coincidencias. No se reescribe historial. La URL /product/campus-gestion.png debe devolver 404; solo /product/campus-gestion-saneada.png sirve la copia aprobada. La revisión de Chrome comprueba ambas condiciones.
 
 ## Pendientes
 
 - secure-avisos.png: no existe porque la academia demo todavía no tiene avisos. Pendiente una captura real con casos de demostración y datos ficticios, cuando esté disponible. No se necesita inventar casos ni poblar la academia para esta tarea. La configuración real ya sustituye a la ilustración principal de Secure.
-- campus-gestion.png: pendiente reemplazar la zona indicada. Sin imagen de gestión hasta entonces.
+- Gestión: resuelta con la copia saneada. No restaurar el original en public/.
 
 ## Presentación y verificación
 

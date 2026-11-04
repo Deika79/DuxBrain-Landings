@@ -1,7 +1,7 @@
 import type { LandingId } from "./landings";
 
 // Only visually reviewed, approved screenshots belong in this manifest.
-// campus-gestion.png is excluded pending replacement of the student email cells.
+// Only the flattened, sanitized management image is public; the original is outside the repository.
 export type ProductScreenshot = {
   src: string;
   width: number;
@@ -29,6 +29,11 @@ export const primaryScreenshots: Record<LandingId, ProductScreenshot> = {
 };
 
 export const sectionScreenshots: Record<string, ProductScreenshot> = {
+  "campus/matriculas-cobros": {
+    src: "/product/campus-gestion-saneada.png", width: 1530, height: 772,
+    alt: "Panel de administración de accesos y matrículas con filtros y dos filas identificadas como Alumno demo 01 y Alumno demo 02.",
+    caption: "Administración · Accesos y matrículas de la demo. Identidades sustituidas por etiquetas ficticias.",
+  },
   "plugin/herramientas": {
     src: "/product/plugin-estudio.png", width: 931, height: 807,
     alt: "Fragmento de un mapa conceptual de la Monarquía Hispánica, con relaciones entre las instituciones del Estado.",

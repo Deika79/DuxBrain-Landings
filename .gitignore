@@ -30,7 +30,7 @@
 *.log
 /tmp/
 /temp/
-# Excluded after visual review: student email cells must be replaced first.
+# Never restore the unsanitized management screenshot to the public asset directory.
 /public/product/campus-gestion.png
 
 # debug

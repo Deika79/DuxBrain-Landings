@@ -127,6 +127,9 @@ fieldset:disabled .button { opacity: .7; cursor: default; transform: none; }
 .capture-link:focus-visible { border-radius: var(--radius); }
 figcaption { font-size: 15px; line-height: 1.6; color: var(--muted); margin-top: 8px; max-width: 90ch; }
 .section-capture { grid-column: 1 / -1; width: 100%; max-width: 1040px; margin-inline: auto; }
+.band-night figcaption { color: #cbd5e5; }
+.band-night .capture-open { color: var(--mint); }
+.band-night .capture-link:focus-visible { outline-color: var(--mint); }
 .product-clarification { font-size: 17px; margin: 0 0 20px; max-width: 48ch; }
 .faq-band { background: var(--surface); }
 .faq-section { display: grid; gap: 36px; }
