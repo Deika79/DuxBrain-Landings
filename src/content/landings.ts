@@ -17,13 +17,13 @@ export type LandingContent = {
 };
 const priceFaq = (price: string) => ({ question: "¿Cuánto cuesta y qué es un alumno activo?", answer: `El precio de referencia es ${price} por alumno activo al mes. Antes de contratar, confirmaremos cómo se cuenta un alumno activo, los impuestos y las condiciones de la propuesta.` });
 const aiFaq = { question: "¿La IA sustituye al profesor o garantiza una nota?", answer: "No. La IA ayuda a estudiar sobre el temario de la academia, pero puede equivocarse. La nota estimada es una orientación para el estudio, no una garantía de resultado en un examen. El contenido del curso y el criterio del docente siguen siendo la referencia." };
-const downloads = { title: "Descarga identificada por alumno", text: "La academia puede habilitar descargas del material con marca de agua y DNI o correo del alumno. Así, una copia descargada queda identificada; no se garantiza que sea imposible compartirla." };
+const downloads = { title: "Descarga identificada por alumno", text: "La academia puede habilitar descargas del material con una marca de agua y el DNI o correo electrónico del alumno. La identificación acompaña a la copia descargada." };
 const mcp = { title: "Opera el campus desde una IA compatible", text: "Campus incluye MCP para operar funciones del campus desde una IA compatible. En la demo puedes ver la conexión y las funciones disponibles para tu forma de gestionar la academia." };
 export const landings: Record<LandingId, LandingContent> = {
   plugin: {
     id: "plugin", name: "Plugin", eyebrow: "PARA ACADEMIAS QUE YA TIENEN PLATAFORMA",
-    title: "IA sobre tu temario.", accent: "En tu campus actual.",
-    description: "Pregunta, repasa y practica con el contenido de tu academia, en la plataforma que ya usas. Integramos la IA con tu temario y revisamos la conexión con tu LMS.",
+    title: "Una IA entrenada con tu temario.", accent: "Dentro de tu campus actual.",
+    description: "Tus alumnos preguntan, repasan y practican con los contenidos de tu academia, dentro del LMS que ya utilizas. Sus respuestas y herramientas de estudio se apoyan en tu material, sin cambiar de plataforma.",
     price: "0,99 €", points: ["Ayuda de estudio sobre tus contenidos", "Práctica y progreso del alumno", "Sin cambiar de campus"],
     benefitsTitle: "Del tema que cuesta al repaso que ayuda.",
     benefits: [
@@ -34,30 +34,31 @@ export const landings: Record<LandingId, LandingContent> = {
     demoTitle: "Una duda concreta sobre el material de tu academia.",
     demoText: "El chat conecta el estudio con el temario: el alumno pregunta por una idea y puede pedir otra forma de entenderla. En esta captura de la academia demo, pregunta sobre la romanización en Hispania y recibe una respuesta con referencias al material.", demo: { panelLabel: "CHAT SOBRE EL TEMARIO · VISTA DE ALUMNO" },
     sections: [
-      { id: "herramientas", navLabel: "Herramientas", eyebrow: "PARA ENTENDER Y PRACTICAR", title: "Elige cómo trabajar cada tema.", description: "Plugin incluye chat y pregunta del día, junto con herramientas para preparar el repaso y poner a prueba lo aprendido.", items: [
-        { title: "Resúmenes y mapas conceptuales", text: "Repasa las ideas principales con un resumen y sus relaciones con un mapa conceptual. Por ejemplo, vuelve a la estructura de un tema antes de practicarlo." },
+      { id: "herramientas", navLabel: "Herramientas", eyebrow: "PARA ENTENDER Y PRACTICAR", title: "Elige cómo trabajar cada tema.", description: "Del primer repaso a la práctica: trabaja las ideas de cada tema con herramientas apoyadas en el contenido de tu academia.", items: [
+        { title: "Resúmenes y mapas conceptuales", text: "Repasa las ideas principales y sus relaciones. El alumno puede editar los resúmenes, textos y mapas conceptuales y compararlos en cualquier momento con el material original." },
         { title: "Flashcards y podcasts", text: "Alterna tarjetas de pregunta y respuesta con un repaso en audio. Puedes cambiar la forma de estudiar sin cambiar el contenido de referencia." },
         { title: "Tests generados al momento", text: "Prepara una práctica sobre lo que acabas de estudiar. Si una pregunta te cuesta, vuelve al material y utiliza el chat para trabajar la duda." },
       ] },
-      { id: "progreso", navLabel: "Progreso", eyebrow: "PARA ORIENTAR EL ESTUDIO", title: "Mira tu progreso y decide qué repasar.", description: "Las estadísticas de estudio y la nota estimada forman parte de Plugin. Aportan referencias para el repaso, sin prometer un resultado académico.", items: [
-        { title: "Estadísticas de estudio", text: "El alumno puede consultar su actividad de estudio. Por ejemplo, revisar cómo está utilizando las herramientas antes de organizar su siguiente sesión." },
+      { id: "progreso", navLabel: "Progreso", eyebrow: "PARA ORIENTAR EL ESTUDIO", title: "Mira tu progreso y decide qué repasar.", description: "Consulta tu actividad, cuánto has avanzado y qué queda por estudiar según el tiempo estimado hasta la evaluación.", items: [
+        { title: "Estadísticas y avance", text: "El alumno puede consultar estadísticas de estudio y métricas del avance y de lo que queda por estudiar. Así cuenta con referencias para organizar el repaso con el tiempo estimado hasta la evaluación." },
         { title: "Nota estimada", text: "Ofrece una orientación para valorar el estudio y preparar el repaso. Es una estimación, no la nota oficial ni una garantía de aprobar." },
       ] },
-      { id: "integracion", navLabel: "Integración", eyebrow: "TU ACADEMIA CONSERVA SU PLATAFORMA", title: "Integramos la ayuda con tu entorno.", description: "Plugin añade la IA basada en tus contenidos a una plataforma existente. Moodle es una referencia conocida; la viabilidad se revisa para cada entorno.", items: [
-        { title: "Tu plataforma y tus accesos", text: "Comprobamos la plataforma, su versión y configuración, cómo acceden los alumnos y los permisos técnicos necesarios para la integración." },
+      { id: "integracion", navLabel: "Integración", eyebrow: "TU ACADEMIA CONSERVA SU PLATAFORMA", title: "Integramos la ayuda con tu entorno.", description: "Plugin integra la IA y tu temario en el LMS que ya utilizas. En Moodle, la integración suele ser especialmente sencilla y rápida; revisamos cada instalación antes de ponerla en marcha.", items: [
+        { title: "Tu plataforma y tus accesos", text: "Comprobamos la versión y configuración de la plataforma, los accesos y permisos del alumnado y los permisos técnicos necesarios para la integración." },
         { title: "Tu temario como punto de partida", text: "Revisamos formatos y organización de los materiales, y acordamos qué contenido se incorpora y cómo se pone en marcha." },
       ] },
       { id: "descargas", navLabel: "Descargas", eyebrow: "CUANDO EL MATERIAL SALE DEL CAMPUS", title: "La academia decide si habilita descargas.", description: "Si permites estudiar con material descargado, puedes hacerlo con identificación del alumno en la copia.", items: [downloads] },
     ],
     finalTitle: "Veamos Plugin con tu temario.", finalText: "Revisa las herramientas de estudio, el progreso y la integración con la plataforma que ya utiliza tu academia.",
     faqs: [
-      { question: "¿Qué puede hacer un alumno sobre un tema?", answer: "Puede preguntar en el chat, responder a la pregunta del día, usar resúmenes, mapas conceptuales, flashcards y podcasts, y generar tests al momento. Por ejemplo, leer un resumen, practicar y pedir otra explicación de la idea que le cuesta." },
-      { question: "¿Puede consultar cómo va estudiando?", answer: "Sí. Plugin incluye estadísticas de estudio y nota estimada. Sirven como orientación para organizar el repaso; la nota estimada no equivale a una calificación oficial ni garantiza aprobar." },
-      { question: "¿Tengo que cambiar de campus si uso Moodle u otro LMS?", answer: "Plugin está pensado para integrar la IA con el temario en tu plataforma actual. Antes de ponerlo en marcha revisamos versión, configuración, acceso del alumnado, permisos y materiales. No prometemos compatibilidad con cualquier LMS." },
-      { question: "¿Puedo permitir que mis alumnos descarguen material?", answer: "Sí. La academia puede habilitar descargas del material identificadas con marca de agua y el DNI o correo del alumno. La identificación no supone que sea imposible volver a compartir una copia." },
-      aiFaq, priceFaq("0,99 €"),
+      { question: "¿Qué puede hacer un alumno sobre un tema?", answer: "Puede preguntar en el chat, responder a la pregunta del día, consultar resúmenes y mapas conceptuales, usar flashcards y podcasts y generar tests al momento. Por ejemplo, leer un resumen, practicar y pedir otra explicación de una idea que le cueste. Los resúmenes, textos y mapas conceptuales son editables por el alumno y se pueden comparar en cualquier momento con el material original." },
+      { question: "¿Puede consultar cómo va estudiando?", answer: "Sí. Plugin muestra estadísticas de estudio y una nota estimada que orientan el repaso. También ofrece métricas del avance y de lo que queda por estudiar según el tiempo estimado hasta la evaluación. La nota estimada es una orientación, no una calificación garantizada." },
+      { question: "¿Tengo que cambiar de campus si uso Moodle u otro LMS?", answer: "No. Plugin está pensado para integrar la IA y el temario en la plataforma actual de la academia. Antes de ponerlo en marcha revisamos la versión, la configuración, los accesos y permisos del alumnado y los materiales. En Moodle, la integración suele ser especialmente sencilla y rápida. La viabilidad se comprueba en cada instalación." },
+      { question: "¿Puedo permitir que mis alumnos descarguen material?", answer: "Sí. La academia puede habilitar descargas identificadas con una marca de agua y el DNI o correo electrónico del alumno." },
+      { question: "¿La IA sustituye al profesor o garantiza una nota?", answer: "No. Ayuda a estudiar con el temario de la academia; el contenido del curso y el criterio del docente siguen siendo la referencia." },
+      { question: "¿Cuánto cuesta y qué es un alumno activo?", answer: "El precio de referencia es de 0,99 € por alumno activo al mes. Antes de contratar se confirma el criterio concreto con el que se contabilizan los alumnos activos." },
     ],
-    meta: { title: "IA y herramientas de estudio en tu campus | DuxBrain Plugin", description: "Chat, resúmenes, mapas, flashcards, podcasts y tests sobre tu temario. Progreso y descargas identificadas. Plugin: 0,99 € por alumno activo al mes." },
+    meta: { title: "IA entrenada con tu temario en tu LMS | DuxBrain Plugin", description: "Tus alumnos preguntan, repasan y practican con una IA entrenada con tu temario, dentro de tu campus actual. Plugin: 0,99 € por alumno activo al mes." },
   },
   campus: {
     id: "campus", name: "Campus", eyebrow: "PARA ACADEMIAS QUE NECESITAN UN CAMPUS",

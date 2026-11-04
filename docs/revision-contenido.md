@@ -89,3 +89,20 @@ Validación: lint, 26 pruebas simuladas y build correctos. Seis capturas complet
 
 - Hero: [escritorio](capturas/campus-secure-superior-1440.png), [móvil](capturas/campus-secure-superior-390.png).
 - Protección de vídeo: [escritorio](capturas/campus-secure-video-1440.png), [móvil](capturas/campus-secure-video-390.png).
+
+## Revisión de Plugin: IA entrenada con el temario
+
+El hero explicita «Una IA entrenada con tu temario. Dentro de tu campus actual». El subtítulo sitúa las preguntas, el repaso y la práctica sobre los contenidos del centro, dentro de su LMS. Se mantiene el precio de referencia de 0,99 € por alumno activo al mes.
+
+Las seis FAQ se sustituyen según la confirmación del propietario: herramientas y edición/comparación de resúmenes, textos y mapas con el original; estadísticas, nota orientativa y avance según tiempo estimado hasta la evaluación; integración con revisión de cada instalación y facilidad habitual en Moodle; descargas identificadas; papel del docente; criterio de alumno activo pendiente de confirmar antes de contratar. Las secciones de herramientas, progreso e integración se ajustan a esos matices sin repetir la lista completa. Los metadatos de Plugin también reflejan la IA entrenada con el temario.
+
+Solo cambia el contenido de Plugin. Comparación del contenido evaluado de Campus y Campus Secure contra `187b0be`: idénticos, incluidos metadatos. Sin cambios de componentes, CSS, imágenes de producto, precio, formulario o API.
+
+Lint, 26 pruebas simuladas y build correctos. Chrome a 1440 × 900 y 390 × 844: hero, seis FAQ abiertas mediante teclado, legibilidad, CSS e imágenes, ausencia de desbordamiento, una única instancia del formulario y foco desde el CTA comprobados. Los parámetros UTM se conservan. API bloqueada en revisión visual; sin solicitudes reales. `LEADS_SHEETS_WRITES_ENABLED=false` permanece sin cambios.
+
+Capturas vigentes de Plugin (sustituyen la revisión de esa ruta anterior):
+
+- Hero: [escritorio](capturas/plugin-superior-1440.png), [móvil](capturas/plugin-superior-390.png).
+- FAQ abiertas: [escritorio](capturas/plugin-faq-1440.png), [móvil](capturas/plugin-faq-390.png).
+- Seis respuestas completas: [escritorio](capturas/plugin-faq-completas-1440.png), [móvil](capturas/plugin-faq-completas-390.png).
+- Página completa: [escritorio](capturas/plugin-escritorio.png), [móvil](capturas/plugin-movil.png).
