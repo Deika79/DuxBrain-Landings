@@ -51,6 +51,25 @@ try {
       assert.equal(metrics.typography.h1, width === 1440 ? 64 : 40);
       for (const selector of ['.hero-description', '.benefit-card p', '.feature-item p']) assert.ok(metrics.typography[selector] >= 17, `${selector} should be readable without zoom`);
       assert.ok(metrics.bands.every(band => band.width === width), 'Chapter backgrounds should span the viewport');
+      const captures = page.locator('.product-capture');
+      assert.equal(await captures.count(), route === 'campus-secure' ? 1 : 2);
+      assert.equal(await page.locator('.illustration-label, .product-body').count(), 0, 'No invented interface remains');
+      for (const capture of await captures.all()) {
+        const picture = capture.locator('img');
+        assert.ok(await picture.evaluate(img => img.complete && img.naturalWidth > 0 && !!img.alt));
+        const dimensions = await picture.evaluate(img => ({ actual: img.clientWidth / img.clientHeight, expected: Number(img.getAttribute('width')) / Number(img.getAttribute('height')) }));
+        assert.ok(Math.abs(dimensions.actual - dimensions.expected) < .01, 'Screenshot proportions must be preserved');
+        const link = capture.locator('a');
+        assert.equal(await link.getAttribute('target'), '_blank');
+        const imageUrl = await link.getAttribute('href');
+        assert.ok(imageUrl.startsWith('/product/') && !imageUrl.includes('campus-gestion'));
+        const [imageTab] = await Promise.all([context.waitForEvent('page'), link.click()]);
+        await imageTab.waitForLoadState('load');
+        assert.equal(new URL(imageTab.url()).pathname, imageUrl, 'Full-size image should open in a separate tab');
+        assert.equal((await imageTab.request.get(imageTab.url())).status(), 200);
+        await imageTab.close();
+      }
+      await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
       assert.ok(metrics.price.includes(route === 'plugin' ? '0,99 €' : '3,99 €'));
       if (width === 390) assert.ok(metrics.heroCta.bottom <= 844, 'Primary CTA should fit in the first mobile viewport');
       assert.deepEqual(consoleErrors, [], 'No console errors expected before form simulation');

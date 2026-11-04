@@ -8,7 +8,7 @@ export type LandingContent = {
   description: string; price: string; points: string[];
   benefitsTitle: string; benefits: { title: string; text: string }[];
   demoTitle: string; demoText: string;
-  demo: { courseTitle: string; subtitle: string; material: string; panelLabel: string; panelTitle: string; question?: string; answer?: string; reviewTopics?: string[]; caption: string };
+  demo: { panelLabel: string };
   sections: LandingSection[];
   finalTitle: string; finalText: string;
   faqs: { question: string; answer: string }[];
@@ -16,13 +16,6 @@ export type LandingContent = {
 };
 const priceFaq = (price: string) => ({ question: "¿Cuánto cuesta y qué es un alumno activo?", answer: `El precio de referencia es ${price} por alumno activo al mes. Antes de contratar, confirmaremos cómo se cuenta un alumno activo, los impuestos y las condiciones de la propuesta.` });
 const aiFaq = { question: "¿La IA sustituye al profesor o garantiza una nota?", answer: "No. La IA ayuda a estudiar sobre el temario de la academia, pero puede equivocarse. La nota estimada es una orientación para el estudio, no una garantía de resultado en un examen. El contenido del curso y el criterio del docente siguen siendo la referencia." };
-const studyDemo = {
-  courseTitle: "Estadística · Tema 1", subtitle: "Contenido ficticio para explicar el uso.", material: "Variables y ejemplos",
-  panelLabel: "EJEMPLO DE CHAT SOBRE EL TEMARIO", panelTitle: "Una duda sobre el tema.",
-  question: "¿Qué es una variable? Ponme un ejemplo.",
-  answer: "En el Tema 1 de este ejemplo, una variable es un dato que puede cambiar. Las horas de estudio son una variable: cada alumno puede dedicar un tiempo distinto.",
-  caption: "Ejemplo editorial ilustrativo, no una captura ni una respuesta real del producto. El material y la conversación son ficticios.",
-};
 const downloads = { title: "Descarga identificada por alumno", text: "La academia puede habilitar descargas del material con marca de agua y DNI o correo del alumno. Así, una copia descargada queda identificada; no se garantiza que sea imposible compartirla." };
 const videoProtection = { title: "Medidas contra la captura de pantalla", text: "El vídeo dispone de medidas contra la captura de pantalla. Ayudan a proteger el contenido, pero no garantizan que sea imposible grabarlo o copiarlo por cualquier medio." };
 const mcp = { title: "Opera el campus desde una IA compatible", text: "Campus incluye MCP para operar funciones del campus desde una IA compatible. En la demo puedes ver la conexión y las funciones disponibles para tu forma de gestionar la academia." };
@@ -39,7 +32,7 @@ export const landings: Record<LandingId, LandingContent> = {
       { title: "Practica lo que has estudiado", text: "Después de leer, el alumno puede generar un test al momento o repasar con flashcards. El estudio continúa sobre el mismo temario." },
     ],
     demoTitle: "Una duda concreta sobre el material de tu academia.",
-    demoText: "El chat conecta el estudio con el temario: el alumno pregunta por una idea y puede pedir otra forma de entenderla. Este ejemplo editorial muestra ese recorrido.", demo: studyDemo,
+    demoText: "El chat conecta el estudio con el temario: el alumno pregunta por una idea y puede pedir otra forma de entenderla. En esta captura de la academia demo, pregunta sobre la romanización en Hispania y recibe una respuesta con referencias al material.", demo: { panelLabel: "CHAT SOBRE EL TEMARIO · VISTA DE ALUMNO" },
     sections: [
       { id: "herramientas", navLabel: "Herramientas", eyebrow: "PARA ENTENDER Y PRACTICAR", title: "Elige cómo trabajar cada tema.", description: "Plugin incluye chat y pregunta del día, junto con herramientas para preparar el repaso y poner a prueba lo aprendido.", items: [
         { title: "Resúmenes y mapas conceptuales", text: "Repasa las ideas principales con un resumen y sus relaciones con un mapa conceptual. Por ejemplo, vuelve a la estructura de un tema antes de practicarlo." },
@@ -77,8 +70,8 @@ export const landings: Record<LandingId, LandingContent> = {
       { title: "Repasa y practica a su ritmo", text: "Campus incluye las herramientas de Plugin: pregunta del día, resúmenes, mapas conceptuales, flashcards, podcasts y tests generados al momento." },
       { title: "Consulta cómo va estudiando", text: "Las estadísticas de estudio y la nota estimada ayudan a orientar el repaso. El equipo de la academia cuenta también con seguimiento del alumnado." },
     ],
-    demoTitle: "El contenido y la ayuda de estudio, en el mismo lugar.",
-    demoText: "El alumno encuentra el tema, pregunta y continúa su estudio. Campus incluye la experiencia de Plugin y añade el entorno para enseñar y gestionar la academia.", demo: studyDemo,
+    demoTitle: "El recorrido del alumno empieza en sus cursos.",
+    demoText: "En la vista Mis cursos de la academia demo, el alumno encuentra las materias disponibles. Desde el curso continúa hacia los materiales y las herramientas de estudio. Campus reúne ese recorrido con las clases y la gestión.", demo: { panelLabel: "MIS CURSOS · VISTA DE ALUMNO" },
     sections: [
       { id: "clases-video", navLabel: "Clases y vídeo", eyebrow: "DEL MATERIAL A LA CLASE", title: "Da clase y conserva la grabación.", description: "Campus incluye alojamiento de vídeo y aula virtual con grabaciones para reunir las clases y los materiales del curso.", items: [
         { title: "Vídeo alojado en Campus", text: "Incorpora el vídeo a tu formación. El alumno puede volver a una explicación grabada junto al material que está estudiando." },
@@ -121,9 +114,9 @@ export const landings: Record<LandingId, LandingContent> = {
       { title: "Peticiones de apertura de vídeos", text: "Revisa las peticiones de apertura de vídeos mediante avisos configurables. El aviso aporta una señal para examinar el uso del contenido, no una conclusión de fraude." },
       { title: "Conexiones simultáneas distintas", text: "El módulo contempla avisos por conexiones de internet simultáneas distintas. Permite revisar esa situación sin tratar cualquier cambio de conexión como prueba concluyente." },
     ],
-    demoTitle: "Un aviso abre una revisión, no dicta una conclusión.",
-    demoText: "El módulo reúne señales de uso para revisarlas con contexto. Los periodos y umbrales se configuran según la operativa de tu academia.",
-    demo: { courseTitle: "Accesos y contenido", subtitle: "Señales sujetas a configuración.", material: "Vídeo y material del curso", panelLabel: "SEGURIDAD INCLUIDA EN CAMPUS", panelTitle: "Señales para revisar", reviewTopics: ["Navegador y sistema", "Aperturas de vídeo", "Conexiones simultáneas"], caption: "Esquema ilustrativo de las señales confirmadas, no una captura ni un caso real. Un aviso no es una prueba concluyente de fraude." },
+    demoTitle: "Configura cuándo quieres recibir un aviso.",
+    demoText: "Esta pantalla de administración muestra cómo se ajustan periodos y umbrales para combinaciones de navegador y sistema y peticiones de vídeo. Son parámetros de configuración: la captura no muestra avisos generados ni un caso de fraude.",
+    demo: { panelLabel: "CONFIGURACIÓN DE SEGURIDAD · ADMINISTRACIÓN" },
     sections: [
       { id: "configuracion-avisos", navLabel: "Configuración", eyebrow: "PERIODOS, UMBRALES Y CONTEXTO", title: "Ajusta los avisos y revisa cada caso.", description: "El módulo de seguridad está incluido en Campus. Puedes configurar periodos y umbrales para los avisos, sin convertir una señal aislada en una acusación.", items: [
         { title: "Periodos y umbrales configurables", text: "Ajusta el periodo y el umbral de los avisos a la operativa de la academia. Por ejemplo, revisa el contexto de una sesión antes de interpretar un aviso por navegador o sistema." },

@@ -119,36 +119,14 @@ fieldset:disabled .button { opacity: .7; cursor: default; transform: none; }
 .demo-copy p { margin: 24px 0; font-size: 17px; max-width: 58ch; }
 .demo-copy .text-link { color: var(--purple); }
 .demo-figure { margin: 0; min-width: 0; width: 100%; }
-.illustration-label { display: flex; flex-direction: column; gap: 4px; margin-bottom: 16px; font-size: 16px; font-weight: 600; color: var(--ink); }
-.illustration-label span { font-size: 14px; font-weight: 400; color: #514466; }
-.product-window { border-radius: var(--radius); background: white; overflow: hidden; box-shadow: 0 24px 70px #422a781a; border: 1px solid #d9cdef; }
-.product-body { display: grid; grid-template-columns: 32px minmax(0, 1fr); }
-.mock-sidebar { display: flex; flex-direction: column; align-items: center; padding: 24px 0; gap: 20px; border-right: 1px solid #e7e4ed; }
-.mock-square { width: 24px; height: 24px; background: var(--ink); color: white; border-radius: 7px; text-align: center; font-size: 14px; }
-.mock-nav { font-size: 18px; color: #77698d; }
-.mock-nav.active { color: var(--purple); }
-.mock-main { padding: 24px 18px; }
-.mock-kicker { font-size: 12px; line-height: 1.5; color: var(--muted); margin-bottom: 16px; }
-.mock-main h3 { font-size: 24px; }
-.mock-subtitle { font-size: 15px; margin-top: 10px; }
-.course-preview { margin-top: 24px; border: 1px solid #d9d2e7; border-radius: 16px; overflow: hidden; }
-.course-art { background: #d8d0f0; height: 140px; position: relative; overflow: hidden; padding: 20px; color: #493480; }
-.course-art > span:first-child { font-size: 14px; }
-.art-caption { position: absolute; left: 20px; bottom: 20px; font-size: 17px; font-weight: 600; line-height: 1.2; }
-.orbit { position: absolute; border: 1px solid #6a42e175; border-radius: 50%; width: 165px; height: 165px; right: -25px; top: 15px; box-shadow: 0 0 0 18px #6a42e11a, 0 0 0 36px #6a42e115; }
-.course-bottom { padding: 20px; display: grid; gap: 8px; font-size: 15px; }
-.course-bottom strong { font-size: 17px; font-weight: 500; }
-.course-line { width: 100%; height: 4px; background: #ebe6f7; margin-top: 8px; border-radius: 10px; }
-.mock-panel { grid-column: 2; border-top: 1px solid #e7e4ed; padding: 28px 18px; background: #fcfbff; }
-.panel-tag { font-size: 12px; color: var(--purple); line-height: 1.5; }
-.mock-panel h4 { font-size: 24px; margin-top: 16px; }
-.chat-question { margin: 24px 0 16px; background: var(--purple); color: white; border-radius: 16px 16px 0 16px; padding: 16px; font-size: 17px; }
-.chat-answer { display: flex; gap: 10px; font-size: 17px; background: #f0edf7; padding: 16px; border-radius: 16px; }
-.ai-mark { color: var(--purple); }
-.mock-input { margin-top: 24px; padding: 12px; border: 1px solid #cfc4df; border-radius: 10px; font-size: 15px; color: var(--muted); }
-.control-list { margin-top: 24px; font-size: 17px; }
-.control-list > div { padding: 20px 0; border-bottom: 1px solid #d8cfe7; }
-figcaption { font-size: 14px; line-height: 1.6; color: #514466; margin-top: 20px; max-width: 90ch; }
+.product-capture { margin: 0; min-width: 0; }
+.capture-link { display: block; }
+.capture-frame { border-radius: var(--radius); background: white; overflow: hidden; box-shadow: var(--shadow); border: 1px solid #c9cdd7; }
+.capture-frame img { display: block; width: 100%; height: auto; }
+.capture-open { display: inline-flex; align-items: center; gap: 20px; min-height: 48px; margin-top: 12px; font-size: 17px; font-weight: 600; color: var(--purple); text-decoration: underline; text-underline-offset: 4px; }
+.capture-link:focus-visible { border-radius: var(--radius); }
+figcaption { font-size: 15px; line-height: 1.6; color: var(--muted); margin-top: 8px; max-width: 90ch; }
+.section-capture { grid-column: 1 / -1; width: 100%; max-width: 1040px; margin-inline: auto; }
 .product-clarification { font-size: 17px; margin: 0 0 20px; max-width: 48ch; }
 .faq-band { background: var(--surface); }
 .faq-section { display: grid; gap: 36px; }
@@ -196,9 +174,6 @@ details p { font-size: 17px; line-height: 1.75; padding-top: 20px; max-width: 65
   .lead-card { padding: 36px; }
   .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .full { grid-column: 1 / -1; }
-  .mock-panel { grid-column: auto; border-top: 0; border-left: 1px solid #e7e4ed; }
-  .product-body { grid-template-columns: 48px minmax(0, 1fr) minmax(0, 1fr); }
-  .illustration-label { flex-direction: row; justify-content: space-between; gap: 20px; }
   .footer p { flex: 1; }
   .final-cta .button { width: auto; }
   .review-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -236,10 +211,6 @@ details p { font-size: 17px; line-height: 1.75; padding-top: 20px; max-width: 65
   .demo-copy p { margin: 0 0 20px; }
   .demo-copy a { grid-column: 2; justify-self: start; align-self: start; }
   .demo-figure { max-width: 1040px; margin-inline: auto; }
-  .mock-main, .mock-panel { padding: 36px; }
-  .mock-main h3, .mock-panel h4 { font-size: 28px; }
-  .course-art { height: 200px; }
-  .course-bottom { padding: 24px; }
   .faq-section { grid-template-columns: .8fr 1.2fr; gap: 88px; }
   summary { font-size: 21px; }
   .final-cta { flex-direction: row; align-items: center; justify-content: space-between; gap: 64px; }

@@ -1,39 +1,35 @@
-# Activos oficiales pendientes · 3 de noviembre de 2026
+# Activos de marca y producto · 4 de noviembre de 2026
 
-## Resultado de los accesos
+## Inventario revisado e integración
 
-- Resuelto: el propietario ha copiado los PNG en `public/brand/`. Se usa `DuxBrain-04.png` en cabecera y pie claros de las tres landings y `DuxBrain2.png` como icono de pestaña. Se conservan sus nombres y proporciones originales. El acceso anterior a Drive pedía iniciar sesión; ya no bloquea la integración de identidad.
-- El navegador integrado falla antes de abrir una sesión con `codex/sandbox-state-meta: missing field sandboxPolicy`. Se ha utilizado Chrome instalado con Playwright para la revisión local.
-- El conector DuxBrain EBAU Demo responde que la autenticación se ha solicitado y aceptado y pide reintentar; el reintento devuelve el mismo mensaje, sin acceso a la academia ni sesión navegable. No se han consultado alumnos ni realizado operaciones en el campus.
+Se han inspeccionado visualmente los seis PNG originales de public/product/, sin asumir su contenido por el nombre. Los nombres coinciden con los destinos propuestos, pero el contenido limita lo que cada uno demuestra. No se han encontrado metadatos EXIF, XMP, IPTC o comentarios en estos archivos.
 
-Logos oficiales incorporados. Siguen pendientes las capturas reales del producto. Se conserva la ilustración anterior, con un rótulo visible fuera del marco: «Representación ilustrativa / No es una captura del producto». El ejemplo no acredita el aspecto real de ninguna pantalla. Las seis imágenes de `docs/capturas/` son capturas de las landings locales, no del producto.
-
-## Identidad resuelta
-
-No faltan activos para la cabecera, pie o icono actuales. Se han compensado los márgenes transparentes de `DuxBrain-04.png` mediante CSS sin modificar el PNG. El pie se presenta sobre blanco para utilizar la misma variante oscura indicada por el propietario.
-
-La variante opcional `DuxBrain_sinfondo_celeste(1).png` solo se necesitaría si se añade un logo sobre fondo oscuro. No se utiliza en este diseño ni se ha sustituido por otro archivo de nombre parecido. Detalles en [public/brand/README.md](../public/brand/README.md).
-
-## Siete capturas prioritarias necesarias
-
-Los siguientes nombres son destinos propuestos para organizar las capturas, no archivos ya existentes. Entregar PNG originales sin compresión de mensajería; anchura recomendada de 1440 px o superior, con el área de interés completa. No incluir la barra del navegador. Indicar si la pantalla corresponde al rol alumno o administración.
-
-| Destino propuesto en `public/product/` | Pantalla real requerida | Uso |
+| Archivo y dimensiones | Pantalla y rol visibles | Estado y ubicación |
 | --- | --- | --- |
-| `plugin-chat.png` | Alumno con un tema ficticio abierto y una pregunta y respuesta reales del chat sobre ese material; debe verse la relación con el tema. | Principal de Plugin |
-| `plugin-estudio.png` | Herramientas sobre ese mismo tema, por ejemplo resumen, mapa o flashcards generados con material ficticio. | Herramientas de estudio |
-| `campus-cursos.png` | Vista de cursos o inicio del alumno con cursos de demostración. | Principal de Campus |
-| `campus-aula-video.png` | Lección con vídeo alojado o aula con una grabación de demostración, sin rostros ni participantes reales. | Clases y vídeo |
-| `campus-gestion.png` | Gestión de cursos o matrículas exclusivamente ficticias, sin datos de pago ni registros de personas reales. | Gestión de Campus |
-| `secure-avisos.png` | Panel real de avisos con casos sintéticos claramente identificados, sin IP, ubicaciones, dispositivos o identidades de personas reales. | Principal de Campus Secure |
-| `secure-umbrales.png` | Configuración real de periodos y umbrales de los avisos, sin secretos ni datos de terceros. No hace falta cambiar ni guardar valores. | Configuración de seguridad |
+| plugin-chat.png · 976 × 790 | Estudio, vista de alumno: pregunta sobre romanización en Hispania, respuesta con referencias y pestañas de herramientas. | Integrada como principal de /plugin. Sin nombres personales, correos o URL visibles. El identificador corto etiquetado CONVERSACIÓN no es una credencial ni un enlace de acceso visible. |
+| plugin-estudio.png · 931 × 807 | Estudio, vista de alumno: fragmento del mapa conceptual de la Monarquía Hispánica y sus instituciones. | Integrada en Herramientas de /plugin. El original tiene ramas recortadas: el pie la describe como detalle. No demuestra podcasts, resúmenes u otras herramientas solo por tener sus pestañas. |
+| campus-cursos.png · 1178 × 855 | Vista de alumno: Mis cursos de Academia EBAU Demo, con Física II e Historia de España y material gráfico educativo. | Integrada como principal de /campus. Sin datos identificables de alumnos o docentes. |
+| campus-aula-video.png · 1655 × 822 | Vista de alumno: lección de Historia con reproductor e identificación ficticia Alumno Demo. | Integrada en Clases y vídeo de /campus. Muestra una lección con vídeo; no una videollamada, ni acredita por sí sola medidas contra la captura. No se presenta como aula virtual o prueba de seguridad. |
+| campus-gestion.png · 1530 × 772 | Administración: Accesos y matrículas, filtros, cifras y tabla de estudiantes. | EXCLUIDA. La columna ESTUDIANTE contiene dos direcciones de correo con nombres, aunque el dominio es de prueba. No se referencia ni se añade al commit. La sección de gestión queda sin imagen. |
+| secure-umbrales.png · 1240 × 768 | Administración: configuración de umbrales y periodos para navegador/sistema y peticiones de vídeo; solo asoma el siguiente panel de conexiones. | Integrada como principal de /campus-secure. No muestra avisos ni casos, IP, ubicación o identidades. Los valores visibles son los de la demo; no se anuncian como configuración universal o garantía. |
 
-No es necesario mostrar todas las funciones en una única captura. Si una pantalla no existe o no resulta adecuada para publicación, indicarlo para mantener la representación ilustrativa. Solo añadir pantallas que correspondan a las capacidades confirmadas. No fabricar pantallas de MCP, avisos o herramientas de estudio.
+Los cinco archivos integrados no muestran contraseñas, tokens de acceso, DNI, IP, ubicaciones de usuarios, datos financieros ni identidades de terceros en la revisión visual. Las referencias geográficas o personales del contenido de Historia son material educativo. No se ha retocado ninguna imagen ni fabricado una pantalla.
 
-Antes de copiar un activo a `public/`, revisar todos los píxeles: nombres, correos, DNI, avatares, notificaciones, direcciones IP, URL con tokens, contraseñas, códigos de acceso y datos financieros. Usar exclusivamente una demo con datos ficticios; no compartir credenciales por chat ni incorporar datos personales al repositorio. Las descargas identificadas, si se muestran en el futuro, deben utilizar también una identidad completamente ficticia.
+## Sustitución necesaria para gestión
 
-## Integración pendiente al recibir los archivos
+En campus-gestion.png, sustituir las dos celdas de la columna ESTUDIANTE situadas bajo su cabecera, en la franja inferior: aproximadamente x=120–490, y=660–772 del original de 1530 × 772. Usar identificadores ficticios sin correo, por ejemplo Alumno Demo 01 y Alumno Demo 02, y comprobar cualquier fila adicional al volver a capturar.
 
-Sustituir la representación en `VisualDemo` por una captura real pertinente a cada ruta, con `next/image`, dimensiones explícitas, proporción conservada y pie descriptivo del rol y pantalla. No superponer textos que simulen controles ni recortar la información necesaria para entender la función. En móvil seleccionar un encuadre legible y permitir consultar la imagen completa. Validar de nuevo las seis vistas.
+El archivo original permanece localmente intacto e ignorado expresamente en .gitignore para evitar subirlo por accidente. Al recibir una versión limpia, revisarla visualmente otra vez y retirar la exclusión antes de incorporarla. No publicar este archivo con el estado actual.
 
-Los textos comerciales, precios, metadatos, campos, atribución y lógica del formulario se conservan. `LEADS_SHEETS_WRITES_ENABLED=false`; entrega real todavía pendiente de configurar y verificar. Este trabajo no despliega ni activa envíos.
+## Pendientes
+
+- secure-avisos.png: no existe porque la academia demo todavía no tiene avisos. Pendiente una captura real con casos de demostración y datos ficticios, cuando esté disponible. No se necesita inventar casos ni poblar la academia para esta tarea. La configuración real ya sustituye a la ilustración principal de Secure.
+- campus-gestion.png: pendiente reemplazar la zona indicada. Sin imagen de gestión hasta entonces.
+
+## Presentación y verificación
+
+Las imágenes se declaran en src/content/product-images.ts, con dimensiones, texto alternativo y pie que identifica pantalla y rol. Se utiliza next/image, sin recortes adicionales ni superposiciones de controles. Cada imagen ofrece Abrir captura completa en otra pestaña: permite ampliar el original en móvil, incluso cuando el texto de la miniatura es pequeño. Un enlace al original no recupera el contenido que ya estaba fuera del encuadre de la captura.
+
+Las tres representaciones editoriales se han retirado al disponer de capturas reales principales. No queda un panel de avisos ficticio. Los únicos ajustes de texto comercial describen fielmente las nuevas demostraciones; precios, metadatos y formulario se conservan. Logos oficiales DuxBrain-04.png en superficies claras y DuxBrain2.png como icono, sin modificaciones.
+
+Revisión final con Chrome a 1440 y 390 px y seis capturas completas en docs/capturas/. Las pruebas de formulario interceptan la API. LEADS_SHEETS_WRITES_ENABLED=false; sin escrituras, correos reales, merge o despliegue.

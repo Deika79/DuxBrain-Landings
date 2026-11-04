@@ -1,4 +1,8 @@
-# Revisión visual · 3 de noviembre de 2026
+# Revisión visual · 4 de noviembre de 2026
+
+Actualización de producto real: cinco capturas revisadas e integradas, con roles, textos alternativos y enlaces al original. Se retiran las tres representaciones de las demos principales. La imagen de gestión se excluye por las celdas de correo y secure-avisos.png sigue pendiente. Inventario, ubicaciones y sustituciones necesarias en [activos-pendientes.md](activos-pendientes.md). Las seis capturas enlazadas se han renovado con este estado.
+
+Las notas del rediseño siguiente describen el diseño de base; donde mencionan una ilustración, esta ha sido sustituida por las capturas reales indicadas.
 
 ## Acabado visual actual en feature/landing-copy
 

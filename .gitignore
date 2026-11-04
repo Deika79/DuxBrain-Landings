@@ -30,6 +30,8 @@
 *.log
 /tmp/
 /temp/
+# Excluded after visual review: student email cells must be replaced first.
+/public/product/campus-gestion.png
 
 # debug
 npm-debug.log*
