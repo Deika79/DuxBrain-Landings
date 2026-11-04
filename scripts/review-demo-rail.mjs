@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 const baseUrl = process.argv[2] ?? 'http://localhost:3000';
 assert.ok(['http://localhost:3000', 'http://localhost:3100'].includes(baseUrl));
 await mkdir('docs/capturas/scroll', { recursive: true });
+await mkdir('docs/capturas/formulario', { recursive: true });
 const report = [];
 const settle = page => page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
 for (const zoom of [100, 125]) {
@@ -23,9 +24,13 @@ for (const zoom of [100, 125]) {
         page.on('pageerror', error => errors.push(error.message));
         await page.goto(`${baseUrl}/${route}?utm_source=ig&utm_medium=paid_social`, { waitUntil: 'networkidle' });
         await page.evaluate(() => document.fonts.ready);
+        await settle(page);
         assert.equal(await page.locator('#demo').count(), 1);
         assert.equal(await page.locator('form').count(), 1);
         const desktop = await page.evaluate(() => matchMedia('(min-width: 1100px)').matches);
+        const persistent = await page.locator('.lead-sticky').evaluate(el => getComputedStyle(el).position === 'sticky');
+        if (width === 1440 && height === 900 && zoom === 100) assert.equal(persistent, true, 'Normal desktop keeps the whole form sticky');
+        if (desktop && (height === 720 || zoom === 125)) assert.equal(persistent, false, 'Short desktop uses page scroll');
         const actualZoom = await page.evaluate(() => devicePixelRatio);
         assert.ok(Math.abs(actualZoom - zoom / 100) < .01, 'Actual Chrome zoom');
         const points = ['.hero-band', '#en-accion', '.faq-band', '.footer-band'];
@@ -34,10 +39,13 @@ for (const zoom of [100, 125]) {
           await settle(page);
           const metrics = await page.evaluate(() => {
             const rect = selector => { const r = document.querySelector(selector).getBoundingClientRect(); return { top: r.top, bottom: r.bottom, left: r.left, right: r.right, height: r.height }; };
-            return { viewport: innerWidth, height: innerHeight, scrollWidth: document.documentElement.scrollWidth, rail: rect('.lead-sticky'), footer: rect('.footer-band'), barVisible: getComputedStyle(document.querySelector('.mobile-demo-bar')).display !== 'none', form: rect('#demo') };
+            const rail = document.querySelector('.lead-sticky');
+            return { viewport: innerWidth, height: innerHeight, scrollWidth: document.documentElement.scrollWidth, rail: rect('.lead-sticky'), footer: rect('.footer-band'), barVisible: getComputedStyle(document.querySelector('.mobile-demo-bar')).display !== 'none', form: rect('#demo'), internalOverflow: rail.scrollHeight > rail.clientHeight + 1, overflowY: getComputedStyle(rail).overflowY };
           });
           assert.equal(metrics.scrollWidth, metrics.viewport, `${route} ${point}: overflow`);
-          if (desktop && point !== '.footer-band') {
+          assert.equal(metrics.internalOverflow, false, 'No internal scroll area');
+          assert.equal(metrics.overflowY, 'visible', 'Never clip the form');
+          if (persistent && point !== '.footer-band') {
             assert.ok(metrics.rail.top >= 0 && metrics.rail.bottom <= metrics.height + 1, `${route} ${point}: visible rail`);
             assert.equal(metrics.barVisible, false);
             const overlap = await page.locator('.journey-content .container').evaluateAll(containers => {
@@ -45,12 +53,18 @@ for (const zoom of [100, 125]) {
               return containers.some(c => c.getBoundingClientRect().right - parseFloat(getComputedStyle(c).paddingRight) > rail.left);
             });
             assert.equal(overlap, false, 'Reserved side column');
-          } else if (!desktop && ['#en-accion', '.faq-band'].includes(point)) {
+          } else if (!persistent && ['#en-accion', '.faq-band'].includes(point)) {
             assert.equal(metrics.barVisible, true, 'Compact CTA while reading');
           }
           if (point === '.footer-band') {
             assert.equal(metrics.barVisible, false, 'Footer unobstructed');
             if (desktop) assert.ok(metrics.rail.bottom <= metrics.footer.top, 'Rail stops before footer');
+          }
+          if (point === '.hero-band' && width >= 1280) {
+            if (persistent) {
+              for (const selector of ['.privacy', 'button[type="submit"]']) assert.ok(await page.locator(selector).evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), `${selector} visible initially`);
+            }
+            await page.screenshot({ path: `docs/capturas/formulario/${route}-${width}x${height}-zoom${zoom}.png`, animations: 'disabled' });
           }
           if (point === '#en-accion' && zoom === 100) {
             await page.locator('#en-accion img').evaluate(img => img.decode());
@@ -73,6 +87,8 @@ for (const zoom of [100, 125]) {
         await page.keyboard.press('Tab'); // Privacy link -> submit.
         assert.equal(await page.locator('button[type="submit"]').evaluate(el => el === document.activeElement), true);
         assert.ok(await page.locator('button[type="submit"]').evaluate(el => { const r = el.getBoundingClientRect(); return r.top >= 0 && r.bottom <= innerHeight; }));
+        assert.equal(await page.locator('.privacy a').getAttribute('href') !== null, true);
+        if (!persistent && width >= 1280) await page.screenshot({ path: `docs/capturas/formulario/${route}-${width}x${height}-zoom${zoom}-boton.png`, animations: 'disabled' });
         assert.equal(new URL(page.url()).searchParams.get('utm_source'), 'ig');
         assert.deepEqual(errors, []);
         if (route === 'campus-secure' && zoom === 100 && [1440, 390].includes(width)) {
@@ -83,11 +99,11 @@ for (const zoom of [100, 125]) {
           await settle(page);
           await page.screenshot({ path: `docs/capturas/campus-secure-video-${width}.png`, animations: 'disabled' });
         }
-        report.push(`| ${route} | ${width} × ${height} | ${zoom}% | ${desktop ? 'Formulario lateral' : 'CTA compacto'} | Correcto |`);
+        report.push(`| ${route} | ${width} × ${height} | ${zoom}% | ${persistent ? 'Formulario persistente completo' : 'Scroll de página y CTA compacto'} | Correcto |`);
         await page.close();
       }
     } finally { await context.close(); }
   }
 }
-await writeFile('docs/capturas/scroll/revision.md', `# Formulario persistente\n\nChrome instalado, perfiles temporales propios, zoom real del navegador. Inicio, demostración, FAQ y pie comprobados en cada combinación. Un formulario, sin desbordamiento, con foco por CTA y recorrido de teclado hasta el botón. La API se intercepta; no hay envíos reales. Las comparaciones de contenido de cada revisión constan en docs/revision-contenido.md.\n\n| Ruta | Ventana | Zoom | Comportamiento | Resultado |\n| --- | --- | --- | --- | --- |\n${report.join('\n')}\n`);
+await writeFile('docs/capturas/scroll/revision.md', `# Formulario persistente sin scroll interno\n\nChrome instalado, perfiles temporales propios, zoom real del navegador. Inicio, demostración, FAQ y pie comprobados en cada combinación. Un formulario, sin barra interna, recortes ni desbordamiento, con foco por CTA y recorrido de teclado hasta el botón. La privacidad y el botón caben en el escritorio normal; en ventanas bajas y zoom se accede por scroll de página. La API se intercepta; no hay envíos reales. Las comparaciones de contenido de cada revisión constan en docs/revision-contenido.md. Capturas iniciales y con foco en el botón en ../formulario/.\n\n| Ruta | Ventana | Zoom | Comportamiento | Resultado |\n| --- | --- | --- | --- | --- |\n${report.join('\n')}\n`);
 console.log(`${report.length} Chrome route/viewport/zoom reviews passed; screenshots in docs/capturas/.`);

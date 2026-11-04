@@ -62,7 +62,6 @@ export function LeadForm({ landing }: { landing: LandingId }) {
       <p className="privacy">SINDEVZ TECH, S.L. tratará tus datos para atender tu solicitud de información o demo. Consulta cómo ejercer tus derechos en la <a href={privacyUrl} target="_blank" rel="noreferrer">política de privacidad de DuxBrain</a>.</p>
       <button className="button button-primary form-button" type="submit">{sending ? "Enviando solicitud…" : finished ? "Solicitud recibida" : uncertain ? "Pendiente de comprobación" : "Solicitar mi demo"} <span aria-hidden="true">↗</span></button>
       </fieldset>
-      <p className="form-notice">Usaremos tus datos para atender tu solicitud de demo.</p>
       <p className="form-status" role="status" tabIndex={-1} ref={statusRef}>{message}</p>
       {!finished && message && reference && <p className="form-notice">Referencia: {reference}</p>}
     </form>

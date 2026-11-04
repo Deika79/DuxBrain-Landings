@@ -255,13 +255,14 @@ details p { font-size: 17px; line-height: 1.75; padding-top: 20px; max-width: 65
   .landing-journey .container:not(.lead-rail) { padding-right: calc(var(--rail-width) + var(--rail-gap)); }
   .landing-journey .hero { padding-block: 64px 80px; }
   .lead-rail { grid-area: 1 / 1 / 3 / 2; width: var(--rail-width); justify-self: end; align-self: stretch; margin-left: 0; margin-right: max(32px, calc((100% - var(--max-width)) / 2)); padding-block: 24px 64px; min-width: 0; }
-  .lead-sticky { position: sticky; top: 16px; max-height: calc(100dvh - 144px); overflow-y: auto; scrollbar-gutter: stable; background: white; border-radius: var(--radius); box-shadow: var(--shadow); scroll-padding: 20px; }
-  .lead-sticky .lead-card { padding: 28px 24px; box-shadow: none; }
-  .lead-sticky .lead-card h2 { font-size: 30px; }
-  .lead-sticky .form-grid { gap: 16px; }
-  .lead-sticky .form-intro { margin-bottom: 20px; }
+  .lead-sticky { position: static; overflow: visible; background: white; border-radius: var(--radius); box-shadow: var(--shadow); }
+  .landing-page[data-form-fits="true"] .lead-sticky { position: sticky; top: 16px; }
+  .lead-sticky .lead-card { padding: 24px; box-shadow: none; }
+  .lead-sticky .lead-card h2 { font-size: 28px; }
+  .lead-sticky .form-grid { gap: 14px; }
+  .lead-sticky .form-intro { font-size: 16px; line-height: 1.5; margin: 12px 0 18px; }
   .lead-sticky input, .lead-sticky select { height: 48px; }
-  .lead-sticky .privacy { margin-block: 18px; }
+  .lead-sticky .privacy { font-size: 14px; line-height: 1.5; margin-block: 16px; }
   .lead-sticky .button:hover { transform: none; }
   .journey-content .benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
   .journey-content .benefit-card:last-child { grid-column: 1 / -1; }
@@ -271,4 +272,6 @@ details p { font-size: 17px; line-height: 1.75; padding-top: 20px; max-width: 65
   .journey-content .demo-copy p { margin-top: 24px; }
   .journey-content .demo-layout { gap: 40px; }
   .mobile-demo-bar { display: none; }
+  .landing-page[data-form-fits="false"] { padding-bottom: var(--mobile-demo-height); }
+  .landing-page[data-form-fits="false"] .mobile-demo-bar:not([hidden]) { display: block; }
 }

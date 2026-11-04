@@ -4,6 +4,19 @@ import { useEffect, useState, type MouseEvent, type ReactNode } from "react";
 
 export function DemoNavigation({ children }: { children: ReactNode }) {
   const [barHidden, setBarHidden] = useState(false);
+  const [formFits, setFormFits] = useState(false);
+
+  useEffect(() => {
+    const form = document.getElementById("demo");
+    if (!form) return;
+    // Reserve the initial header offset too, not only the sticky top offset.
+    // Recheck when fonts, validation messages or browser zoom change the height.
+    const measure = () => setFormFits(form.getBoundingClientRect().height <= window.innerHeight - 144);
+    const observer = new ResizeObserver(measure);
+    observer.observe(form);
+    window.addEventListener("resize", measure);
+    return () => { observer.disconnect(); window.removeEventListener("resize", measure); };
+  }, []);
 
   useEffect(() => {
     const form = document.getElementById("demo");
@@ -30,11 +43,10 @@ export function DemoNavigation({ children }: { children: ReactNode }) {
     const form = document.getElementById("demo");
     if (!form) return;
     event.preventDefault();
-    const desktop = window.matchMedia("(min-width: 1100px)").matches;
     const scroller = form.closest<HTMLElement>(".lead-sticky");
-    if (scroller) scroller.scrollTop = 0;
+    const persistent = scroller && window.getComputedStyle(scroller).position === "sticky";
     const bounds = form.getBoundingClientRect();
-    if (!desktop || bounds.top < 0 || bounds.top >= window.innerHeight) {
+    if (!persistent || bounds.top < 0 || bounds.top >= window.innerHeight) {
       form.scrollIntoView({ block: "start", behavior: "instant" });
     }
     // Focus a usable field, or the receipt/error region when the form is locked.
@@ -45,7 +57,7 @@ export function DemoNavigation({ children }: { children: ReactNode }) {
     if (window.location.hash !== "#demo") window.history.pushState(null, "", "#demo");
   }
 
-  return <div className="landing-page" onClick={focusDemo}>
+  return <div className="landing-page" data-form-fits={formFits} onClick={focusDemo}>
     {children}
     <div className="mobile-demo-bar" hidden={barHidden}>
       <a className="button button-primary" href="#demo">Solicitar demo <span aria-hidden="true">↗</span></a>
