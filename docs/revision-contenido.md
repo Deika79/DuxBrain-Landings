@@ -106,3 +106,24 @@ Capturas vigentes de Plugin (sustituyen la revisión de esa ruta anterior):
 - FAQ abiertas: [escritorio](capturas/plugin-faq-1440.png), [móvil](capturas/plugin-faq-390.png).
 - Seis respuestas completas: [escritorio](capturas/plugin-faq-completas-1440.png), [móvil](capturas/plugin-faq-completas-390.png).
 - Página completa: [escritorio](capturas/plugin-escritorio.png), [móvil](capturas/plugin-movil.png).
+
+## Revisión de Campus: toda la academia en un solo lugar
+
+El hero reúne la oferta y el precio: «Toda tu academia, en un solo lugar». La descripción presenta cursos, matrículas, cobros, clases, vídeo, protección e IA sobre el temario, sin paquetes de tokens ni recargas a mitad de mes. El bloque de **3,99 € por alumno activo al mes** destaca gestión y cobros, clases y vídeo, protección y seguridad, e IA y MCP. Precio y cuatro grupos visibles sin desplazarse a 1440 × 900 y 390 × 844.
+
+Orden vigente de Campus: hero → navegación → gestión de cursos, alumnos, accesos, matrículas, facturas, pasarela, cobros, cupones y ofertas → captura breve de cursos → clases y vídeo → protección del contenido → acompañamiento con IA → comunicación y MCP → FAQ → cierre. Las opciones de posición de demostración y beneficios proceden exclusivamente del contenido de Campus.
+
+Las tres capturas de Campus se integran como imágenes estáticas con `next/image`, texto alternativo y pie. Se eliminan enlaces al archivo original y controles de ampliación solo en esta ruta. En móvil, CSS encuadra las imágenes originales para mostrar el detalle de accesos y matrículas, un curso y el reproductor; no se modifica ningún PNG de producto ni se dibuja una interfaz. Plugin y Secure conservan sus enlaces de ampliación.
+
+FAQ: interfaz configurable en castellano, inglés, catalán y euskera, sin prometer traducción del material ni de las respuestas de IA. Se actualiza la respuesta sobre el papel del docente y la nota orientativa. La FAQ de precio aclara que el total mensual depende de los alumnos activos; no se ofrece una factura fija para cualquier número de alumnos ni alojamiento ilimitado de vídeo.
+
+Contenido y metadatos de Plugin y Campus Secure comparados con `1ca9c0d`: idénticos. Sin cambios en campos, estado de envío, atribución, validación o API. `LEADS_SHEETS_WRITES_ENABLED=false` se mantiene.
+
+Validación: lint sin errores ni avisos, 26 pruebas simuladas y build correctos. Chrome a 1440 × 900 y 390 × 844: hero, precio, orden, gestión, capturas estáticas, idiomas y foco por teclado comprobados. Revisión de regresión en las otras dos rutas: CSS/imágenes, FAQ, navegación, enlaces de ampliación y formulario con POST interceptado y atribución conservada. También comprobados éxito simulado, configuración ausente y respuesta incierta. Sin envíos reales ni despliegue.
+
+- Hero: [escritorio](capturas/campus-superior-1440.png), [móvil](capturas/campus-superior-390.png).
+- Gestión: [escritorio](capturas/campus-gestion-1440.png), [móvil](capturas/campus-gestion-390.png).
+- Detalle de la captura de gestión: [escritorio](capturas/campus-gestion-captura-1440.png), [móvil](capturas/campus-gestion-captura-390.png).
+- Cursos: [escritorio](capturas/campus-cursos-1440.png), [móvil](capturas/campus-cursos-390.png).
+- Vídeo: [escritorio](capturas/campus-video-1440.png), [móvil](capturas/campus-video-390.png).
+- FAQ: [escritorio](capturas/campus-faq-1440.png), [móvil](capturas/campus-faq-390.png).

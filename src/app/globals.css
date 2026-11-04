@@ -223,6 +223,18 @@ details p { font-size: 17px; line-height: 1.75; padding-top: 20px; max-width: 65
 
 /* The rail spans the hero AND every chapter through FAQ. Full-width bands stay
    behind both columns; their contents reserve the rail's width explicitly. */
+.campus-offer { margin-top: 20px; }
+.campus-offer .price { margin-bottom: 0; }
+.campus-offer .hero-points { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 12px 0 24px; }
+.campus-hero .mobile-hero-cta { margin-bottom: 20px; }
+@media (max-width: 599px) {
+  .campus-hero .hero-description { line-height: 1.55; margin-top: 20px; }
+  .campus-offer .price { padding-block: 16px; }
+  .campus-offer .hero-points { gap: 10px 14px; }
+  .campus-capture[data-screen="campus-gestion-saneada.png"] img { width: 220%; max-width: none; }
+  .campus-capture[data-screen="campus-cursos.png"] img { width: 180%; max-width: none; margin-left: -16%; }
+  .campus-capture[data-screen="campus-aula-video.png"] img { width: 175%; max-width: none; margin-left: -65%; }
+}
 .landing-page { --mobile-demo-height: calc(80px + env(safe-area-inset-bottom, 0px)); padding-bottom: var(--mobile-demo-height); }
 .landing-journey .hero { display: block; padding-bottom: 32px; }
 .lead-rail { padding-bottom: 56px; }

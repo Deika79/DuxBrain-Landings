@@ -10,13 +10,13 @@ export type LandingContent = {
   demoTitle: string; demoText: string;
   demo: { panelLabel: string };
   demoAfterSection?: string;
+  benefitsAfterSection?: string;
   sections: LandingSection[];
   finalTitle: string; finalText: string;
   faqs: { question: string; answer: string }[];
   meta: { title: string; description: string };
 };
 const priceFaq = (price: string) => ({ question: "¿Cuánto cuesta y qué es un alumno activo?", answer: `El precio de referencia es ${price} por alumno activo al mes. Antes de contratar, confirmaremos cómo se cuenta un alumno activo, los impuestos y las condiciones de la propuesta.` });
-const aiFaq = { question: "¿La IA sustituye al profesor o garantiza una nota?", answer: "No. La IA ayuda a estudiar sobre el temario de la academia, pero puede equivocarse. La nota estimada es una orientación para el estudio, no una garantía de resultado en un examen. El contenido del curso y el criterio del docente siguen siendo la referencia." };
 const downloads = { title: "Descarga identificada por alumno", text: "La academia puede habilitar descargas del material con una marca de agua y el DNI o correo electrónico del alumno. La identificación acompaña a la copia descargada." };
 const mcp = { title: "Opera el campus desde una IA compatible", text: "Campus incluye MCP para operar funciones del campus desde una IA compatible. En la demo puedes ver la conexión y las funciones disponibles para tu forma de gestionar la academia." };
 export const landings: Record<LandingId, LandingContent> = {
@@ -61,48 +61,51 @@ export const landings: Record<LandingId, LandingContent> = {
     meta: { title: "IA entrenada con tu temario en tu LMS | DuxBrain Plugin", description: "Tus alumnos preguntan, repasan y practican con una IA entrenada con tu temario, dentro de tu campus actual. Plugin: 0,99 € por alumno activo al mes." },
   },
   campus: {
-    id: "campus", name: "Campus", eyebrow: "PARA ACADEMIAS QUE NECESITAN UN CAMPUS",
-    title: "Cursos y alumnado.", accent: "Con IA para estudiar.",
-    description: "Reúne el estudio con IA, las clases y la gestión de tu academia. Del primer tema a los cobros y la comunicación, en un mismo Campus.",
-    price: "3,99 €", points: ["Estudio con IA sobre tu temario", "Clases, vídeo y matrículas", "Seguridad y MCP incluidos"],
-    benefitsTitle: "Un recorrido completo para el alumno.",
+    id: "campus", name: "Campus", eyebrow: "TODO INCLUIDO POR ALUMNO ACTIVO",
+    title: "Toda tu academia,", accent: "en un solo lugar.",
+    description: "Cursos, matrículas, cobros, clases, vídeo, contenidos protegidos e IA basada en tu temario. Todo incluido, sin paquetes de tokens ni recargas a mitad de mes.",
+    price: "3,99 €", points: ["Gestión y cobros", "Clases y vídeo", "Protección y seguridad", "IA y MCP incluidos"],
+    benefitsTitle: "Ayuda para estudiar con tu temario.",
     benefits: [
       { title: "Encuentra el tema y pregunta", text: "El alumno accede al material del curso y utiliza el chat para resolver dudas o pedir una explicación alternativa basada en ese contenido." },
-      { title: "Repasa y practica a su ritmo", text: "Campus incluye las herramientas de Plugin: pregunta del día, resúmenes, mapas conceptuales, flashcards, podcasts y tests generados al momento." },
+      { title: "Repasa y practica a su ritmo", text: "Campus incluye las herramientas de Plugin: pregunta del día, resúmenes, mapas conceptuales, flashcards, podcasts y tests generados al momento. La IA está incluida por alumno activo, sin paquetes de tokens ni recargas a mitad de mes." },
       { title: "Consulta cómo va estudiando", text: "Las estadísticas de estudio y la nota estimada ayudan a orientar el repaso. El equipo de la academia cuenta también con seguimiento del alumnado." },
     ],
-    demoTitle: "El recorrido del alumno empieza en sus cursos.",
-    demoText: "En la vista Mis cursos de la academia demo, el alumno encuentra las materias disponibles. Desde el curso continúa hacia los materiales y las herramientas de estudio. Campus reúne ese recorrido con las clases y la gestión.", demo: { panelLabel: "MIS CURSOS · VISTA DE ALUMNO" },
+    demoTitle: "Lo que organizas llega al alumno en sus cursos.",
+    demoText: "La vista Mis cursos de la academia demo muestra cómo encuentra el alumno su formación. Desde cada curso continúa hacia los materiales y el estudio, dentro del mismo Campus que utilizas para gestionar la academia.", demo: { panelLabel: "MIS CURSOS · VISTA DE ALUMNO" },
+    demoAfterSection: "matriculas-cobros", benefitsAfterSection: "seguridad-mcp",
     sections: [
-      { id: "clases-video", navLabel: "Clases y vídeo", eyebrow: "DEL MATERIAL A LA CLASE", title: "Da clase y conserva la grabación.", description: "Campus incluye alojamiento de vídeo y aula virtual con grabaciones para reunir las clases y los materiales del curso.", items: [
-        { title: "Vídeo alojado en Campus", text: "Incorpora el vídeo a tu formación. El alumno puede volver a una explicación grabada junto al material que está estudiando." },
+      { id: "matriculas-cobros", navLabel: "Gestión de la academia", eyebrow: "GESTIÓN DE LA ACADEMIA", title: "Matrículas, facturas y cobros. En el mismo Campus.", description: "Organiza cursos y alumnos, gestiona sus accesos y reúne la matriculación con la facturación. Una administración conectada con la formación que vendes.", items: [
+        { title: "Cursos, alumnos y matrículas", text: "Gestiona los cursos, las altas y bajas del alumnado y sus accesos. Consulta quién está matriculado y administra el acceso a su formación desde el campus." },
+        { title: "Facturación y cobros automáticos", text: "La pasarela de pago, las facturas y los cobros automáticos están incluidos. Gestiona la matrícula y el cobro del curso dentro de la operativa de tu academia." },
+        { title: "Cupones y ofertas", text: "Prepara promociones para tus cursos con cupones y ofertas, junto a la gestión de matrículas y cobros." },
+      ] },
+      { id: "clases-video", navLabel: "Clases y vídeo", eyebrow: "DEL MATERIAL A LA CLASE", title: "Da clase y conserva la grabación.", description: "Campus incluye aula virtual con grabaciones y alojamiento de vídeo para reunir las clases y los materiales del curso.", items: [
         { title: "Aula virtual y grabaciones", text: "Imparte la clase en el aula virtual y ofrece la grabación para el repaso. Por ejemplo, volver al desarrollo de un ejercicio después de la sesión." },
+        { title: "Vídeo alojado en Campus", text: "Incorpora el vídeo a tu formación. El alumno puede volver a una explicación grabada junto al material que está estudiando." },
       ] },
-      { id: "matriculas-cobros", navLabel: "Matrículas y cobros", eyebrow: "GESTIÓN DE LA ACADEMIA", title: "Del alta del alumno al cobro del curso.", description: "Gestiona accesos, matrículas y altas y bajas, junto con facturación y pasarela de pago. Sin separar el cobro de la formación que ofreces.", items: [
-        { title: "Accesos y matrículas", text: "Gestiona quién está matriculado y sus accesos a la formación. Incluye las altas y bajas de alumnos en el campus." },
-        { title: "Facturas y cobros automáticos", text: "Campus incluye facturación con pasarela de pago, facturas y cobros automáticos. Por ejemplo, gestionar el cobro y su factura en la operativa del curso." },
-        { title: "Cupones y ofertas", text: "Prepara una oferta o un cupón para tu formación. Puedes organizar una promoción junto a la gestión de matrículas y cobros." },
+      { id: "seguridad-mcp", navLabel: "Protección del contenido", eyebrow: "PROTECCIÓN INCLUIDA", title: "Cuida tus clases y materiales de pago.", description: "La protección del contenido y el módulo de seguridad forman parte del mismo Campus, sin una tarifa adicional.", items: [
+        { title: "Vídeo y descargas identificadas", text: "El vídeo incorpora medidas contra la captura de pantalla. Cuando la academia habilita descargas, el material puede llevar una marca de agua con el DNI o correo del alumno." },
+        { title: "Avisos configurables", text: "Ajusta periodos y umbrales para revisar combinaciones de navegador y sistema, peticiones de apertura de vídeos y conexiones de internet simultáneas distintas." },
       ] },
-      { id: "comunicacion", navLabel: "Comunicación", eyebrow: "ACOMPAÑAMIENTO DURANTE EL CURSO", title: "Organiza las fechas y mantén la conversación.", description: "Calendario, foro, mensajes y correos forman parte de Campus. El equipo puede coordinar la enseñanza y comunicarse con el alumnado.", items: [
-        { title: "Calendario del curso", text: "Organiza las fechas de la formación. Por ejemplo, sitúa las sesiones y los momentos de repaso dentro del recorrido del curso." },
-        { title: "Foro, mensajes y correos", text: "Mantén las dudas y la comunicación con los alumnos. Utiliza el foro para conversar sobre el curso y los mensajes o correos para el contacto." },
-      ] },
-      { id: "seguridad-mcp", navLabel: "Seguridad y MCP", eyebrow: "TAMBIÉN INCLUIDOS EN CAMPUS", title: "Revisa el uso y gestiona desde una IA compatible.", description: "El módulo de seguridad y MCP están incluidos en la misma oferta de Campus a 3,99 € por alumno activo al mes; no son tarifas adicionales.", items: [
-        { title: "Avisos de seguridad configurables", text: "Configura periodos y umbrales para revisar combinaciones de navegador y sistema, peticiones de apertura de vídeos y conexiones de internet simultáneas distintas. Un aviso requiere revisión; no prueba fraude." },
-        { title: "Vídeo y descargas identificadas", text: "El vídeo incluye medidas contra la captura de pantalla. Si habilitas descargas del material, pueden llevar marca de agua y DNI o correo del alumno. No hay una garantía absoluta contra copias o grabaciones." },
+      { id: "comunicacion", navLabel: "Comunicación y MCP", eyebrow: "ACOMPAÑAMIENTO Y GESTIÓN", title: "Coordina el curso y mantén el contacto.", description: "Calendario, foro, mensajes y correos reúnen la comunicación con el alumnado. MCP también está incluido para operar funciones del campus desde una IA compatible.", items: [
+        { title: "Calendario del curso", text: "Organiza las fechas de clase y los momentos de repaso dentro del recorrido del curso." },
+        { title: "Foro, mensajes y correos", text: "Utiliza el foro para conversar sobre el curso y los mensajes o correos para mantener el contacto con los alumnos." },
         mcp,
       ] },
     ],
-    finalTitle: "Recorre tu academia en la demo.", finalText: "Veremos estudio, clases, matrículas, cobros y comunicación, junto con la seguridad y MCP incluidos en Campus.",
+    finalTitle: "Veamos tu academia en un solo lugar.", finalText: "Recorre la gestión de matrículas y cobros, las clases, el vídeo, la protección y la IA sobre tu temario. Todo incluido por 3,99 € por alumno activo al mes, con comunicación y MCP.",
     faqs: [
-      { question: "¿Campus incluye todas las herramientas de Plugin?", answer: "Sí. Incluye pregunta del día, resúmenes, mapas conceptuales, flashcards, podcasts, tests generados al momento, estadísticas de estudio, nota estimada y chat sobre los contenidos de tu academia." },
+      { question: "¿Campus incluye todas las herramientas de Plugin?", answer: "Sí. Incluye pregunta del día, resúmenes, mapas conceptuales, flashcards, podcasts, tests generados al momento, estadísticas de estudio, nota estimada y chat sobre los contenidos de tu academia. La IA está incluida por alumno activo, sin paquetes de tokens ni recargas a mitad de mes." },
       { question: "¿Puedo dar clases y ofrecer las grabaciones?", answer: "Sí. Campus incluye alojamiento de vídeo y aula virtual con grabaciones. El alumno puede volver a una explicación para repasar el tema o un ejercicio trabajado en clase." },
       { question: "¿Cómo gestiono alumnos y cobros?", answer: "Campus reúne accesos, matrículas y altas y bajas de alumnos. Incluye facturación con pasarela de pago, facturas, cobros automáticos, cupones y ofertas. En la demo puedes recorrer un caso de matriculación y cobro." },
       { question: "¿Qué herramientas de comunicación incluye?", answer: "Calendario, foro, mensajes y correos. Por ejemplo, organizar las fechas de clase y mantener una conversación sobre las dudas del curso." },
       { question: "¿Seguridad y MCP se pagan aparte?", answer: "No. El módulo de seguridad y MCP están incluidos en Campus de 3,99 € por alumno activo al mes. MCP permite operar funciones del campus desde una IA compatible. Campus Secure presenta esta misma oferta con el foco en accesos y contenidos." },
-      aiFaq, priceFaq("3,99 €"),
+      { question: "¿Se puede usar el campus en varios idiomas?", answer: "Sí. La interfaz del campus puede configurarse en castellano, inglés, catalán y euskera." },
+      { question: "¿La IA sustituye al profesor o garantiza una nota?", answer: "No. La IA ayuda a estudiar sobre el temario de la academia. La nota estimada es una orientación para el estudio, no una garantía de resultado en un examen. El contenido del curso y el criterio del docente siguen siendo la referencia." },
+      { question: "¿Cuánto cuesta y cómo se calcula la cuota?", answer: "El precio de referencia es de 3,99 € por alumno activo al mes, con las prestaciones descritas incluidas. El importe mensual depende del número de alumnos activos; antes de contratar confirmaremos cómo se contabilizan, los impuestos y las condiciones de la propuesta." },
     ],
-    meta: { title: "IA, clases y gestión de tu academia | DuxBrain Campus", description: "Estudio con IA, vídeo, aula virtual, matrículas, cobros y comunicación. Seguridad y MCP incluidos en Campus: 3,99 € por alumno activo al mes." },
+    meta: { title: "Toda tu academia en un solo lugar | DuxBrain Campus", description: "Gestión, matrículas, cobros, clases, vídeo, protección e IA sobre tu temario. Campus: 3,99 € por alumno activo al mes, sin paquetes de tokens ni recargas." },
   },
   "campus-secure": {
     id: "campus-secure", name: "Campus · Seguridad", eyebrow: "PROTEGE TU CONTENIDO",

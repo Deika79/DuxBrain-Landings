@@ -1,21 +1,9 @@
 import { chromium } from '@playwright/test';
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { execFileSync } from 'node:child_process';
-import ts from 'typescript';
+import { mkdir, writeFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 
 const baseUrl = process.argv[2] ?? 'http://localhost:3000';
 assert.ok(['http://localhost:3000', 'http://localhost:3100'].includes(baseUrl));
-const loadContent = source => {
-  const loadedModule = { exports: {} };
-  const compiled = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS } });
-  new Function('module', 'exports', compiled.outputText)(loadedModule, loadedModule.exports);
-  return loadedModule.exports;
-};
-// A copy-only Secure revision must preserve the other two offers and metadata.
-const previous = loadContent(execFileSync('git', ['show', 'f6465cd:src/content/landings.ts'], { encoding: 'utf8' })).landings;
-const current = loadContent(await readFile('src/content/landings.ts', 'utf8')).landings;
-for (const route of ['plugin', 'campus']) assert.deepEqual(current[route], previous[route]);
 await mkdir('docs/capturas/scroll', { recursive: true });
 const report = [];
 const settle = page => page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
@@ -101,5 +89,5 @@ for (const zoom of [100, 125]) {
     } finally { await context.close(); }
   }
 }
-await writeFile('docs/capturas/scroll/revision.md', `# Formulario persistente y revisión Secure\n\nChrome instalado, perfiles temporales propios, zoom real del navegador. Inicio, demostración, FAQ y pie comprobados en cada combinación. Un formulario, sin desbordamiento, con foco por CTA y recorrido de teclado hasta el botón. La API se intercepta; no hay envíos reales. Contenido y metadatos de Plugin y Campus idénticos a f6465cd.\n\n| Ruta | Ventana | Zoom | Comportamiento | Resultado |\n| --- | --- | --- | --- | --- |\n${report.join('\n')}\n`);
+await writeFile('docs/capturas/scroll/revision.md', `# Formulario persistente\n\nChrome instalado, perfiles temporales propios, zoom real del navegador. Inicio, demostración, FAQ y pie comprobados en cada combinación. Un formulario, sin desbordamiento, con foco por CTA y recorrido de teclado hasta el botón. La API se intercepta; no hay envíos reales. Las comparaciones de contenido de cada revisión constan en docs/revision-contenido.md.\n\n| Ruta | Ventana | Zoom | Comportamiento | Resultado |\n| --- | --- | --- | --- | --- |\n${report.join('\n')}\n`);
 console.log(`${report.length} Chrome route/viewport/zoom reviews passed; screenshots in docs/capturas/.`);

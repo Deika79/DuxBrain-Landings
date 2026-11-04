@@ -19,13 +19,14 @@ export function Header({ name }: { name: string }) {
 }
 
 export function Hero({ content: c }: { content: LandingContent }) {
-  return <section className="hero-band" aria-labelledby="hero-title"><div className="hero container">
+  const points = <ul className="hero-points">{c.points.map(p => <li key={p}><span aria-hidden="true">✓</span>{p}</li>)}</ul>;
+  const price = <div className="price"><strong>{c.price}</strong><span>por alumno activo / mes<small>Precio de referencia · Condiciones en la propuesta</small></span></div>;
+  const cta = <a className="button button-primary mobile-hero-cta" href="#demo">Solicitar una demo <span aria-hidden="true">↗</span></a>;
+  return <section className={`hero-band${c.id === "campus" ? " campus-hero" : ""}`} aria-labelledby="hero-title"><div className="hero container">
     <div className="hero-copy"><div className="eyebrow"><span className="status-dot" />{c.eyebrow}</div>
       <h1 id="hero-title">{c.title}<br /><span>{c.accent}</span></h1>
       <p className="hero-description">{c.description}</p>
-      <a className="button button-primary mobile-hero-cta" href="#demo">Solicitar una demo <span aria-hidden="true">↗</span></a>
-      <ul className="hero-points">{c.points.map(p => <li key={p}><span aria-hidden="true">✓</span>{p}</li>)}</ul>
-      <div className="price"><strong>{c.price}</strong><span>por alumno activo / mes<small>Precio de referencia · Condiciones en la propuesta</small></span></div>
+      {c.id === "campus" ? <><div className="campus-offer">{price}{points}</div>{cta}</> : <>{cta}{points}{price}</>}
       {c.id === "campus-secure" && <p className="product-clarification">El mismo DuxBrain Campus. Mismo precio, con el foco en seguridad.</p>}
       <a className="text-link" href="#en-accion">Así puede encajar en tu academia <span aria-hidden="true">↓</span></a>
     </div>
@@ -40,8 +41,8 @@ export function Benefits({ content: c }: { content: LandingContent }) {
 
 export function SectionNavigation({ content: c }: { content: LandingContent }) {
   return <div className="navigation-band"><nav className="container section-nav" aria-label={`Secciones de ${c.name}`}>
-    <a href="#beneficios">{c.id === "campus-secure" ? "Protección" : "Estudiar con IA"}</a>
-    {c.sections.map(section => <a key={section.id} href={`#${section.id}`}>{section.navLabel}</a>)}
+    {!c.benefitsAfterSection && <a href="#beneficios">{c.id === "campus-secure" ? "Protección" : "Estudiar con IA"}</a>}
+    {c.sections.map(section => <Fragment key={section.id}><a href={`#${section.id}`}>{section.navLabel}</a>{c.benefitsAfterSection === section.id && <a href="#beneficios">Estudio con IA</a>}</Fragment>)}
   </nav></div>;
 }
 
@@ -54,11 +55,15 @@ export function FeatureSections({ content: c }: { content: LandingContent }) {
   return c.sections.map(section => <Fragment key={section.id}><section className={`section feature-section band-${tones[section.id] ?? "paper"}`} id={section.id} aria-labelledby={`${section.id}-title`}><div className="container feature-layout">
     <div className="section-heading"><span className="eyebrow">{section.eyebrow}</span><h2 id={`${section.id}-title`}>{section.title}</h2><p className="feature-description">{section.description}</p></div>
     <div className="feature-grid">{section.items.map(item => <article className="feature-item" key={item.title}><h3><span aria-hidden="true">↗</span>{item.title}</h3><p>{item.text}</p></article>)}</div>
-    {sectionScreenshots[`${c.id}/${section.id}`] && <div className="section-capture"><ProductCapture screenshot={sectionScreenshots[`${c.id}/${section.id}`]} /></div>}
-  </div></section>{c.demoAfterSection === section.id && <VisualDemo content={c} />}</Fragment>);
+    {sectionScreenshots[`${c.id}/${section.id}`] && <div className="section-capture"><ProductCapture screenshot={sectionScreenshots[`${c.id}/${section.id}`]} inline={c.id === "campus"} /></div>}
+  </div></section>{c.demoAfterSection === section.id && <VisualDemo content={c} />}{c.benefitsAfterSection === section.id && <Benefits content={c} />}</Fragment>);
 }
 
-function ProductCapture({ screenshot }: { screenshot: ProductScreenshot }) {
+function ProductCapture({ screenshot, inline = false }: { screenshot: ProductScreenshot; inline?: boolean }) {
+  if (inline) return <figure className="product-capture campus-capture" data-screen={screenshot.src.split("/").pop()}>
+    <div className="capture-frame"><Image src={screenshot.src} alt={screenshot.alt} width={screenshot.width} height={screenshot.height} sizes="(max-width: 599px) 800px, (max-width: 1099px) calc(100vw - 64px), 752px" /></div>
+    <figcaption>{screenshot.caption}</figcaption>
+  </figure>;
   return <figure className="product-capture">
     <a className="capture-link" href={screenshot.src} target="_blank" rel="noopener noreferrer" aria-label={`Abrir captura completa en otra pestaña: ${screenshot.alt}`}>
       <div className="capture-frame"><Image src={screenshot.src} alt={screenshot.alt} width={screenshot.width} height={screenshot.height} sizes="(max-width: 599px) calc(100vw - 40px), (max-width: 1103px) calc(100vw - 64px), 1040px" /></div>
@@ -70,7 +75,7 @@ function ProductCapture({ screenshot }: { screenshot: ProductScreenshot }) {
 
 export function VisualDemo({ content: c }: { content: LandingContent }) {
   return <section className="demo-section" id="en-accion"><div className="container demo-layout"><div className="demo-copy"><span className="eyebrow">{c.demo.panelLabel}</span><h2>{c.demoTitle}</h2><p>{c.demoText}</p><a className="text-link" href="#demo">Solicitar una demo <span aria-hidden="true">↗</span></a></div>
-    <div className="demo-figure"><ProductCapture screenshot={primaryScreenshots[c.id]} /></div>
+    <div className="demo-figure"><ProductCapture screenshot={primaryScreenshots[c.id]} inline={c.id === "campus"} /></div>
   </div></section>;
 }
 
@@ -93,7 +98,7 @@ export function Landing({ content }: { content: LandingContent }) {
       <aside className="lead-rail container" aria-label="Solicitud de demo">
         <div className="lead-sticky" role="region" aria-label="Formulario de demo; permite desplazarse para acceder a todos los campos" tabIndex={0}><LeadForm landing={content.id} /></div>
       </aside>
-      <div className="journey-content"><SectionNavigation content={content} /><Benefits content={content} />{!content.demoAfterSection && <VisualDemo content={content} />}<FeatureSections content={content} /><FAQ content={content} /></div>
+      <div className="journey-content"><SectionNavigation content={content} />{!content.benefitsAfterSection && <Benefits content={content} />}{!content.demoAfterSection && <VisualDemo content={content} />}<FeatureSections content={content} /><FAQ content={content} /></div>
     </div>
     <FinalCTA content={content} />
   </main><Footer /></DemoNavigation>;

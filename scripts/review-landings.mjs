@@ -60,6 +60,11 @@ try {
         const dimensions = await picture.evaluate(img => ({ actual: img.clientWidth / img.clientHeight, expected: Number(img.getAttribute('width')) / Number(img.getAttribute('height')) }));
         assert.ok(Math.abs(dimensions.actual - dimensions.expected) < .01, 'Screenshot proportions must be preserved');
         const link = capture.locator('a');
+        if (route === 'campus') {
+          assert.equal(await link.count(), 0, 'Campus screenshots are integrated without enlargement controls');
+          assert.equal(await capture.locator('.capture-open').count(), 0);
+          continue;
+        }
         assert.equal(await link.getAttribute('target'), '_blank');
         const imageUrl = await link.getAttribute('href');
         assert.ok(imageUrl.startsWith('/product/') && imageUrl !== '/product/campus-gestion.png');
@@ -71,7 +76,7 @@ try {
       }
       await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
       if (route === 'campus') {
-        assert.equal(await page.locator('a[href="/product/campus-gestion-saneada.png"]').count(), 1);
+        assert.equal(await page.locator('.campus-capture[data-screen="campus-gestion-saneada.png"] img').count(), 1);
         assert.equal((await context.request.get(`${baseUrl}/product/campus-gestion.png`)).status(), 404, 'Original management screenshot must not be publicly served');
       }
       assert.ok(metrics.price.includes(route === 'plugin' ? '0,99 €' : '3,99 €'));

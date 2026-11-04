@@ -3,8 +3,8 @@
     "route": "plugin",
     "width": 1440,
     "scrollWidth": 1440,
-    "heading": "IA sobre tu temario.En tu campus actual.",
-    "headingBottom": 357.21875,
+    "heading": "Una IA entrenada con tu temario.Dentro de tu campus actual.",
+    "headingBottom": 495.4375,
     "formTop": 120,
     "heroCta": {
       "display": "none",
@@ -12,8 +12,8 @@
       "bottom": 0
     },
     "price": "0,99 €por alumno activo / mesPrecio de referencia · Condiciones en la propuesta",
-    "title": "IA y herramientas de estudio en tu campus | DuxBrain Plugin",
-    "description": "Chat, resúmenes, mapas, flashcards, podcasts y tests sobre tu temario. Progreso y descargas identificadas. Plugin: 0,99 € por alumno activo al mes.",
+    "title": "IA entrenada con tu temario en tu LMS | DuxBrain Plugin",
+    "description": "Tus alumnos preguntan, repasan y practican con una IA entrenada con tu temario, dentro de tu campus actual. Plugin: 0,99 € por alumno activo al mes.",
     "sections": [
       "herramientas",
       "progreso",
@@ -56,7 +56,7 @@
     "formWithoutSubmission": "ok",
     "css": [
       {
-        "url": "/_next/static/chunks/2v_44dwqcy3qn.css",
+        "url": "/_next/static/chunks/08h1wc29ldiq2.css",
         "status": 200,
         "type": "text/css; charset=UTF-8"
       }
@@ -68,7 +68,7 @@
     "route": "campus",
     "width": 1440,
     "scrollWidth": 1440,
-    "heading": "Cursos y alumnado.Con IA para estudiar.",
+    "heading": "Toda tu academia,en un solo lugar.",
     "headingBottom": 357.21875,
     "formTop": 120,
     "heroCta": {
@@ -77,13 +77,13 @@
       "bottom": 0
     },
     "price": "3,99 €por alumno activo / mesPrecio de referencia · Condiciones en la propuesta",
-    "title": "IA, clases y gestión de tu academia | DuxBrain Campus",
-    "description": "Estudio con IA, vídeo, aula virtual, matrículas, cobros y comunicación. Seguridad y MCP incluidos en Campus: 3,99 € por alumno activo al mes.",
+    "title": "Toda tu academia en un solo lugar | DuxBrain Campus",
+    "description": "Gestión, matrículas, cobros, clases, vídeo, protección e IA sobre tu temario. Campus: 3,99 € por alumno activo al mes, sin paquetes de tokens ni recargas.",
     "sections": [
-      "clases-video",
       "matriculas-cobros",
-      "comunicacion",
-      "seguridad-mcp"
+      "clases-video",
+      "seguridad-mcp",
+      "comunicacion"
     ],
     "typography": {
       "h1": 64,
@@ -96,24 +96,24 @@
     },
     "bands": [
       {
-        "id": "clases-video",
-        "width": 1440,
-        "background": "rgb(255, 255, 255)"
-      },
-      {
         "id": "matriculas-cobros",
         "width": 1440,
         "background": "rgb(8, 21, 40)"
       },
       {
-        "id": "comunicacion",
+        "id": "clases-video",
         "width": 1440,
-        "background": "rgb(245, 246, 248)"
+        "background": "rgb(255, 255, 255)"
       },
       {
         "id": "seguridad-mcp",
         "width": 1440,
         "background": "rgb(223, 249, 243)"
+      },
+      {
+        "id": "comunicacion",
+        "width": 1440,
+        "background": "rgb(245, 246, 248)"
       }
     ],
     "screenshot": "campus-escritorio.png",
@@ -121,7 +121,7 @@
     "formWithoutSubmission": "ok",
     "css": [
       {
-        "url": "/_next/static/chunks/2v_44dwqcy3qn.css",
+        "url": "/_next/static/chunks/08h1wc29ldiq2.css",
         "status": 200,
         "type": "text/css; charset=UTF-8"
       }
@@ -192,7 +192,7 @@
     "formWithoutSubmission": "ok",
     "css": [
       {
-        "url": "/_next/static/chunks/2v_44dwqcy3qn.css",
+        "url": "/_next/static/chunks/08h1wc29ldiq2.css",
         "status": 200,
         "type": "text/css; charset=UTF-8"
       }
@@ -204,17 +204,17 @@
     "route": "plugin",
     "width": 390,
     "scrollWidth": 390,
-    "heading": "IA sobre tu temario.En tu campus actual.",
-    "headingBottom": 289.5625,
-    "formTop": 866.46875,
+    "heading": "Una IA entrenada con tu temario.Dentro de tu campus actual.",
+    "headingBottom": 332.75,
+    "formTop": 937.703125,
     "heroCta": {
       "display": "flex",
-      "top": 449.75,
-      "bottom": 505.75
+      "top": 520.984375,
+      "bottom": 576.984375
     },
     "price": "0,99 €por alumno activo / mesPrecio de referencia · Condiciones en la propuesta",
-    "title": "IA y herramientas de estudio en tu campus | DuxBrain Plugin",
-    "description": "Chat, resúmenes, mapas, flashcards, podcasts y tests sobre tu temario. Progreso y descargas identificadas. Plugin: 0,99 € por alumno activo al mes.",
+    "title": "IA entrenada con tu temario en tu LMS | DuxBrain Plugin",
+    "description": "Tus alumnos preguntan, repasan y practican con una IA entrenada con tu temario, dentro de tu campus actual. Plugin: 0,99 € por alumno activo al mes.",
     "sections": [
       "herramientas",
       "progreso",
@@ -257,7 +257,7 @@
     "formWithoutSubmission": "ok",
     "css": [
       {
-        "url": "/_next/static/chunks/2v_44dwqcy3qn.css",
+        "url": "/_next/static/chunks/08h1wc29ldiq2.css",
         "status": 200,
         "type": "text/css; charset=UTF-8"
       }
@@ -269,22 +269,22 @@
     "route": "campus",
     "width": 390,
     "scrollWidth": 390,
-    "heading": "Cursos y alumnado.Con IA para estudiar.",
-    "headingBottom": 289.5625,
-    "formTop": 866.46875,
+    "heading": "Toda tu academia,en un solo lugar.",
+    "headingBottom": 246.375,
+    "formTop": 774.46875,
     "heroCta": {
       "display": "flex",
-      "top": 449.75,
-      "bottom": 505.75
+      "top": 622.46875,
+      "bottom": 678.46875
     },
     "price": "3,99 €por alumno activo / mesPrecio de referencia · Condiciones en la propuesta",
-    "title": "IA, clases y gestión de tu academia | DuxBrain Campus",
-    "description": "Estudio con IA, vídeo, aula virtual, matrículas, cobros y comunicación. Seguridad y MCP incluidos en Campus: 3,99 € por alumno activo al mes.",
+    "title": "Toda tu academia en un solo lugar | DuxBrain Campus",
+    "description": "Gestión, matrículas, cobros, clases, vídeo, protección e IA sobre tu temario. Campus: 3,99 € por alumno activo al mes, sin paquetes de tokens ni recargas.",
     "sections": [
-      "clases-video",
       "matriculas-cobros",
-      "comunicacion",
-      "seguridad-mcp"
+      "clases-video",
+      "seguridad-mcp",
+      "comunicacion"
     ],
     "typography": {
       "h1": 40,
@@ -297,24 +297,24 @@
     },
     "bands": [
       {
-        "id": "clases-video",
-        "width": 390,
-        "background": "rgb(255, 255, 255)"
-      },
-      {
         "id": "matriculas-cobros",
         "width": 390,
         "background": "rgb(8, 21, 40)"
       },
       {
-        "id": "comunicacion",
+        "id": "clases-video",
         "width": 390,
-        "background": "rgb(245, 246, 248)"
+        "background": "rgb(255, 255, 255)"
       },
       {
         "id": "seguridad-mcp",
         "width": 390,
         "background": "rgb(223, 249, 243)"
+      },
+      {
+        "id": "comunicacion",
+        "width": 390,
+        "background": "rgb(245, 246, 248)"
       }
     ],
     "screenshot": "campus-movil.png",
@@ -322,7 +322,7 @@
     "formWithoutSubmission": "ok",
     "css": [
       {
-        "url": "/_next/static/chunks/2v_44dwqcy3qn.css",
+        "url": "/_next/static/chunks/08h1wc29ldiq2.css",
         "status": 200,
         "type": "text/css; charset=UTF-8"
       }
@@ -393,7 +393,7 @@
     "formWithoutSubmission": "ok",
     "css": [
       {
-        "url": "/_next/static/chunks/2v_44dwqcy3qn.css",
+        "url": "/_next/static/chunks/08h1wc29ldiq2.css",
         "status": 200,
         "type": "text/css; charset=UTF-8"
       }
