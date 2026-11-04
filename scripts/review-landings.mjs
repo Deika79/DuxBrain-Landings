@@ -9,7 +9,7 @@ const baseUrl = process.argv[2] ?? 'http://localhost:3000';
 assert.ok(['http://localhost:3000', 'http://localhost:3100'].includes(baseUrl), 'Use a local review server');
 try {
   for (const width of [1440, 390]) {
-    const context = await browser.newContext({ viewport: { width, height: width === 1440 ? 1000 : 844 }, deviceScaleFactor: 1, reducedMotion: 'reduce' });
+    const context = await browser.newContext({ viewport: { width, height: width === 1440 ? 900 : 844 }, deviceScaleFactor: 1, reducedMotion: 'reduce' });
     for (const route of ['plugin', 'campus', 'campus-secure']) {
       const page = await context.newPage();
       let payload;
@@ -97,7 +97,8 @@ try {
         await page.locator(selector).click();
         await page.waitForURL(url => url.hash === '#demo');
         const top = await page.locator('#demo').evaluate(el => el.getBoundingClientRect().top);
-        assert.ok(top >= 0 && top < 100, 'Demo CTA should scroll to the form');
+        assert.ok(top >= 0 && top < (width >= 1100 ? 180 : 100), 'Demo CTA should reach the visible form');
+        assert.equal(await page.locator('input[name="name"]').evaluate(input => input === document.activeElement), true, 'Demo CTA should focus the first field');
       }
       const requests = [];
       page.on('request', r => { if (r.method() === 'POST') requests.push(r.url()); });

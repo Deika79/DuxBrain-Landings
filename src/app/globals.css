@@ -220,3 +220,43 @@ details p { font-size: 17px; line-height: 1.75; padding-top: 20px; max-width: 65
   .final-cta h2 { font-size: 48px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
+
+/* The rail spans the hero AND every chapter through FAQ. Full-width bands stay
+   behind both columns; their contents reserve the rail's width explicitly. */
+.landing-page { --mobile-demo-height: calc(80px + env(safe-area-inset-bottom, 0px)); padding-bottom: var(--mobile-demo-height); }
+.landing-journey .hero { display: block; padding-bottom: 32px; }
+.lead-rail { padding-bottom: 56px; }
+.landing-journey { background: var(--background); }
+.mobile-demo-bar { position: fixed; z-index: 25; inset: auto 0 0; background: white; border-top: 1px solid var(--line); padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 -8px 32px #08152812; }
+.mobile-demo-bar[hidden] { display: none; }
+.mobile-demo-bar .button { display: flex; width: min(100%, 520px); margin-inline: auto; }
+@media (max-width: 1099px) {
+  html { scroll-padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+  .lead-sticky { outline-offset: 6px; }
+  .mobile-hero-cta { display: flex; }
+}
+@media (min-width: 1100px) {
+  .landing-page { --rail-width: 400px; --rail-gap: 48px; padding-bottom: 0; }
+  .landing-journey { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; }
+  .landing-journey > .hero-band { grid-area: 1 / 1; }
+  .journey-content { grid-area: 2 / 1; min-width: 0; }
+  .landing-journey .container:not(.lead-rail) { padding-right: calc(var(--rail-width) + var(--rail-gap)); }
+  .landing-journey .hero { padding-block: 64px 80px; }
+  .lead-rail { grid-area: 1 / 1 / 3 / 2; width: var(--rail-width); justify-self: end; align-self: stretch; margin-left: 0; margin-right: max(32px, calc((100% - var(--max-width)) / 2)); padding-block: 24px 64px; min-width: 0; }
+  .lead-sticky { position: sticky; top: 16px; max-height: calc(100dvh - 144px); overflow-y: auto; scrollbar-gutter: stable; background: white; border-radius: var(--radius); box-shadow: var(--shadow); scroll-padding: 20px; }
+  .lead-sticky .lead-card { padding: 28px 24px; box-shadow: none; }
+  .lead-sticky .lead-card h2 { font-size: 30px; }
+  .lead-sticky .form-grid { gap: 16px; }
+  .lead-sticky .form-intro { margin-bottom: 20px; }
+  .lead-sticky input, .lead-sticky select { height: 48px; }
+  .lead-sticky .privacy { margin-block: 18px; }
+  .lead-sticky .button:hover { transform: none; }
+  .journey-content .benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+  .journey-content .benefit-card:last-child { grid-column: 1 / -1; }
+  .journey-content .feature-layout, .journey-content .faq-section { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .journey-content .band-paper .feature-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; }
+  .journey-content .demo-copy { display: block; }
+  .journey-content .demo-copy p { margin-top: 24px; }
+  .journey-content .demo-layout { gap: 40px; }
+  .mobile-demo-bar { display: none; }
+}

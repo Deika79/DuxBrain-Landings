@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Fragment } from "react";
 import type { LandingContent } from "@/content/landings";
 import { primaryScreenshots, sectionScreenshots, type ProductScreenshot } from "@/content/product-images";
 import { privacyUrl } from "@/lib/leads";
 import { LeadForm } from "./lead-form";
+import { DemoNavigation } from "./demo-navigation";
 
 function BrandLogo() {
   return <span className="brand-logo"><Image src="/brand/DuxBrain-04.png" alt="DuxBrain" width={968} height={299} unoptimized /></span>;
@@ -27,7 +29,6 @@ export function Hero({ content: c }: { content: LandingContent }) {
       {c.id === "campus-secure" && <p className="product-clarification">El mismo DuxBrain Campus. Mismo precio, con el foco en seguridad.</p>}
       <a className="text-link" href="#en-accion">Así puede encajar en tu academia <span aria-hidden="true">↓</span></a>
     </div>
-    <LeadForm landing={c.id} />
   </div></section>;
 }
 
@@ -39,7 +40,7 @@ export function Benefits({ content: c }: { content: LandingContent }) {
 
 export function SectionNavigation({ content: c }: { content: LandingContent }) {
   return <div className="navigation-band"><nav className="container section-nav" aria-label={`Secciones de ${c.name}`}>
-    <a href="#beneficios">{c.id === "campus-secure" ? "Avisos" : "Estudiar con IA"}</a>
+    <a href="#beneficios">{c.id === "campus-secure" ? "Protección" : "Estudiar con IA"}</a>
     {c.sections.map(section => <a key={section.id} href={`#${section.id}`}>{section.navLabel}</a>)}
   </nav></div>;
 }
@@ -48,13 +49,13 @@ export function FeatureSections({ content: c }: { content: LandingContent }) {
   const tones: Record<string, string> = {
     herramientas: "paper", progreso: "mist", integracion: "night", descargas: "mint",
     "clases-video": "paper", "matriculas-cobros": "night", comunicacion: "mist", "seguridad-mcp": "mint",
-    "configuracion-avisos": "paper", "video-descargas": "mist", "campus-completo": "night", mcp: "mint",
+    "proteccion-video": "paper", "descargas-identificadas": "mint", "configuracion-avisos": "mist", "campus-completo": "night", mcp: "mint",
   };
-  return c.sections.map(section => <section className={`section feature-section band-${tones[section.id] ?? "paper"}`} id={section.id} key={section.id} aria-labelledby={`${section.id}-title`}><div className="container feature-layout">
+  return c.sections.map(section => <Fragment key={section.id}><section className={`section feature-section band-${tones[section.id] ?? "paper"}`} id={section.id} aria-labelledby={`${section.id}-title`}><div className="container feature-layout">
     <div className="section-heading"><span className="eyebrow">{section.eyebrow}</span><h2 id={`${section.id}-title`}>{section.title}</h2><p className="feature-description">{section.description}</p></div>
     <div className="feature-grid">{section.items.map(item => <article className="feature-item" key={item.title}><h3><span aria-hidden="true">↗</span>{item.title}</h3><p>{item.text}</p></article>)}</div>
     {sectionScreenshots[`${c.id}/${section.id}`] && <div className="section-capture"><ProductCapture screenshot={sectionScreenshots[`${c.id}/${section.id}`]} /></div>}
-  </div></section>);
+  </div></section>{c.demoAfterSection === section.id && <VisualDemo content={c} />}</Fragment>);
 }
 
 function ProductCapture({ screenshot }: { screenshot: ProductScreenshot }) {
@@ -86,5 +87,14 @@ export function Footer() {
 }
 
 export function Landing({ content }: { content: LandingContent }) {
-  return <><a className="skip-link" href="#contenido">Saltar al contenido</a><Header name={content.name} /><main id="contenido"><Hero content={content} /><SectionNavigation content={content} /><Benefits content={content} /><VisualDemo content={content} /><FeatureSections content={content} /><FAQ content={content} /><FinalCTA content={content} /></main><Footer /></>;
+  return <DemoNavigation><a className="skip-link" href="#contenido">Saltar al contenido</a><Header name={content.name} /><main id="contenido">
+    <div className="landing-journey">
+      <Hero content={content} />
+      <aside className="lead-rail container" aria-label="Solicitud de demo">
+        <div className="lead-sticky" role="region" aria-label="Formulario de demo; permite desplazarse para acceder a todos los campos" tabIndex={0}><LeadForm landing={content.id} /></div>
+      </aside>
+      <div className="journey-content"><SectionNavigation content={content} /><Benefits content={content} />{!content.demoAfterSection && <VisualDemo content={content} />}<FeatureSections content={content} /><FAQ content={content} /></div>
+    </div>
+    <FinalCTA content={content} />
+  </main><Footer /></DemoNavigation>;
 }

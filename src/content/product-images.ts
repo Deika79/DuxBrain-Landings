@@ -24,7 +24,7 @@ export const primaryScreenshots: Record<LandingId, ProductScreenshot> = {
   "campus-secure": {
     src: "/product/secure-umbrales.png", width: 1240, height: 768,
     alt: "Configuración de seguridad con umbrales y periodos para combinaciones de navegador y sistema y peticiones de vídeo.",
-    caption: "Administración · Configuración de periodos y umbrales de la demo; no muestra avisos detectados.",
+    caption: "Configuración de los avisos de seguridad en DuxBrain Campus.",
   },
 };
 

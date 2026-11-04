@@ -69,3 +69,23 @@ Las capturas son del build de las landings; las representaciones del producto de
 ## Pendientes antes de publicar
 
 No quedan pendientes de inclusión comercial seguridad ni MCP. Sí quedan la configuración de la academia (periodos/umbrales, habilitación de descargas, conexión con IA compatible), la viabilidad técnica del LMS concreto y las condiciones contractuales (alumno activo, impuestos, condiciones finales). La primera entrega real de leads sigue pendiente de configuración/autorización. Logos oficiales todavía ausentes. Las ilustraciones pueden sustituirse por capturas reales solo cuando se disponga de material autorizado.
+
+## Revisión de Campus Secure: protección del contenido
+
+Esta revisión sustituye el orden y los textos anteriores de Secure. Los logos y las capturas reales ya están integrados; su inventario vigente está en `activos-pendientes.md`. No cambia el contenido ni los metadatos de Plugin o Campus.
+
+| Afirmación anterior | Evidencia disponible | Decisión | Texto nuevo |
+| --- | --- | --- | --- |
+| «Revisa avisos y señales» en el hero | David confirmó medidas contra captura de pantalla, descargas identificadas y avisos configurables | Abrir con el valor del contenido y las tres funciones, en ese orden | «Tu contenido es tu mayor activo. Protégelo.» |
+| Avisos y cautelas antes del vídeo | Protección de vídeo incluida en Campus | Adelantar vídeo y descargas; describir su funcionamiento sin promesas absolutas | «Tus clases grabadas merecen protección.» / «Cada descarga lleva la identidad del alumno.» |
+| Advertencias repetidas sobre fraude, copia y grabación | Existen periodos y umbrales configurables; geografía como contexto de simultaneidad | Sustituir advertencias repetidas por usos concretos. No afirmar detección concluyente, bloqueo automático ni protección absoluta | Equipos detectados por navegador/sistema, aperturas de vídeo y conexiones simultáneas |
+| «La captura no muestra avisos detectados» | `secure-umbrales.png` es configuración real de administración | Identificar positivamente la pantalla y explicar sus ajustes | «Configuración de los avisos de seguridad en DuxBrain Campus» |
+
+Orden vigente: hero → beneficios de protección → vídeo → descargas identificadas → captura real de configuración → detalle de avisos → Campus completo → MCP → FAQ → demo. La composición opcional se activa exclusivamente por el contenido de Secure; las otras rutas conservan su orden.
+
+Se conserva Campus completo a **3,99 € por alumno activo al mes**. Las descargas se habilitan por la academia y su marca de agua puede incorporar correo o DNI. «Protección antigrabación» se concreta en medidas contra la captura de pantalla; no se inventan mecanismos técnicos ni garantías absolutas. La distancia estimada aporta contexto a conexiones simultáneas.
+
+Validación: lint, 26 pruebas simuladas y build correctos. Seis capturas completas actualizadas y revisión Chrome en cuatro ventanas, con zoom real al 100 % y al 125 %: 24 combinaciones de ruta/ventana/zoom. Inicio, demostración, FAQ y pie, teclado y foco comprobados. Resultados en [revisión del formulario](capturas/scroll/revision.md). CSS e imágenes cargan sin errores; API interceptada en pruebas de interfaz. Sin escrituras ni correos reales.
+
+- Hero: [escritorio](capturas/campus-secure-superior-1440.png), [móvil](capturas/campus-secure-superior-390.png).
+- Protección de vídeo: [escritorio](capturas/campus-secure-video-1440.png), [móvil](capturas/campus-secure-video-390.png).

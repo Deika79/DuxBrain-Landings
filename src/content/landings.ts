@@ -9,6 +9,7 @@ export type LandingContent = {
   benefitsTitle: string; benefits: { title: string; text: string }[];
   demoTitle: string; demoText: string;
   demo: { panelLabel: string };
+  demoAfterSection?: string;
   sections: LandingSection[];
   finalTitle: string; finalText: string;
   faqs: { question: string; answer: string }[];
@@ -17,7 +18,6 @@ export type LandingContent = {
 const priceFaq = (price: string) => ({ question: "¿Cuánto cuesta y qué es un alumno activo?", answer: `El precio de referencia es ${price} por alumno activo al mes. Antes de contratar, confirmaremos cómo se cuenta un alumno activo, los impuestos y las condiciones de la propuesta.` });
 const aiFaq = { question: "¿La IA sustituye al profesor o garantiza una nota?", answer: "No. La IA ayuda a estudiar sobre el temario de la academia, pero puede equivocarse. La nota estimada es una orientación para el estudio, no una garantía de resultado en un examen. El contenido del curso y el criterio del docente siguen siendo la referencia." };
 const downloads = { title: "Descarga identificada por alumno", text: "La academia puede habilitar descargas del material con marca de agua y DNI o correo del alumno. Así, una copia descargada queda identificada; no se garantiza que sea imposible compartirla." };
-const videoProtection = { title: "Medidas contra la captura de pantalla", text: "El vídeo dispone de medidas contra la captura de pantalla. Ayudan a proteger el contenido, pero no garantizan que sea imposible grabarlo o copiarlo por cualquier medio." };
 const mcp = { title: "Opera el campus desde una IA compatible", text: "Campus incluye MCP para operar funciones del campus desde una IA compatible. En la demo puedes ver la conexión y las funciones disponibles para tu forma de gestionar la academia." };
 export const landings: Record<LandingId, LandingContent> = {
   plugin: {
@@ -104,40 +104,49 @@ export const landings: Record<LandingId, LandingContent> = {
     meta: { title: "IA, clases y gestión de tu academia | DuxBrain Campus", description: "Estudio con IA, vídeo, aula virtual, matrículas, cobros y comunicación. Seguridad y MCP incluidos en Campus: 3,99 € por alumno activo al mes." },
   },
   "campus-secure": {
-    id: "campus-secure", name: "Campus · Seguridad", eyebrow: "DUXBRAIN CAMPUS · ACCESOS Y CONTENIDOS",
-    title: "¿Se comparten accesos a tu curso?", accent: "Revisa avisos y señales.",
-    description: "Si tu formación de pago circula fuera de la academia, revisa los accesos y el uso del contenido con el módulo de seguridad incluido en Campus.",
-    price: "3,99 €", points: ["Avisos configurables", "Vídeo con medidas de protección", "Campus completo, mismo precio"],
-    benefitsTitle: "Señales concretas para revisar el uso.",
+    id: "campus-secure", name: "Campus · Seguridad", eyebrow: "PROTEGE TU CONTENIDO",
+    title: "Tu contenido es tu mayor activo.", accent: "Protégelo.",
+    description: "¿Te preocupa que tus clases o materiales de pago se compartan fuera de tu academia? DuxBrain Campus combina protección antigrabación para vídeo, descargas identificadas con marca de agua y avisos configurables sobre el uso de las cuentas.",
+    price: "3,99 €", points: ["Protección antigrabación de vídeo", "Descargas con marca de agua identificada", "Avisos de seguridad configurables"],
+    benefitsTitle: "Protege lo que has creado para enseñar.",
     benefits: [
-      { title: "Navegador y sistema", text: "Configura avisos por combinaciones distintas de navegador y sistema. Un cambio puede requerir revisión, pero no demuestra por sí mismo que una cuenta se esté compartiendo." },
-      { title: "Peticiones de apertura de vídeos", text: "Revisa las peticiones de apertura de vídeos mediante avisos configurables. El aviso aporta una señal para examinar el uso del contenido, no una conclusión de fraude." },
-      { title: "Conexiones simultáneas distintas", text: "El módulo contempla avisos por conexiones de internet simultáneas distintas. Permite revisar esa situación sin tratar cualquier cambio de conexión como prueba concluyente." },
+      { title: "Cuida tus clases grabadas", text: "Ofrece tus vídeos con protección antigrabación mediante medidas contra la captura de pantalla. El alumno puede volver a tus explicaciones dentro de Campus." },
+      { title: "Identifica cada descarga", text: "Cuando habilites la descarga de material, incorpora una marca de agua con el correo o DNI del alumno. La identificación acompaña a la copia descargada." },
+      { title: "Decide cuándo recibir avisos", text: "Configura periodos y umbrales para equipos detectados, aperturas de vídeo y conexiones simultáneas distintas. Adapta los avisos a la actividad de tu academia." },
     ],
     demoTitle: "Configura cuándo quieres recibir un aviso.",
-    demoText: "Esta pantalla de administración muestra cómo se ajustan periodos y umbrales para combinaciones de navegador y sistema y peticiones de vídeo. Son parámetros de configuración: la captura no muestra avisos generados ni un caso de fraude.",
+    demoText: "Desde la administración puedes ajustar los periodos y umbrales para combinaciones de navegador y sistema y peticiones de apertura de vídeos. Esta pantalla real de Campus muestra los ajustes disponibles para adaptar los avisos a tu academia.",
     demo: { panelLabel: "CONFIGURACIÓN DE SEGURIDAD · ADMINISTRACIÓN" },
+    demoAfterSection: "descargas-identificadas",
     sections: [
-      { id: "configuracion-avisos", navLabel: "Configuración", eyebrow: "PERIODOS, UMBRALES Y CONTEXTO", title: "Ajusta los avisos y revisa cada caso.", description: "El módulo de seguridad está incluido en Campus. Puedes configurar periodos y umbrales para los avisos, sin convertir una señal aislada en una acusación.", items: [
-        { title: "Periodos y umbrales configurables", text: "Ajusta el periodo y el umbral de los avisos a la operativa de la academia. Por ejemplo, revisa el contexto de una sesión antes de interpretar un aviso por navegador o sistema." },
-        { title: "La distancia aporta contexto", text: "La distancia geográfica estimada refuerza la evaluación de conexiones simultáneas. Por sí sola no crea ni oculta casos: se considera junto con la simultaneidad de conexiones." },
+      { id: "proteccion-video", navLabel: "Protección de vídeo", eyebrow: "PROTECCIÓN PARA TUS CLASES", title: "Tus clases grabadas merecen protección.", description: "Detrás de cada vídeo hay preparación, experiencia y horas de enseñanza. Campus incorpora protección antigrabación con medidas contra la captura de pantalla para cuidar ese contenido formativo.", items: [
+        { title: "Protección durante la reproducción", text: "Las medidas contra la captura de pantalla forman parte del vídeo de Campus. Puedes ofrecer una explicación grabada para el repaso con protección integrada en su reproducción." },
+        { title: "Vídeo dentro del curso", text: "Reúne tus clases grabadas, el temario y las herramientas de estudio en el mismo entorno. En la demo puedes ver la reproducción y las medidas disponibles para tus clases." },
       ] },
-      { id: "video-descargas", navLabel: "Vídeo y descargas", eyebrow: "CONTENIDO DE PAGO", title: "Medidas para el vídeo y copias identificadas.", description: "El vídeo y el material descargable tienen medidas distintas. Las descargas se habilitan por la academia; la identificación corresponde a la copia del material.", items: [videoProtection, downloads] },
+      { id: "descargas-identificadas", navLabel: "Descargas", eyebrow: "MATERIAL CON IDENTIFICACIÓN", title: "Cada descarga lleva la identidad del alumno.", description: "La academia decide si habilita la descarga del material. Cuando lo haces, la copia puede incorporar una marca de agua con el correo o DNI del alumno.", items: [
+        { title: "Marca de agua identificada", text: "Un alumno descarga el material para repasar: la copia queda identificada con su correo o DNI mediante la marca de agua." },
+        { title: "Tú habilitas las descargas", text: "Decide si ofreces material descargable como parte de tu formación. La identificación se aplica al material que permites descargar." },
+      ] },
+      { id: "configuracion-avisos", navLabel: "Avisos", eyebrow: "PERIODOS Y UMBRALES A TU MEDIDA", title: "Conoce cómo se utilizan las cuentas.", description: "El módulo de seguridad reúne avisos configurables para ayudarte a revisar el uso de los accesos y del vídeo. Ajusta los periodos y umbrales a la operativa de tus cursos.", items: [
+        { title: "Equipos detectados", text: "Configura avisos por combinaciones distintas de navegador y sistema. Por ejemplo, revisa los cambios de entorno con los que se utiliza una cuenta durante el periodo que establezcas." },
+        { title: "Aperturas de vídeo", text: "Ajusta los avisos sobre peticiones de apertura de vídeos. Define el periodo y el umbral que te interesa revisar para seguir el uso de tus clases grabadas." },
+        { title: "Conexiones simultáneas", text: "Revisa conexiones de internet simultáneas distintas. La distancia geográfica estimada aporta contexto a la evaluación de esa simultaneidad." },
+      ] },
       { id: "campus-completo", navLabel: "Campus completo", eyebrow: "LA MISMA OFERTA DE CAMPUS", title: "Seguridad dentro de la academia completa.", description: "Campus Secure presenta el mismo Campus desde los accesos y contenidos. La oferta sigue siendo Campus a 3,99 € por alumno activo al mes, con todas sus funciones.", items: [
         { title: "Estudio y clases", text: "Incluye las funciones de Plugin: chat, pregunta del día, resúmenes, mapas, flashcards, podcasts, tests al momento, estadísticas y nota estimada. Añade alojamiento de vídeo y aula virtual con grabaciones." },
         { title: "Gestión y comunicación", text: "Incluye accesos, matrículas, altas y bajas, facturación y pasarela de pago, facturas, cobros automáticos, cupones y ofertas. Calendario, foro, mensajes y correos completan el curso." },
       ] },
       { id: "mcp", navLabel: "Gestión con MCP", eyebrow: "GESTIÓN DESDE UNA IA COMPATIBLE", title: "MCP también está incluido.", description: "Además de la IA de estudio del alumno, Campus incluye MCP como capacidad de gestión. Forma parte de la misma oferta, sin una tarifa adicional.", items: [mcp] },
     ],
-    finalTitle: "Revisa un caso de uso en la demo.", finalText: "Veremos los avisos configurables, las medidas de vídeo y las descargas identificadas dentro del mismo Campus, con MCP incluido.",
+    finalTitle: "Veamos cómo proteger tu contenido.", finalText: "Solicita una demo para recorrer la protección de vídeo, las descargas identificadas y los ajustes de seguridad. Todo dentro del Campus completo, con IA, gestión y MCP incluidos.",
     faqs: [
-      { question: "¿Qué avisos incluye el módulo de seguridad?", answer: "Avisos configurables por combinaciones distintas de navegador y sistema, peticiones de apertura de vídeos y conexiones de internet simultáneas distintas. Puedes configurar periodos y umbrales. Son señales que requieren revisión, no pruebas concluyentes de fraude." },
-      { question: "¿La distancia geográfica genera un caso por sí sola?", answer: "No. La distancia geográfica estimada refuerza la evaluación de conexiones simultáneas, pero por sí sola no crea ni oculta casos. No debe interpretarse como una prueba independiente de uso indebido." },
-      { question: "¿El vídeo impide cualquier grabación o copia?", answer: "El vídeo dispone de medidas contra la captura de pantalla. Eso no garantiza que sea imposible grabar o copiar el contenido por cualquier medio; conviene conocer su alcance y revisar el contexto de uso." },
-      { question: "¿Puedo identificar el material descargado?", answer: "Sí. La academia puede habilitar descargas del material con marca de agua y DNI o correo del alumno. Esto identifica la copia descargada, sin garantizar que no pueda volver a compartirse." },
+      { question: "¿Cómo protege Campus mis clases grabadas?", answer: "El vídeo incorpora protección antigrabación mediante medidas contra la captura de pantalla. Se integra en la reproducción del contenido formativo. En la demo puedes recorrer una clase y conocer las medidas disponibles." },
+      { question: "¿Qué identificación lleva el material descargado?", answer: "Cuando la academia habilita las descargas, el material puede llevar una marca de agua con el correo o DNI del alumno. Por ejemplo, un alumno puede descargar el material para repasar y conservar su identificación en esa copia." },
+      { question: "¿Qué avisos de seguridad puedo configurar?", answer: "Puedes configurar avisos por combinaciones distintas de navegador y sistema, peticiones de apertura de vídeos y conexiones de internet simultáneas distintas. Los periodos y umbrales permiten adaptar la revisión al uso de tus cursos." },
+      { question: "¿Para qué sirve la distancia geográfica estimada?", answer: "Aporta contexto a la evaluación de conexiones simultáneas distintas. Se considera junto con la simultaneidad para ayudarte a revisar cómo se está utilizando una cuenta." },
       { question: "¿Campus Secure, seguridad o MCP tienen otra tarifa?", answer: "No. Campus Secure es el mismo Campus de 3,99 € por alumno activo al mes. Incluye las herramientas de estudio de Plugin, vídeo, aula virtual, gestión, comunicación, módulo de seguridad y MCP para operar funciones del campus desde una IA compatible." },
       priceFaq("3,99 €"),
     ],
-    meta: { title: "Avisos de seguridad, vídeo y descargas | DuxBrain Campus", description: "Avisos configurables, medidas para vídeo y descargas identificadas. Seguridad y MCP incluidos en el mismo Campus: 3,99 € por alumno activo al mes." },
+    meta: { title: "Protege tus clases y materiales | DuxBrain Campus Secure", description: "Protección antigrabación de vídeo, descargas con marca de agua identificada y avisos configurables. Campus completo: 3,99 € por alumno activo al mes." },
   },
 };
